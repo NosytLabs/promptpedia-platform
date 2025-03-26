@@ -4,8 +4,14 @@ import { motion } from 'framer-motion'
 import { Loading } from '@/components/ui/loading'
 import { ErrorBoundary } from '@/components/ui/error-boundary'
 import { trackFeatureUsage } from '@/lib/analytics'
+import { Button } from '@/components/ui/button'
+import { Icons } from '@/components/icons'
 
 const FeatureCard = dynamic(() => import('@/components/ui/feature-card'), {
+  loading: () => <Loading />,
+})
+
+const InteractiveDemo = dynamic(() => import('@/components/marketing/interactive-demo'), {
   loading: () => <Loading />,
 })
 
@@ -36,6 +42,9 @@ export default function FeaturesPage() {
       description: 'Connect with popular AI models including GPT-4, Claude, and more. Customize prompts for each platform and ensure consistent performance across different models.',
       icon: 'robot',
     },
+  ]
+
+  const advancedFeatures = [
     {
       title: 'Version Control',
       description: 'Keep track of prompt iterations with built-in version control. Compare different versions, roll back changes, and maintain a history of your prompt development.',
@@ -60,61 +69,153 @@ export default function FeaturesPage() {
 
   return (
     <ErrorBoundary>
-      <main className="container mx-auto px-4 py-16">
+      <main className="min-h-screen">
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="container mx-auto px-4 py-16 text-center"
         >
           <h1 className="text-5xl font-bold mb-6">
-            Powerful Features for Modern Prompt Engineering
+            Powerful Features for Modern{' '}
+            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              Prompt Engineering
+            </span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Discover how Promptpedia's comprehensive feature set can transform your prompt engineering workflow
             and help you achieve better results with AI models.
           </p>
+          <div className="flex justify-center gap-4">
+            <Button
+              size="lg"
+              onClick={() => trackFeatureUsage('features_get_started')}
+            >
+              <Icons.rocket className="mr-2 h-5 w-5" />
+              Get Started Free
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => trackFeatureUsage('features_view_demo')}
+            >
+              <Icons.play className="mr-2 h-5 w-5" />
+              Watch Demo
+            </Button>
+          </div>
         </motion.section>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <Suspense key={index} fallback={<Loading />}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <FeatureCard
-                  title={feature.title}
-                  description={feature.description}
-                  icon={feature.icon}
-                  onClick={() => trackFeatureUsage(feature.title)}
-                />
-              </motion.div>
-            </Suspense>
-          ))}
+        <section className="container mx-auto px-4 py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold mb-4">Try It Yourself</h2>
+            <p className="text-lg text-muted-foreground">
+              Experience the power of our platform with this interactive demo
+            </p>
+          </motion.div>
+          <Suspense fallback={<Loading />}>
+            <InteractiveDemo />
+          </Suspense>
+        </section>
+
+        <section className="container mx-auto px-4 py-16 bg-slate-50">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold mb-4">Core Features</h2>
+            <p className="text-lg text-muted-foreground">
+              Everything you need to create and manage effective prompts
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {features.map((feature, index) => (
+              <Suspense key={index} fallback={<Loading />}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <FeatureCard
+                    title={feature.title}
+                    description={feature.description}
+                    icon={feature.icon}
+                    onClick={() => trackFeatureUsage(feature.title)}
+                  />
+                </motion.div>
+              </Suspense>
+            ))}
+          </div>
+        </section>
+
+        <section className="container mx-auto px-4 py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold mb-4">Advanced Capabilities</h2>
+            <p className="text-lg text-muted-foreground">
+              Take your prompt engineering to the next level
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {advancedFeatures.map((feature, index) => (
+              <Suspense key={index} fallback={<Loading />}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <FeatureCard
+                    title={feature.title}
+                    description={feature.description}
+                    icon={feature.icon}
+                    onClick={() => trackFeatureUsage(feature.title)}
+                  />
+                </motion.div>
+              </Suspense>
+            ))}
+          </div>
         </section>
 
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="text-center mt-16"
+          className="container mx-auto px-4 py-16 text-center"
         >
           <h2 className="text-3xl font-bold mb-4">
             Ready to Transform Your Prompt Engineering?
           </h2>
-          <p className="text-lg text-muted-foreground mb-8">
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Join thousands of developers and teams who are already using Promptpedia
             to create better AI interactions.
           </p>
-          <a
-            href="/signup"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
-            onClick={() => trackFeatureUsage('signup_from_features')}
-          >
-            Get Started Free
-          </a>
+          <div className="flex justify-center gap-4">
+            <Button
+              size="lg"
+              onClick={() => trackFeatureUsage('features_signup')}
+            >
+              <Icons.rocket className="mr-2 h-5 w-5" />
+              Get Started Free
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => trackFeatureUsage('features_contact_sales')}
+            >
+              <Icons.phone className="mr-2 h-5 w-5" />
+              Contact Sales
+            </Button>
+          </div>
         </motion.section>
       </main>
     </ErrorBoundary>
