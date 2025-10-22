@@ -1,0 +1,188 @@
+[
+  {
+    "id": "prompt-1",
+    "title": "Advanced Code Review Assistant",
+    "description": "A comprehensive prompt for performing detailed code reviews with focus on security, performance, and best practices. Works excellently with Claude and GPT-4.",
+    "promptText": "You are an expert code reviewer with deep knowledge of software engineering best practices, security vulnerabilities, and performance optimization.\n\nPlease review the following code and provide:\n1. Security vulnerabilities and their severity (Critical/High/Medium/Low)\n2. Performance bottlenecks and optimization opportunities\n3. Code quality issues (readability, maintainability, testability)\n4. Best practice violations\n5. Specific, actionable recommendations for each issue\n\nFor each issue found, explain:\n- What the problem is\n- Why it matters\n- How to fix it\n- Example of the improved code\n\nCode to review:\n{{CODE}}",
+    "aiSystem": ["claude-3.5-sonnet", "claude-3-opus", "gpt-4-turbo", "gpt-4"],
+    "category": ["code-generation", "education"],
+    "examples": [
+      {
+        "input": "function getUserData(userId) {\n  const query = \"SELECT * FROM users WHERE id = '\" + userId + \"'\";\n  return db.execute(query);\n}",
+        "output": "**Security Issues:**\n\n1. **SQL Injection Vulnerability (CRITICAL)**\n   - Problem: Direct string concatenation creates SQL injection vulnerability\n   - Impact: Attackers can execute arbitrary SQL commands\n   - Fix: Use parameterized queries\n   \n**Improved Code:**\n```javascript\nasync function getUserData(userId) {\n  const query = 'SELECT * FROM users WHERE id = ?';\n  return await db.execute(query, [userId]);\n}\n```",
+        "notes": "This example demonstrates how the prompt identifies critical security issues and provides specific fixes"
+      }
+    ],
+    "tags": ["code-review", "security", "best-practices", "quality-assurance"],
+    "useCases": [
+      "Pre-commit code reviews",
+      "Security audits",
+      "Code quality improvement",
+      "Developer training",
+      "Technical debt identification"
+    ],
+    "author": "Sarah Chen",
+    "rating": 4.8,
+    "votes": 156,
+    "views": 2340,
+    "createdAt": "2024-01-15T10:00:00Z",
+    "updatedAt": "2024-01-15T10:00:00Z",
+    "featured": true,
+    "verified": true
+  },
+  {
+    "id": "prompt-2",
+    "title": "Creative Product Description Generator",
+    "description": "Generate compelling, SEO-optimized product descriptions that convert. Perfect for e-commerce businesses using Claude or GPT models.",
+    "promptText": "You are an expert e-commerce copywriter specializing in creating compelling product descriptions that drive conversions.\n\nCreate a product description that:\n- Captures attention with a compelling headline\n- Highlights key features and benefits\n- Uses sensory language to create emotional connection\n- Includes relevant keywords naturally for SEO\n- Addresses potential customer objections\n- Ends with a clear call-to-action\n\nProduct Information:\n- Name: {{PRODUCT_NAME}}\n- Category: {{CATEGORY}}\n- Key Features: {{FEATURES}}\n- Target Audience: {{AUDIENCE}}\n- Price Point: {{PRICE}}\n\nTone: {{TONE}} (e.g., professional, playful, luxurious)\nLength: {{LENGTH}} words",
+    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4", "gpt-3.5-turbo"],
+    "category": ["creative-writing", "business"],
+    "examples": [
+      {
+        "input": "Product: Wireless Noise-Cancelling Headphones\nCategory: Electronics/Audio\nFeatures: 40-hour battery, premium sound quality, comfortable design\nAudience: Remote workers and audiophiles\nPrice: $299\nTone: Professional yet approachable\nLength: 150 words",
+        "output": "**Transform Your Audio Experience**\n\nEscape into pure, uninterrupted sound with our Premium Wireless Noise-Cancelling Headphones. Engineered for professionals and music lovers who refuse to compromise, these headphones deliver studio-quality audio that brings your favorite content to life.\n\nWith an industry-leading 40-hour battery life, you'll power through your entire work week on a single charge. The advanced noise-cancellation technology eliminates distractions, creating your personal sound sanctuary whether you're in a bustling coffee shop or a busy office.\n\nCrafted with premium memory foam ear cushions and an adjustable headband, comfort meets style for all-day wear. The intuitive touch controls keep your music, calls, and volume adjustments at your fingertips.\n\nInvest in audio excellence that adapts to your lifestyle. Experience the difference that professional-grade sound engineering makes.\n\n**Order now and elevate every listening moment.**",
+        "notes": "Shows how the prompt creates engaging, benefit-focused copy with natural SEO integration"
+      }
+    ],
+    "tags": ["copywriting", "e-commerce", "marketing", "seo", "conversion"],
+    "useCases": [
+      "E-commerce product pages",
+      "Amazon listings",
+      "Shopify stores",
+      "Marketing campaigns",
+      "Product catalogs"
+    ],
+    "author": "Marcus Rodriguez",
+    "rating": 4.6,
+    "votes": 98,
+    "views": 1567,
+    "createdAt": "2024-01-20T14:30:00Z",
+    "updatedAt": "2024-01-20T14:30:00Z",
+    "featured": true,
+    "verified": true
+  },
+  {
+    "id": "prompt-3",
+    "title": "Data Analysis & Visualization Guide",
+    "description": "Comprehensive prompt for analyzing datasets and creating actionable insights. Includes statistical analysis, trend identification, and visualization recommendations.",
+    "promptText": "You are a senior data analyst with expertise in statistical analysis, data visualization, and business intelligence.\n\nAnalyze the provided dataset and deliver:\n\n1. **Data Overview**\n   - Summary statistics (mean, median, mode, std dev)\n   - Data quality assessment\n   - Missing values and outliers\n\n2. **Key Insights**\n   - Major trends and patterns\n   - Correlations and relationships\n   - Anomalies and interesting findings\n\n3. **Statistical Analysis**\n   - Relevant statistical tests\n   - Confidence intervals\n   - Significance of findings\n\n4. **Visualization Recommendations**\n   - Best chart types for the data\n   - Specific visualization suggestions\n   - Key metrics to highlight\n\n5. **Actionable Recommendations**\n   - Business implications\n   - Suggested next steps\n   - Areas requiring further investigation\n\nDataset:\n{{DATASET}}\n\nContext: {{CONTEXT}}\nGoal: {{GOAL}}",
+    "aiSystem": ["claude-3.5-sonnet", "claude-3-opus", "gpt-4-turbo", "gpt-4"],
+    "category": ["data-analysis", "business", "research"],
+    "examples": [
+      {
+        "input": "Dataset: Monthly sales data for Q4 2023\nContext: E-commerce company selling home goods\nGoal: Identify trends and optimize Q1 2024 strategy",
+        "output": "**Data Overview:**\nAnalyzed 92 days of sales data (Oct-Dec 2023)\n- Average daily revenue: $45,320 (±$8,450)\n- Peak day: Black Friday at $127,890\n- Data completeness: 100%\n\n**Key Insights:**\n1. 35% revenue spike during holiday season (Nov 20 - Dec 25)\n2. Strong correlation (r=0.72) between email campaigns and next-day sales\n3. Mobile traffic increased 45% but conversion rate 15% lower than desktop\n\n**Recommendations:**\n- Optimize mobile checkout flow (potential $50K+ monthly revenue)\n- Increase email frequency during high-conversion periods\n- Prepare inventory for identified high-demand categories\n- Test promotional strategies from successful Black Friday campaign",
+        "notes": "Demonstrates comprehensive analysis with actionable business recommendations"
+      }
+    ],
+    "tags": ["data-analysis", "statistics", "business-intelligence", "insights", "visualization"],
+    "useCases": [
+      "Business reporting",
+      "Market research",
+      "Performance analysis",
+      "Trend forecasting",
+      "Decision support"
+    ],
+    "author": "Dr. Emily Zhang",
+    "rating": 4.9,
+    "votes": 203,
+    "views": 3421,
+    "createdAt": "2024-01-10T09:15:00Z",
+    "updatedAt": "2024-01-10T09:15:00Z",
+    "featured": true,
+    "verified": true
+  },
+  {
+    "id": "prompt-4",
+    "title": "Cinematic Video Generation - Veo 3",
+    "description": "Expert prompt crafting for Google Veo 3 video generation. Create stunning, cinematic videos with precise control over style, movement, and atmosphere.",
+    "promptText": "Create a cinematic video with the following specifications:\n\n**Scene Description:**\n{{SCENE_DESCRIPTION}}\n\n**Visual Style:**\n- Cinematography: {{CINEMATOGRAPHY}} (e.g., wide-angle, close-up, aerial)\n- Lighting: {{LIGHTING}} (e.g., golden hour, dramatic shadows, soft natural)\n- Color Grading: {{COLOR_GRADING}} (e.g., warm tones, cool blues, high contrast)\n- Camera Movement: {{CAMERA_MOVEMENT}} (e.g., slow dolly, smooth pan, static)\n\n**Atmosphere & Mood:**\n{{MOOD}}\n\n**Technical Details:**\n- Duration: {{DURATION}} seconds\n- Aspect Ratio: {{ASPECT_RATIO}}\n- Frame Rate: {{FPS}} fps\n\n**Additional Elements:**\n- Focus on: {{FOCUS_POINTS}}\n- Avoid: {{AVOID_ELEMENTS}}\n\nGenerate a video that captures {{PRIMARY_GOAL}} with professional quality and attention to detail.",
+    "aiSystem": ["veo-3"],
+    "category": ["video-generation", "creative-writing", "entertainment"],
+    "examples": [
+      {
+        "input": "Scene: A lone astronaut standing on Mars surface, looking at Earth in the distance\nCinematography: Wide-angle establishing shot\nLighting: Sunset on Mars (reddish-orange glow)\nColor Grading: Warm reds and oranges with cool blue Earth\nCamera Movement: Slow push-in towards astronaut\nMood: Contemplative, awe-inspiring, slightly melancholic\nDuration: 10 seconds\nAspect Ratio: 16:9\nFPS: 24\nFocus: Earth in the distance, astronaut's silhouette\nAvoid: Other people, structures, unrealistic colors\nGoal: Evoke sense of isolation and wonder",
+        "output": "A wide-angle shot reveals the vast Martian landscape during sunset, bathed in warm reddish-orange hues. A lone astronaut in a white spacesuit stands on rocky terrain, facing away from the camera. The camera slowly pushes in, maintaining focus on both the astronaut's silhouette and the small blue Earth visible in the dusty pink sky. The lighting creates dramatic long shadows across the rust-colored surface. The scene conveys profound isolation and contemplative wonder, with cinematic composition emphasizing the vastness of space and human exploration.",
+        "notes": "Optimized prompt structure for Veo 3's video generation capabilities"
+      }
+    ],
+    "tags": ["video", "veo-3", "cinematography", "visual-effects", "storytelling"],
+    "useCases": [
+      "Marketing videos",
+      "Social media content",
+      "Film pre-visualization",
+      "Concept demonstrations",
+      "Artistic projects"
+    ],
+    "author": "James Martinez",
+    "rating": 4.7,
+    "votes": 87,
+    "views": 1245,
+    "createdAt": "2024-01-25T16:20:00Z",
+    "updatedAt": "2024-01-25T16:20:00Z",
+    "featured": true,
+    "verified": true
+  },
+  {
+    "id": "prompt-5",
+    "title": "Technical Documentation Writer",
+    "description": "Generate clear, comprehensive technical documentation for software projects. Includes API docs, user guides, and troubleshooting sections.",
+    "promptText": "You are a technical documentation specialist with expertise in creating clear, user-friendly documentation for software products.\n\nCreate comprehensive documentation that includes:\n\n**1. Overview Section**\n- Purpose and scope\n- Target audience\n- Prerequisites\n- Quick start guide\n\n**2. Detailed Documentation**\n- Step-by-step instructions\n- Code examples with explanations\n- Screenshots or diagrams (described)\n- Common use cases\n\n**3. API Reference (if applicable)**\n- Endpoint descriptions\n- Parameters and return values\n- Example requests/responses\n- Error codes and handling\n\n**4. Troubleshooting**\n- Common issues and solutions\n- Error messages and meanings\n- Debug tips\n- FAQ section\n\n**5. Best Practices**\n- Recommended patterns\n- Performance tips\n- Security considerations\n\nProject Information:\n{{PROJECT_DETAILS}}\n\nAudience Level: {{AUDIENCE_LEVEL}} (beginner/intermediate/advanced)\nDocumentation Type: {{DOC_TYPE}}",
+    "aiSystem": ["claude-3.5-sonnet", "claude-3-opus", "gpt-4-turbo", "gpt-4"],
+    "category": ["code-generation", "education", "business"],
+    "examples": [
+      {
+        "input": "Project: REST API for user authentication\nAudience: Intermediate developers\nType: API Reference",
+        "output": "# User Authentication API\n\n## Overview\nThis API provides secure user authentication and session management for your application.\n\n**Prerequisites:**\n- API key (obtain from dashboard)\n- HTTPS-enabled endpoint\n- Basic understanding of REST APIs\n\n## Quick Start\n```javascript\nconst response = await fetch('https://api.example.com/auth/login', {\n  method: 'POST',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({\n    email: 'user@example.com',\n    password: 'securePassword123'\n  })\n});\n```\n\n## Endpoints\n\n### POST /auth/login\nAuthenticate user and receive access token.\n\n**Request Body:**\n```json\n{\n  \"email\": \"string\" (required),\n  \"password\": \"string\" (required)\n}\n```\n\n**Success Response (200):**\n```json\n{\n  \"token\": \"eyJhbGc...\",\n  \"expiresIn\": 3600,\n  \"user\": {\n    \"id\": \"123\",\n    \"email\": \"user@example.com\"\n  }\n}\n```",
+        "notes": "Shows structured technical documentation with code examples"
+      }
+    ],
+    "tags": ["documentation", "technical-writing", "api", "tutorial", "education"],
+    "useCases": [
+      "API documentation",
+      "User manuals",
+      "Developer guides",
+      "Integration tutorials",
+      "Product documentation"
+    ],
+    "author": "Alex Thompson",
+    "rating": 4.8,
+    "votes": 142,
+    "views": 2108,
+    "createdAt": "2024-01-18T11:45:00Z",
+    "updatedAt": "2024-01-18T11:45:00Z",
+    "featured": false,
+    "verified": true
+  },
+  {
+    "id": "prompt-6",
+    "title": "Social Media Content Calendar Creator",
+    "description": "Generate a comprehensive social media content calendar with engaging posts, hashtags, and posting schedules optimized for maximum engagement.",
+    "promptText": "You are a social media strategist with expertise in content creation, audience engagement, and platform algorithms.\n\nCreate a comprehensive social media content calendar:\n\n**Brand Information:**\n- Business: {{BUSINESS_TYPE}}\n- Target Audience: {{AUDIENCE}}\n- Brand Voice: {{VOICE}}\n- Goals: {{GOALS}}\n\n**Requirements:**\n- Platform: {{PLATFORM}} (Instagram/LinkedIn/Twitter/etc.)\n- Duration: {{DURATION}}\n- Posting Frequency: {{FREQUENCY}}\n\n**For Each Post Include:**\n1. Date and optimal posting time\n2. Post copy (caption)\n3. Visual description/concept\n4. Hashtags (relevant and trending)\n5. Call-to-action\n6. Expected engagement type\n\n**Content Mix:**\n- Educational (40%)\n- Entertaining (30%)\n- Promotional (20%)\n- User-generated content (10%)\n\nEnsure variety, consistency with brand voice, and strategic timing for maximum reach.",
+    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4"],
+    "category": ["business", "creative-writing", "entertainment"],
+    "examples": [
+      {
+        "input": "Business: Sustainable fashion brand\nAudience: Eco-conscious millennials and Gen Z\nVoice: Authentic, passionate, educational\nGoals: Increase brand awareness and engagement\nPlatform: Instagram\nDuration: 1 week\nFrequency: Daily",
+        "output": "**Week 1 Social Media Calendar - Sustainable Fashion**\n\n**Monday - Educational**\nTime: 10:00 AM\nCaption: \"Did you know? Fast fashion produces 10% of global carbon emissions. 🌍 Here's how choosing sustainable pieces makes a real impact...\"\nVisual: Infographic comparing fast fashion vs. sustainable production\nHashtags: #SustainableFashion #EcoFriendly #SlowFashion #ConsciousConsumer #EthicalFashion\nCTA: \"Swipe to learn more →\"\n\n**Tuesday - Behind-the-Scenes**\nTime: 2:00 PM\nCaption: \"Meet Maria, one of our artisan partners in Portugal 💚 Every piece tells a story...\"\nVisual: Video of artisan at work\nHashtags: #EthicalMade #ArtisanFashion #TransparentFashion #MadeWithLove\nCTA: \"Comment what you'd like to know about our process!\"\n\n[...continues for full week]",
+        "notes": "Demonstrates strategic content planning with engagement optimization"
+      }
+    ],
+    "tags": ["social-media", "marketing", "content-strategy", "engagement", "branding"],
+    "useCases": [
+      "Social media management",
+      "Content marketing",
+      "Brand building",
+      "Influencer planning",
+      "Campaign scheduling"
+    ],
+    "author": "Nina Patel",
+    "rating": 4.5,
+    "votes": 76,
+    "views": 1432,
+    "createdAt": "2024-01-22T13:30:00Z",
+    "updatedAt": "2024-01-22T13:30:00Z",
+    "featured": false,
+    "verified": true
+  }
+]
