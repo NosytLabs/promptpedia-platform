@@ -160,6 +160,23 @@ export default function PromptDetailPage() {
             </div>
           </div>
 
+          {prompt.techniques && prompt.techniques.length > 0 && (
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold mb-4 text-slate-900">Techniques Used</h2>
+              <div className="flex flex-wrap gap-2">
+                {prompt.techniques.map((technique) => (
+                  <Link
+                    key={technique}
+                    href={`/techniques#${technique}`}
+                    className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-medium hover:shadow-lg transition-shadow"
+                  >
+                    {technique.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="mb-8">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl font-bold text-slate-900">Prompt Text</h2>

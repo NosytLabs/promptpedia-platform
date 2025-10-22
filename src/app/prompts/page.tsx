@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Prompt, AISystem, PromptCategory } from '@/types/prompt';
+import { Prompt, AISystem, PromptCategory, PromptTechnique } from '@/types/prompt';
 import { timeAgo } from '@/lib/utils';
 
 const AI_SYSTEMS: { value: AISystem; label: string }[] = [
@@ -26,9 +26,32 @@ const CATEGORIES: { value: PromptCategory; label: string }[] = [
   { value: 'image-generation', label: 'Image Generation' },
   { value: 'video-generation', label: 'Video Generation' },
   { value: 'chatbot', label: 'Chatbot' },
+  { value: 'summarization', label: 'Summarization' },
+  { value: 'translation', label: 'Translation' },
   { value: 'business', label: 'Business' },
   { value: 'education', label: 'Education' },
   { value: 'research', label: 'Research' },
+  { value: 'marketing', label: 'Marketing' },
+  { value: 'productivity', label: 'Productivity' },
+  { value: 'entertainment', label: 'Entertainment' },
+  { value: 'other', label: 'Other' },
+];
+
+const TECHNIQUES: { value: PromptTechnique; label: string }[] = [
+  { value: 'one-shot', label: 'One-Shot' },
+  { value: 'few-shot', label: 'Few-Shot' },
+  { value: 'zero-shot', label: 'Zero-Shot' },
+  { value: 'chain-of-thought', label: 'Chain-of-Thought' },
+  { value: 'self-consistency', label: 'Self-Consistency' },
+  { value: 'prompt-chaining', label: 'Prompt Chaining' },
+  { value: 'role-based', label: 'Role-Based' },
+  { value: 'structured-debate', label: 'Structured Debate' },
+  { value: 'iterative-refinement', label: 'Iterative Refinement' },
+  { value: 'constraint-based', label: 'Constraint-Based' },
+  { value: 'socratic-method', label: 'Socratic Method' },
+  { value: 'json-output', label: 'JSON Output' },
+  { value: 'multi-step', label: 'Multi-Step' },
+  { value: 'standard', label: 'Standard' },
 ];
 
 export default function PromptsPage() {
@@ -37,11 +60,12 @@ export default function PromptsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedAISystem, setSelectedAISystem] = useState<AISystem | ''>('');
   const [selectedCategory, setSelectedCategory] = useState<PromptCategory | ''>('');
+  const [selectedTechnique, setSelectedTechnique] = useState<PromptTechnique | ''>('');
   const [sortBy, setSortBy] = useState<'recent' | 'popular' | 'rating'>('recent');
 
   useEffect(() => {
     fetchPrompts();
-  }, [searchQuery, selectedAISystem, selectedCategory, sortBy]);
+  }, [searchQuery, selectedAISystem, selectedCategory, selectedTechnique, sortBy]);
 
   const fetchPrompts = async () => {
     setLoading(true);

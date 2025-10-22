@@ -14,6 +14,22 @@ export type AISystem =
   | 'dall-e-3'
   | 'other';
 
+export type PromptTechnique = 
+  | 'one-shot'
+  | 'few-shot'
+  | 'zero-shot'
+  | 'chain-of-thought'
+  | 'self-consistency'
+  | 'prompt-chaining'
+  | 'role-based'
+  | 'structured-debate'
+  | 'iterative-refinement'
+  | 'constraint-based'
+  | 'socratic-method'
+  | 'json-output'
+  | 'multi-step'
+  | 'standard';
+
 export type PromptCategory = 
   | 'text-generation'
   | 'code-generation'
@@ -28,6 +44,8 @@ export type PromptCategory =
   | 'business'
   | 'research'
   | 'entertainment'
+  | 'marketing'
+  | 'productivity'
   | 'other';
 
 export interface PromptExample {
@@ -43,6 +61,7 @@ export interface Prompt {
   promptText: string;
   aiSystem: AISystem[];
   category: PromptCategory[];
+  techniques: PromptTechnique[];
   examples: PromptExample[];
   tags: string[];
   useCases: string[];
@@ -63,6 +82,7 @@ export interface PromptSubmission {
   promptText: string;
   aiSystem: AISystem[];
   category: PromptCategory[];
+  techniques: PromptTechnique[];
   examples: PromptExample[];
   tags: string[];
   useCases: string[];
@@ -73,6 +93,7 @@ export interface PromptSubmission {
 export interface PromptFilter {
   aiSystem?: AISystem[];
   category?: PromptCategory[];
+  techniques?: PromptTechnique[];
   tags?: string[];
   search?: string;
   featured?: boolean;

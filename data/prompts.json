@@ -4,8 +4,16 @@
     "title": "Advanced Code Review Assistant",
     "description": "A comprehensive prompt for performing detailed code reviews with focus on security, performance, and best practices. Works excellently with Claude and GPT-4.",
     "promptText": "You are an expert code reviewer with deep knowledge of software engineering best practices, security vulnerabilities, and performance optimization.\n\nPlease review the following code and provide:\n1. Security vulnerabilities and their severity (Critical/High/Medium/Low)\n2. Performance bottlenecks and optimization opportunities\n3. Code quality issues (readability, maintainability, testability)\n4. Best practice violations\n5. Specific, actionable recommendations for each issue\n\nFor each issue found, explain:\n- What the problem is\n- Why it matters\n- How to fix it\n- Example of the improved code\n\nCode to review:\n{{CODE}}",
-    "aiSystem": ["claude-3.5-sonnet", "claude-3-opus", "gpt-4-turbo", "gpt-4"],
-    "category": ["code-generation", "education"],
+    "aiSystem": [
+      "claude-3.5-sonnet",
+      "claude-3-opus",
+      "gpt-4-turbo",
+      "gpt-4"
+    ],
+    "category": [
+      "code-generation",
+      "education"
+    ],
     "examples": [
       {
         "input": "function getUserData(userId) {\n  const query = \"SELECT * FROM users WHERE id = '\" + userId + \"'\";\n  return db.execute(query);\n}",
@@ -13,7 +21,12 @@
         "notes": "This example demonstrates how the prompt identifies critical security issues and provides specific fixes"
       }
     ],
-    "tags": ["code-review", "security", "best-practices", "quality-assurance"],
+    "tags": [
+      "code-review",
+      "security",
+      "best-practices",
+      "quality-assurance"
+    ],
     "useCases": [
       "Pre-commit code reviews",
       "Security audits",
@@ -28,15 +41,27 @@
     "createdAt": "2024-01-15T10:00:00Z",
     "updatedAt": "2024-01-15T10:00:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "role-based"
+    ]
   },
   {
     "id": "prompt-2",
     "title": "One-Shot Sentiment Analysis Expert",
     "description": "Master one-shot learning for sentiment analysis. Train AI to understand nuanced sentiment with just a single example. Popular technique from X/Twitter AI community.",
     "promptText": "You are a sentiment analysis expert. I will provide ONE example showing how to analyze sentiment, then you will apply the same detailed analysis to new inputs.\n\nExample Input: \"The product works but the customer service was terrible and shipping took forever.\"\n\nExample Analysis:\n- Overall Sentiment: Mixed (leaning negative)\n- Product Sentiment: Neutral-Positive (\"works\")\n- Service Sentiment: Strongly Negative (\"terrible\")\n- Logistics Sentiment: Negative (\"took forever\")\n- Confidence: High\n- Key Emotions: Frustration, Disappointment\n- Actionable Insight: Address customer service and shipping speed\n\nNow analyze this text using the same detailed format:\n{{TEXT}}",
-    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4", "claude-3-opus"],
-    "category": ["text-generation", "data-analysis", "business"],
+    "aiSystem": [
+      "claude-3.5-sonnet",
+      "gpt-4-turbo",
+      "gpt-4",
+      "claude-3-opus"
+    ],
+    "category": [
+      "text-generation",
+      "data-analysis",
+      "business"
+    ],
     "examples": [
       {
         "input": "Just got my new laptop and the specs are amazing! However, it came with a crack in the screen and support hasn't responded to my emails for 3 days.",
@@ -44,7 +69,13 @@
         "notes": "One-shot learning successfully applied the analysis format to a new review"
       }
     ],
-    "tags": ["one-shot", "sentiment-analysis", "nlp", "machine-learning", "customer-feedback"],
+    "tags": [
+      "one-shot",
+      "sentiment-analysis",
+      "nlp",
+      "machine-learning",
+      "customer-feedback"
+    ],
     "useCases": [
       "Customer review analysis",
       "Social media monitoring",
@@ -59,15 +90,27 @@
     "createdAt": "2024-01-28T09:00:00Z",
     "updatedAt": "2024-01-28T09:00:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "one-shot"
+    ]
   },
   {
     "id": "prompt-3",
     "title": "Chain-of-Thought Math Problem Solver",
     "description": "Advanced CoT prompting for complex problem-solving. Based on research-backed techniques shared widely on X by @AnthropicAI and @OpenAI researchers.",
     "promptText": "You are a mathematics expert. Solve problems using chain-of-thought reasoning - show every step of your thinking process explicitly.\n\nFor each problem:\n1. Understand: Rephrase what the problem asks\n2. Plan: Outline your approach\n3. Execute: Show each calculation step\n4. Verify: Check if the answer makes sense\n5. Answer: Provide final answer clearly\n\nExample:\nProblem: \"A store has 150 items. 40% are sold on Monday. On Tuesday, 30 more items are sold. What percentage of original inventory remains?\"\n\n1. Understand: Need to find what % of 150 items are left after Monday (40%) and Tuesday (30 items) sales\n2. Plan: Calculate Monday sales → Subtract → Calculate Tuesday sales → Subtract → Convert to percentage\n3. Execute:\n   - Monday sales: 150 × 0.40 = 60 items\n   - Remaining after Monday: 150 - 60 = 90 items\n   - Tuesday sales: 30 items\n   - Remaining after Tuesday: 90 - 30 = 60 items\n   - Percentage: (60/150) × 100 = 40%\n4. Verify: 60 + 30 + 60 = 150 ✓\n5. Answer: 40% of original inventory remains\n\nNow solve this problem:\n{{PROBLEM}}",
-    "aiSystem": ["gpt-4-turbo", "gpt-4", "claude-3.5-sonnet", "claude-3-opus"],
-    "category": ["education", "research", "data-analysis"],
+    "aiSystem": [
+      "gpt-4-turbo",
+      "gpt-4",
+      "claude-3.5-sonnet",
+      "claude-3-opus"
+    ],
+    "category": [
+      "education",
+      "research",
+      "data-analysis"
+    ],
     "examples": [
       {
         "input": "A company's revenue was $500,000 last year. It grew by 20% in Q1, decreased by 10% in Q2, and grew by 15% in Q3. What's the revenue at the end of Q3?",
@@ -75,7 +118,14 @@
         "notes": "Chain-of-thought reasoning makes complex multi-step calculations transparent and verifiable"
       }
     ],
-    "tags": ["chain-of-thought", "cot", "reasoning", "math", "problem-solving", "education"],
+    "tags": [
+      "chain-of-thought",
+      "cot",
+      "reasoning",
+      "math",
+      "problem-solving",
+      "education"
+    ],
     "useCases": [
       "Educational tutoring",
       "Complex calculations",
@@ -90,15 +140,26 @@
     "createdAt": "2024-01-29T14:20:00Z",
     "updatedAt": "2024-01-29T14:20:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "chain-of-thought"
+    ]
   },
   {
     "id": "prompt-4",
     "title": "Few-Shot Creative Writer",
     "description": "Few-shot learning for consistent creative writing. Technique popularized by @sama and creative AI communities on X/Twitter.",
     "promptText": "You are a creative writer. I'll show you a few examples of a specific writing style, then you'll write in that same style.\n\n**Example 1:**\n\"The coffee shop buzzed. Not with conversation—those days were gone. Now it buzzed with silence, the kind that wraps around you like fog. Sarah's fingers hovered over her phone. One message. Three words. Everything changed.\"\n\n**Example 2:**\n\"Rain doesn't fall in Tokyo, it performs. Each drop a dancer on the asphalt stage. Kenji watched from his apartment window, seventh floor, same view for fifteen years. Tonight, it looked different. Tonight, he had decided.\"\n\n**Example 3:**\n\"The letter arrived on a Thursday. Thursdays were supposed to be boring—laundry day, grocery shopping, nothing special. But this envelope, yellowed with age, postmarked 1987, bore his father's handwriting. His father who died in 1985.\"\n\nNow write a short story opening in this same style about:\n{{TOPIC}}",
-    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4", "claude-3-opus"],
-    "category": ["creative-writing", "education"],
+    "aiSystem": [
+      "claude-3.5-sonnet",
+      "gpt-4-turbo",
+      "gpt-4",
+      "claude-3-opus"
+    ],
+    "category": [
+      "creative-writing",
+      "education"
+    ],
     "examples": [
       {
         "input": "A woman discovering an old photograph in a library book",
@@ -106,7 +167,13 @@
         "notes": "Few-shot learning captured the style: present-tense, short punchy sentences, mystery elements, emotional reveals"
       }
     ],
-    "tags": ["few-shot", "creative-writing", "storytelling", "fiction", "style-matching"],
+    "tags": [
+      "few-shot",
+      "creative-writing",
+      "storytelling",
+      "fiction",
+      "style-matching"
+    ],
     "useCases": [
       "Creative writing assistance",
       "Brand voice consistency",
@@ -121,15 +188,27 @@
     "createdAt": "2024-01-30T10:15:00Z",
     "updatedAt": "2024-01-30T10:15:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "few-shot"
+    ]
   },
   {
     "id": "prompt-5",
     "title": "Zero-Shot Task Decomposition Agent",
     "description": "Advanced zero-shot prompting for breaking down complex tasks. Inspired by AutoGPT and agent-based systems discussed on X.",
     "promptText": "You are a task decomposition expert. Without any prior examples, analyze complex tasks and break them into actionable subtasks.\n\nFor any task given, provide:\n1. **Task Analysis**: What is the main objective?\n2. **Dependencies**: What information/resources are needed?\n3. **Subtasks**: Break into 5-10 specific, actionable steps\n4. **Priority Order**: Number steps in execution order\n5. **Success Criteria**: How to know each step is complete\n6. **Risk Factors**: What could go wrong\n7. **Time Estimate**: Realistic timeline\n\nBe specific, actionable, and thorough.\n\nTask to decompose:\n{{TASK}}",
-    "aiSystem": ["gpt-4-turbo", "claude-3.5-sonnet", "claude-3-opus", "gpt-4"],
-    "category": ["business", "education", "research"],
+    "aiSystem": [
+      "gpt-4-turbo",
+      "claude-3.5-sonnet",
+      "claude-3-opus",
+      "gpt-4"
+    ],
+    "category": [
+      "business",
+      "education",
+      "research"
+    ],
     "examples": [
       {
         "input": "Launch a successful podcast from scratch",
@@ -137,7 +216,13 @@
         "notes": "Zero-shot prompting successfully decomposed complex task without examples"
       }
     ],
-    "tags": ["zero-shot", "task-planning", "project-management", "productivity", "agent"],
+    "tags": [
+      "zero-shot",
+      "task-planning",
+      "project-management",
+      "productivity",
+      "agent"
+    ],
     "useCases": [
       "Project planning",
       "Goal setting",
@@ -152,15 +237,28 @@
     "createdAt": "2024-02-01T11:30:00Z",
     "updatedAt": "2024-02-01T11:30:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "zero-shot",
+      "multi-step"
+    ]
   },
   {
     "id": "prompt-6",
     "title": "Role-Based Prompt: Expert Consultant Pattern",
     "description": "Leverage role-playing for expert-level responses. Popular pattern from Anthropic's Claude documentation and X prompt engineering threads.",
     "promptText": "You are {{ROLE}} with {{YEARS}} years of experience. You have:\n- Deep expertise in {{EXPERTISE_AREAS}}\n- Track record of {{ACHIEVEMENTS}}\n- Known for {{SPECIAL_SKILLS}}\n\nA client asks you:\n{{QUESTION}}\n\nRespond as this expert would:\n1. Acknowledge the question and its importance\n2. Share relevant experience/case study\n3. Provide expert analysis\n4. Give specific, actionable recommendations\n5. Mention potential pitfalls to avoid\n6. Suggest next steps\n\nBe confident, specific, and back claims with reasoning.",
-    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4", "claude-3-opus"],
-    "category": ["business", "education", "research"],
+    "aiSystem": [
+      "claude-3.5-sonnet",
+      "gpt-4-turbo",
+      "gpt-4",
+      "claude-3-opus"
+    ],
+    "category": [
+      "business",
+      "education",
+      "research"
+    ],
     "examples": [
       {
         "input": "ROLE: Senior DevOps Engineer\nYEARS: 15\nEXPERTISE_AREAS: AWS architecture, Kubernetes, CI/CD, infrastructure as code\nACHIEVEMENTS: Scaled systems to handle 100M+ requests/day, reduced costs by 60% through optimization\nSPECIAL_SKILLS: Disaster recovery, cost optimization, zero-downtime migrations\n\nQUESTION: Our startup's AWS bill jumped from $5k to $25k/month in 3 months. We're serving 3x traffic but costs went up 5x. How do we fix this?",
@@ -168,7 +266,13 @@
         "notes": "Role-based prompting creates expert-level, experience-backed responses with specific, confident guidance"
       }
     ],
-    "tags": ["role-based", "expert", "consulting", "prompt-pattern", "persona"],
+    "tags": [
+      "role-based",
+      "expert",
+      "consulting",
+      "prompt-pattern",
+      "persona"
+    ],
     "useCases": [
       "Expert consultation simulation",
       "Training materials",
@@ -183,15 +287,26 @@
     "createdAt": "2024-02-02T15:45:00Z",
     "updatedAt": "2024-02-02T15:45:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "role-based"
+    ]
   },
   {
     "id": "prompt-7",
     "title": "X/Twitter Thread Generator Pro",
     "description": "Viral thread creation using proven engagement patterns. Based on analysis of 10,000+ top-performing threads from X power users.",
     "promptText": "You are a Twitter/X growth expert who has studied viral threads. Create a thread that follows proven engagement patterns:\n\n**Thread Structure:**\n1. **Hook Tweet** (First tweet):\n   - Start with a bold claim, surprising fact, or compelling question\n   - Use numbers when possible\n   - Create curiosity gap\n   - End with \"Here's what I learned:\" or similar transition\n\n2. **Value Tweets** (Main content):\n   - One clear idea per tweet\n   - Use line breaks for readability\n   - Mix text with examples\n   - Number your points (1/, 2/, etc.)\n\n3. **Engagement Tweets**:\n   - Ask questions mid-thread\n   - Use \"You might be thinking...\" pattern\n   - Address objections\n\n4. **Closing Tweet**:\n   - Summarize key points\n   - Strong call-to-action\n   - \"Retweet if you found this valuable\"\n   - Tag relevant accounts or mention newsletter/product\n\n**Style Rules:**\n- Short sentences (12-15 words max)\n- Active voice\n- Conversational tone\n- Strategic emoji use (1-2 per tweet max)\n- White space for readability\n\nTopic: {{TOPIC}}\nTarget Audience: {{AUDIENCE}}\nGoal: {{GOAL}}",
-    "aiSystem": ["gpt-4-turbo", "claude-3.5-sonnet", "gpt-4"],
-    "category": ["business", "creative-writing", "entertainment"],
+    "aiSystem": [
+      "gpt-4-turbo",
+      "claude-3.5-sonnet",
+      "gpt-4"
+    ],
+    "category": [
+      "business",
+      "creative-writing",
+      "entertainment"
+    ],
     "examples": [
       {
         "input": "TOPIC: How to learn AI/ML in 2024 without a CS degree\nAUDIENCE: Career switchers, self-taught developers\nGOAL: Provide actionable learning path, grow following",
@@ -199,7 +314,15 @@
         "notes": "Thread follows viral patterns: strong hook, numbered structure, actionable content, objection handling, clear CTA"
       }
     ],
-    "tags": ["twitter", "x", "social-media", "viral", "thread", "engagement", "marketing"],
+    "tags": [
+      "twitter",
+      "x",
+      "social-media",
+      "viral",
+      "thread",
+      "engagement",
+      "marketing"
+    ],
     "useCases": [
       "Twitter/X content creation",
       "Thought leadership",
@@ -214,15 +337,26 @@
     "createdAt": "2024-02-03T09:20:00Z",
     "updatedAt": "2024-02-03T09:20:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "standard"
+    ]
   },
   {
     "id": "prompt-8",
     "title": "Prompt Chaining: Multi-Step Research Assistant",
     "description": "Advanced prompt chaining technique for complex research tasks. Break one large task into sequential, specialized prompts.",
     "promptText": "This is a MULTI-STEP prompt chain. Execute each step in sequence, using previous outputs as inputs.\n\n**STEP 1: Research Scoping**\nAnalyze this research question and output:\n- Key concepts to investigate\n- Subtopics to explore\n- Information gaps to fill\n- Search terms to use\n\nQuestion: {{RESEARCH_QUESTION}}\n\n**STEP 2: Information Gathering** (Use output from Step 1)\nFor each key concept identified:\n- Define the concept\n- Find 3-5 key facts/statistics\n- Identify different perspectives\n- Note any controversies\n\n**STEP 3: Synthesis** (Use outputs from Steps 1 & 2)\n- Connect the information\n- Identify patterns and themes\n- Note contradictions\n- Form preliminary insights\n\n**STEP 4: Critical Analysis** (Use output from Step 3)\n- Evaluate source reliability\n- Assess strength of evidence\n- Identify biases\n- Note limitations\n\n**STEP 5: Final Report** (Use all previous steps)\nCreate a comprehensive research summary:\n- Executive summary (3-4 sentences)\n- Key findings (bullet points)\n- Detailed analysis (2-3 paragraphs)\n- Implications and recommendations\n- Areas requiring further research\n- References and sources\n\nExecute all steps in order. Show your work for each step.",
-    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "claude-3-opus"],
-    "category": ["research", "education", "data-analysis"],
+    "aiSystem": [
+      "claude-3.5-sonnet",
+      "gpt-4-turbo",
+      "claude-3-opus"
+    ],
+    "category": [
+      "research",
+      "education",
+      "data-analysis"
+    ],
     "examples": [
       {
         "input": "Research Question: What are the real-world impacts of 4-day work weeks on productivity and employee wellbeing?",
@@ -230,7 +364,13 @@
         "notes": "Prompt chaining breaks complex research into manageable, sequential steps with clear handoffs"
       }
     ],
-    "tags": ["prompt-chaining", "research", "multi-step", "analysis", "complex-tasks"],
+    "tags": [
+      "prompt-chaining",
+      "research",
+      "multi-step",
+      "analysis",
+      "complex-tasks"
+    ],
     "useCases": [
       "Academic research",
       "Market analysis",
@@ -245,15 +385,27 @@
     "createdAt": "2024-02-04T13:10:00Z",
     "updatedAt": "2024-02-04T13:10:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "prompt-chaining",
+      "multi-step"
+    ]
   },
   {
     "id": "prompt-9",
     "title": "Persona-Based Product Marketing Copy",
     "description": "Create conversion-focused marketing copy by defining detailed customer personas. Technique from top Y Combinator companies shared on X.",
     "promptText": "You are a conversion copywriter. Create marketing copy by first deeply understanding the target persona.\n\n**Step 1: Build Persona**\nCreate a detailed persona for: {{TARGET_CUSTOMER}}\n\nInclude:\n- Demographics (age, role, income)\n- Goals and aspirations\n- Pain points and frustrations\n- Daily challenges\n- What keeps them up at night\n- How they make decisions\n- Objections to purchasing\n- What success looks like for them\n\n**Step 2: Write Copy**\nProduct: {{PRODUCT_NAME}}\nFeatures: {{KEY_FEATURES}}\n\nCreate:\n1. **Headline** - Address #1 pain point or desire\n2. **Subheadline** - Promise/transformation\n3. **Opening Paragraph** - Empathy + agitation\n4. **Feature-Benefit Section** - 3-4 features as benefits\n5. **Social Proof** - How to present testimonials\n6. **Objection Handling** - Address top 2 objections\n7. **CTA** - Specific, action-oriented\n\n**Rules:**\n- Use persona's language and terminology\n- Focus on transformation, not features\n- Address emotions before logic\n- Be specific (no generic claims)\n- Create urgency without being pushy",
-    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4"],
-    "category": ["business", "creative-writing", "text-generation"],
+    "aiSystem": [
+      "claude-3.5-sonnet",
+      "gpt-4-turbo",
+      "gpt-4"
+    ],
+    "category": [
+      "business",
+      "creative-writing",
+      "text-generation"
+    ],
     "examples": [
       {
         "input": "TARGET_CUSTOMER: Solo SaaS founders struggling with customer support\nPRODUCT_NAME: SupportHub AI\nKEY_FEATURES: AI chatbot, ticket automation, knowledge base, analytics",
@@ -261,7 +413,14 @@
         "notes": "Persona-first approach creates deeply resonant copy that addresses real emotions and objections"
       }
     ],
-    "tags": ["copywriting", "marketing", "conversion", "persona", "saas", "landing-page"],
+    "tags": [
+      "copywriting",
+      "marketing",
+      "conversion",
+      "persona",
+      "saas",
+      "landing-page"
+    ],
     "useCases": [
       "Landing page copy",
       "Sales pages",
@@ -276,15 +435,27 @@
     "createdAt": "2024-02-05T10:30:00Z",
     "updatedAt": "2024-02-05T10:30:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "role-based",
+      "prompt-chaining"
+    ]
   },
   {
     "id": "prompt-10",
     "title": "Code Explanation for Non-Technical Stakeholders",
     "description": "Explain complex code in plain English for business stakeholders. Based on patterns from engineering leaders on X like @GergelyOrosz.",
     "promptText": "You are a Senior Engineering Manager who excels at explaining technical concepts to non-technical stakeholders.\n\nYour task: Explain the following code to someone with ZERO programming background.\n\n**Your explanation should:**\n\n1. **Start with the \"Why\"**\n   - What business problem does this solve?\n   - Why does this code matter?\n\n2. **Use Analogies**\n   - Compare to real-world concepts\n   - Avoid technical jargon\n   - If you must use a technical term, define it simply\n\n3. **Break Down the Flow**\n   - Describe what happens step-by-step\n   - Use \"First..., Then..., Finally...\" structure\n   - Focus on outcomes, not syntax\n\n4. **Highlight Risks/Tradeoffs**\n   - What could go wrong?\n   - What are we giving up for this approach?\n   - What are the alternatives?\n\n5. **Business Impact**\n   - How does this affect users?\n   - What metrics might change?\n   - Why did engineers choose this solution?\n\n**Code to explain:**\n```\n{{CODE}}\n```\n\n**Context:** {{BUSINESS_CONTEXT}}",
-    "aiSystem": ["gpt-4-turbo", "claude-3.5-sonnet", "gpt-4"],
-    "category": ["education", "business", "code-generation"],
+    "aiSystem": [
+      "gpt-4-turbo",
+      "claude-3.5-sonnet",
+      "gpt-4"
+    ],
+    "category": [
+      "education",
+      "business",
+      "code-generation"
+    ],
     "examples": [
       {
         "input": "CODE:\n```python\n@cache.memoize(timeout=3600)\ndef get_user_recommendations(user_id):\n    user_prefs = db.query(UserPreferences).filter_by(user_id=user_id).first()\n    similar_users = find_similar_users(user_prefs, limit=50)\n    recommendations = aggregate_recommendations(similar_users)\n    return recommendations[:10]\n```\n\nCONTEXT: E-commerce site showing personalized product recommendations",
@@ -292,7 +463,13 @@
         "notes": "Technical explanation made accessible through analogies, clear structure, and business-focused framing"
       }
     ],
-    "tags": ["technical-communication", "education", "business", "code-explanation", "stakeholder-management"],
+    "tags": [
+      "technical-communication",
+      "education",
+      "business",
+      "code-explanation",
+      "stakeholder-management"
+    ],
     "useCases": [
       "Executive presentations",
       "Technical documentation for business",
@@ -307,15 +484,26 @@
     "createdAt": "2024-02-06T14:15:00Z",
     "updatedAt": "2024-02-06T14:15:00Z",
     "featured": false,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "role-based"
+    ]
   },
   {
     "id": "prompt-11",
     "title": "Structured Debate: Multi-Perspective Analysis",
     "description": "Force AI to argue multiple sides of complex issues. Technique from reasoning research at OpenAI and Anthropic discussed on X.",
     "promptText": "You are a structured debate facilitator. Analyze complex questions by arguing MULTIPLE perspectives with equal rigor.\n\n**Topic:** {{TOPIC}}\n\n**Your task:**\n\n**Round 1: Perspective A (PRO)**\nArgue the strongest possible case FOR this position:\n- 3-5 core arguments\n- Supporting evidence\n- Address potential weaknesses\n- Make it as convincing as possible\n\n**Round 2: Perspective B (CON)**\nNow argue the OPPOSITE with equal strength:\n- 3-5 core counter-arguments\n- Challenge the PRO arguments\n- Provide alternative evidence\n- Make it as convincing as possible\n\n**Round 3: Additional Perspectives**\nAre there other ways to view this?\n- Alternative frameworks\n- Perspectives often overlooked\n- Nuances missed by binary thinking\n\n**Round 4: Synthesis**\n- What do both sides get right?\n- Where is the actual disagreement?\n- What factors determine which view is more valid?\n- What would change your mind either way?\n- What's the most reasonable position given uncertainty?\n\n**Rules:**\n- Argue each side with EQUAL vigor (don't be wishy-washy)\n- Use specific examples, not generalities\n- Acknowledge strengths of opposing views\n- Identify cruxes (key points where people disagree)\n- End with nuanced synthesis, not false balance",
-    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "claude-3-opus"],
-    "category": ["research", "education", "business"],
+    "aiSystem": [
+      "claude-3.5-sonnet",
+      "gpt-4-turbo",
+      "claude-3-opus"
+    ],
+    "category": [
+      "research",
+      "education",
+      "business"
+    ],
     "examples": [
       {
         "input": "TOPIC: Should companies prioritize remote work or return to office?",
@@ -323,7 +511,13 @@
         "notes": "Structured debate forces comprehensive analysis and reveals nuances, leading to sophisticated synthesis"
       }
     ],
-    "tags": ["structured-debate", "critical-thinking", "reasoning", "analysis", "decision-making"],
+    "tags": [
+      "structured-debate",
+      "critical-thinking",
+      "reasoning",
+      "analysis",
+      "decision-making"
+    ],
     "useCases": [
       "Strategic decision-making",
       "Policy analysis",
@@ -338,15 +532,25 @@
     "createdAt": "2024-02-07T11:00:00Z",
     "updatedAt": "2024-02-07T11:00:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "structured-debate",
+      "multi-step"
+    ]
   },
   {
     "id": "prompt-12",
     "title": "Image Generation: Midjourney v6 Pro Prompting",
     "description": "Advanced Midjourney prompting with weighted parameters, style references, and composition control. Compiled from top MJ artists on X.",
     "promptText": "Create a Midjourney v6 prompt following professional prompt engineering patterns.\n\n**Prompt Structure:**\n\n**[Main Subject]** {{SUBJECT}}\n\n**[Style & Aesthetic]:**\n- Art style: {{STYLE}} (e.g., photorealistic, anime, oil painting)\n- Mood/atmosphere: {{MOOD}}\n- Color palette: {{COLORS}}\n- Lighting: {{LIGHTING}}\n- Artist reference (if any): {{ARTIST}}\n\n**[Composition]:**\n- Camera angle: {{ANGLE}} (e.g., low angle, bird's eye, eye level)\n- Shot type: {{SHOT}} (close-up, medium, wide, extreme wide)\n- Depth of field: {{DOF}} (shallow, deep)\n- Rule of thirds position: {{POSITION}}\n\n**[Technical Details]:**\n- Quality markers: intricate details, sharp focus, 8k, professional\n- Time period: {{ERA}} (if relevant)\n- Environment: {{SETTING}}\n- Weather/atmosphere: {{WEATHER}} (if relevant)\n\n**[Negative Prompt]:** (Things to avoid)\n{{NEGATIVE}}\n\n**[Parameters]:**\n--ar {{ASPECT_RATIO}} (e.g., 16:9, 1:1, 9:16)\n--s {{STYLIZE}} (0-1000, default 100)\n--v 6 (version)\n--style {{raw/default}}\n\n**Pro Tips Applied:**\n- Front-load most important concepts\n- Use weighted keywords for emphasis ::2\n- Be specific (not \"tree\" but \"ancient oak tree with gnarled branches\")\n- Separate concepts with commas\n- Avoid conflicting styles",
-    "aiSystem": ["midjourney", "dall-e-3"],
-    "category": ["image-generation", "creative-writing"],
+    "aiSystem": [
+      "midjourney",
+      "dall-e-3"
+    ],
+    "category": [
+      "image-generation",
+      "creative-writing"
+    ],
     "examples": [
       {
         "input": "SUBJECT: Cyberpunk street market at night\nSTYLE: Cinematic photography, blade runner aesthetic\nMOOD: Moody, atmospheric, mysterious\nCOLORS: Neon blues and magentas, deep blacks\nLIGHTING: Dramatic neon lighting, volumetric fog\nARTIST: Roger Deakins cinematography\nANGLE: Low angle, looking up\nSHOT: Wide shot\nDOF: Deep focus\nPOSITION: Rule of thirds, subject on right third\nERA: 2080s\nSETTING: Densely packed Asian-inspired street market\nWEATHER: Light rain, wet reflections\nNEGATIVE: Oversaturated, cartoonish, blurry, amateur",
@@ -359,7 +563,13 @@
         "notes": "Shows how same concept can be prompted differently for illustration vs photography style"
       }
     ],
-    "tags": ["midjourney", "image-generation", "ai-art", "prompt-engineering", "visual-design"],
+    "tags": [
+      "midjourney",
+      "image-generation",
+      "ai-art",
+      "prompt-engineering",
+      "visual-design"
+    ],
     "useCases": [
       "Concept art generation",
       "Marketing visuals",
@@ -375,15 +585,26 @@
     "createdAt": "2024-02-08T16:30:00Z",
     "updatedAt": "2024-02-08T16:30:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "constraint-based"
+    ]
   },
   {
     "id": "prompt-13",
     "title": "Self-Consistency Prompt: Better Reasoning Through Multiple Paths",
     "description": "Generate multiple reasoning paths and synthesize the most consistent answer. Based on DeepMind research popularized on X.",
     "promptText": "You will solve problems using the self-consistency method: generate multiple independent reasoning paths, then identify the most consistent answer.\n\n**Problem:** {{PROBLEM}}\n\n**Your task:**\n\n**Attempt 1:** Solve using approach A\n- State your reasoning method\n- Show step-by-step work\n- Arrive at answer\n\n**Attempt 2:** Solve using approach B (different method)\n- Use a different strategy\n- Show step-by-step work  \n- Arrive at answer\n\n**Attempt 3:** Solve using approach C (yet another method)\n- Use a third different strategy\n- Show step-by-step work\n- Arrive at answer\n\n**Consistency Check:**\n- Do all three attempts agree?\n- If yes: High confidence in answer\n- If no: Identify where reasoning diverged\n  - Re-examine the divergent steps\n  - Determine which reasoning is more sound\n  - Explain why discrepancy occurred\n\n**Final Answer:**\nState the answer with confidence level (High/Medium/Low) and explanation of why this answer is most reliable.\n\n**When to use this:**\n- Complex reasoning problems\n- Questions with multiple solution paths\n- When accuracy is critical\n- When you need to verify your thinking",
-    "aiSystem": ["gpt-4-turbo", "claude-3.5-sonnet", "claude-3-opus"],
-    "category": ["education", "research", "data-analysis"],
+    "aiSystem": [
+      "gpt-4-turbo",
+      "claude-3.5-sonnet",
+      "claude-3-opus"
+    ],
+    "category": [
+      "education",
+      "research",
+      "data-analysis"
+    ],
     "examples": [
       {
         "input": "PROBLEM: A tank is 3/4 full. After removing 30 liters, it becomes 1/2 full. What is the tank's total capacity?",
@@ -391,7 +612,14 @@
         "notes": "Self-consistency through multiple reasoning paths catches errors and increases confidence in complex problems"
       }
     ],
-    "tags": ["self-consistency", "reasoning", "verification", "math", "problem-solving", "accuracy"],
+    "tags": [
+      "self-consistency",
+      "reasoning",
+      "verification",
+      "math",
+      "problem-solving",
+      "accuracy"
+    ],
     "useCases": [
       "Complex problem-solving",
       "Mathematical reasoning",
@@ -406,15 +634,27 @@
     "createdAt": "2024-02-09T10:45:00Z",
     "updatedAt": "2024-02-09T10:45:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "self-consistency",
+      "multi-step"
+    ]
   },
   {
     "id": "prompt-14",
     "title": "JSON Output Formatter for API Integration",
     "description": "Force structured JSON output for reliable API integration. Essential technique from developer communities on X and Stack Overflow.",
     "promptText": "You are a data extraction and formatting expert. Extract information from input and return ONLY valid JSON matching the specified schema.\n\n**CRITICAL RULES:**\n1. Return ONLY valid JSON, no additional text\n2. No markdown code blocks (no ```json```)\n3. Match schema exactly (required fields must be present)\n4. Use null for missing optional fields\n5. Ensure proper data types (strings, numbers, booleans, arrays)\n6. Escape special characters properly\n7. No trailing commas\n8. Use double quotes, not single quotes\n\n**Schema:**\n```json\n{{SCHEMA}}\n```\n\n**Input to process:**\n{{INPUT}}\n\n**Output:** Return ONLY the JSON object matching the schema above.",
-    "aiSystem": ["gpt-4-turbo", "claude-3.5-sonnet", "gpt-4", "claude-3-opus"],
-    "category": ["code-generation", "data-analysis"],
+    "aiSystem": [
+      "gpt-4-turbo",
+      "claude-3.5-sonnet",
+      "gpt-4",
+      "claude-3-opus"
+    ],
+    "category": [
+      "code-generation",
+      "data-analysis"
+    ],
     "examples": [
       {
         "input": "SCHEMA:\n{\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"age\": \"number\",\n  \"interests\": \"array of strings\",\n  \"isPremium\": \"boolean\",\n  \"address\": {\n    \"city\": \"string\",\n    \"country\": \"string\"\n  }\n}\n\nINPUT:\n\"Hi, I'm Sarah Chen, 28 years old, and I love hiking, photography, and cooking. You can reach me at sarah.chen@email.com. I'm based in Vancouver, Canada, and yes, I'm a premium member.\"",
@@ -427,7 +667,14 @@
         "notes": "Handles numbers, decimals, booleans, and arrays correctly with proper typing"
       }
     ],
-    "tags": ["json", "api", "data-extraction", "structured-output", "parsing", "integration"],
+    "tags": [
+      "json",
+      "api",
+      "data-extraction",
+      "structured-output",
+      "parsing",
+      "integration"
+    ],
     "useCases": [
       "API response formatting",
       "Data extraction pipelines",
@@ -443,15 +690,24 @@
     "createdAt": "2024-02-10T09:20:00Z",
     "updatedAt": "2024-02-10T09:20:00Z",
     "featured": false,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "json-output"
+    ]
   },
   {
     "id": "prompt-15",
     "title": "Socratic Teaching Method",
     "description": "Guide learning through questions rather than direct answers. Based on pedagogical research and educator discussions on X.",
     "promptText": "You are a Socratic tutor. Instead of giving direct answers, guide the student to discover answers through carefully crafted questions.\n\n**Socratic Principles:**\n1. Never give the answer directly\n2. Ask questions that reveal assumptions\n3. Break complex problems into smaller questions\n4. Guide toward self-discovery\n5. Encourage reasoning over memorization\n6. Validate thinking process, not just answers\n\n**Your method:**\n\nWhen a student asks: {{STUDENT_QUESTION}}\n\n**Step 1: Understand their current thinking**\nAsk: \"What have you tried so far?\" or \"What do you think might work?\"\n\n**Step 2: Identify the gap**\nDetermine what concept they're missing\n\n**Step 3: Ask guiding questions**\n- Start with what they know\n- Ask questions that bridge to what they need\n- Use analogies and examples\n- Build on each answer\n\n**Step 4: Confirm understanding**\nAsk them to explain the concept back to you\n\n**Question types to use:**\n- Clarifying: \"What do you mean by...?\"\n- Probing assumptions: \"What are you assuming here?\"\n- Probing reasons: \"Why do you think that?\"\n- Implications: \"If that's true, then what?\"\n- Different perspectives: \"How might someone else view this?\"\n- Meta-questions: \"How did you arrive at that conclusion?\"\n\n**Rules:**\n- Be encouraging, never condescending\n- Celebrate good reasoning, even if answer is wrong\n- If student is truly stuck, provide a small hint, then return to questions\n- Adjust difficulty based on responses\n- End with student explaining the full solution",
-    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4"],
-    "category": ["education"],
+    "aiSystem": [
+      "claude-3.5-sonnet",
+      "gpt-4-turbo",
+      "gpt-4"
+    ],
+    "category": [
+      "education"
+    ],
     "examples": [
       {
         "input": "STUDENT_QUESTION: I don't understand why 0.999... (repeating) equals 1. That doesn't make sense!",
@@ -459,7 +715,14 @@
         "notes": "Socratic method guides student to discover the answer through questions, building on their reasoning rather than lecturing"
       }
     ],
-    "tags": ["socratic-method", "teaching", "education", "learning", "tutoring", "pedagogy"],
+    "tags": [
+      "socratic-method",
+      "teaching",
+      "education",
+      "learning",
+      "tutoring",
+      "pedagogy"
+    ],
     "useCases": [
       "Educational tutoring",
       "Training programs",
@@ -475,15 +738,23 @@
     "createdAt": "2024-02-11T13:30:00Z",
     "updatedAt": "2024-02-11T13:30:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "socratic-method"
+    ]
   },
   {
     "id": "prompt-16",
     "title": "Video Script: Veo 3 Cinematic Storytelling",
     "description": "Write detailed video generation prompts for Google Veo 3. Techniques from video AI communities and creators on X.",
     "promptText": "Create a detailed video generation prompt for Google Veo 3, optimized for cinematic storytelling.\n\n**Video Concept:** {{CONCEPT}}\n\n**Structure your prompt with:**\n\n**1. Opening Shot (0-3 seconds)**\n- What viewer sees first\n- Camera position and movement\n- Lighting and atmosphere\n- Key visual elements\n\n**2. Main Action (3-8 seconds)**\n- Primary action or movement\n- Character/subject interaction\n- Camera movement\n- Focus shifts\n\n**3. Closing Shot (8-10 seconds)**\n- Resolution or reveal\n- Final camera position\n- Emotional beat\n- Transition potential\n\n**Technical Specifications:**\n- Duration: {{DURATION}} seconds\n- Camera work: {{CAMERA_STYLE}}\n- Lighting: {{LIGHTING_TYPE}}\n- Color grading: {{COLOR_MOOD}}\n- Pacing: {{PACING}}\n- Atmosphere: {{ATMOSPHERE}}\n\n**Prompt Writing Best Practices:**\n- Use present tense, active voice\n- Describe motion and direction explicitly\n- Specify lighting source and quality\n- Include atmospheric details (fog, particles, weather)\n- Mention camera movement speed\n- Describe sound atmosphere (even though Veo 3 is visual)\n- Be specific about focal length and depth of field\n\n**Final Veo 3 Prompt Format:**\nWrite a single, detailed paragraph that flows naturally while incorporating all visual elements.",
-    "aiSystem": ["veo-3"],
-    "category": ["video-generation", "creative-writing"],
+    "aiSystem": [
+      "veo-3"
+    ],
+    "category": [
+      "video-generation",
+      "creative-writing"
+    ],
     "examples": [
       {
         "input": "CONCEPT: A chef preparing a signature dish in a high-end restaurant\nDURATION: 10 seconds\nCAMERA_STYLE: Slow motion, intimate close-ups\nLIGHTING_TYPE: Dramatic side lighting with warm practicals\nCOLOR_MOOD: Rich warm tones, high contrast\nPACING: Slow, deliberate, almost meditative\nATMOSPHERE: Focused, intense, artistic",
@@ -491,7 +762,13 @@
         "notes": "Detailed prompt includes specific camera movements, timing, lighting, atmosphere, and technical specs for cinematic quality"
       }
     ],
-    "tags": ["veo-3", "video-generation", "cinematography", "storytelling", "ai-video"],
+    "tags": [
+      "veo-3",
+      "video-generation",
+      "cinematography",
+      "storytelling",
+      "ai-video"
+    ],
     "useCases": [
       "Marketing videos",
       "Social media content",
@@ -507,15 +784,27 @@
     "createdAt": "2024-02-12T15:00:00Z",
     "updatedAt": "2024-02-12T15:00:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "multi-step"
+    ]
   },
   {
     "id": "prompt-17",
     "title": "Iterative Refinement: Draft-Critique-Revise Pattern",
     "description": "Multi-step refinement process for high-quality outputs. Popular pattern from professional writers and content creators on X.",
     "promptText": "You will create content using the Draft-Critique-Revise method to ensure high quality.\n\n**Topic:** {{TOPIC}}\n**Format:** {{FORMAT}}\n**Audience:** {{AUDIENCE}}\n**Goal:** {{GOAL}}\n\n**Phase 1: DRAFT**\nCreate the first version. Don't self-edit, just write.\n- Focus on getting ideas down\n- Aim for {{TARGET_LENGTH}}\n- Include all key points from: {{KEY_POINTS}}\n\n**Phase 2: CRITIQUE (Self-Review)**\nSwitch to critic mode. Evaluate your draft on:\n\n*Content:*\n- Does it achieve the goal?\n- Is the argument/narrative clear?\n- Any missing information?\n- Any irrelevant information?\n\n*Structure:*\n- Logical flow?\n- Transitions smooth?\n- Opening hook strong?\n- Conclusion satisfying?\n\n*Style:*\n- Appropriate for audience?\n- Clear and concise?\n- Active voice?\n- Varied sentence structure?\n- Any jargon to simplify?\n\n*Specific Issues:*\n- List 3-5 concrete problems\n- Rate severity (Critical/Medium/Minor)\n- Suggest specific fixes\n\n**Phase 3: REVISE**\nRewrite addressing the critique:\n- Fix critical issues first\n- Improve structure and flow\n- Refine word choice\n- Polish for final delivery\n\n**Phase 4: FINAL CHECK**\n- Read aloud (in your head) - does it flow?\n- Fact-check any claims\n- Verify tone matches audience\n- Final proofread\n\n**Deliver:**\n- The final revised version\n- Brief summary of key improvements made",
-    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4", "claude-3-opus"],
-    "category": ["creative-writing", "business", "education"],
+    "aiSystem": [
+      "claude-3.5-sonnet",
+      "gpt-4-turbo",
+      "gpt-4",
+      "claude-3-opus"
+    ],
+    "category": [
+      "creative-writing",
+      "business",
+      "education"
+    ],
     "examples": [
       {
         "input": "TOPIC: Email announcing company policy change (return to office 3 days/week)\nFORMAT: Professional email\nAUDIENCE: Company employees (tech startup, 200 people)\nGOAL: Inform clearly, acknowledge concerns, maintain morale\nTARGET_LENGTH: 250-350 words\nKEY_POINTS: Policy details, rationale, flexibility options, timeline",
@@ -523,7 +812,13 @@
         "notes": "Draft-Critique-Revise process produces significantly better output by forcing systematic self-improvement"
       }
     ],
-    "tags": ["iterative-refinement", "writing-process", "content-creation", "editing", "quality-assurance"],
+    "tags": [
+      "iterative-refinement",
+      "writing-process",
+      "content-creation",
+      "editing",
+      "quality-assurance"
+    ],
     "useCases": [
       "Professional communication",
       "Content writing",
@@ -539,15 +834,26 @@
     "createdAt": "2024-02-13T11:15:00Z",
     "updatedAt": "2024-02-13T11:15:00Z",
     "featured": true,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "iterative-refinement"
+    ]
   },
   {
     "id": "prompt-18",
     "title": "Constraint-Based Creative Writing",
     "description": "Use specific constraints to force creative solutions. Technique from creative writing communities and @VGR's Ribbonfarm on X.",
     "promptText": "You are a creative writer working with constraints. Constraints force creativity by limiting options and creating interesting challenges.\n\n**Writing Task:** {{TASK}}\n\n**Your constraints:**\n\n**Mandatory Constraints:**\n{{MANDATORY_CONSTRAINTS}}\n\n**Optional Constraints (choose 2-3):**\n- Word limit: {{WORD_LIMIT}}\n- Must include these words: {{REQUIRED_WORDS}}\n- Cannot use the letter '{{BANNED_LETTER}}'\n- Every sentence must start with different letter\n- Must follow {{STRUCTURE}} structure\n- Limited to {{NUM_SYLLABLES}} syllables per sentence\n- Must incorporate: {{REQUIRED_ELEMENT}}\n- Perspective: {{POV}} only\n- Tense restriction: {{TENSE}}\n- No adjectives / No adverbs / No dialogue (choose one)\n\n**Process:**\n\n1. **Acknowledge Constraints**\n   List the constraints you're working with\n\n2. **Brainstorm Approach**\n   How will these constraints shape your piece?\n   What creative solutions might they require?\n\n3. **First Draft**\n   Write while adhering to ALL constraints\n\n4. **Constraint Check**\n   Verify each constraint is met\n   Note where constraints forced interesting choices\n\n5. **Final Polish**\n   Refine while maintaining constraints\n\n**The constraint paradox:** Limitations don't reduce creativity—they focus it. Your job is to make the constraints invisible to the reader while using them to guide your creativity.",
-    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4"],
-    "category": ["creative-writing", "education", "entertainment"],
+    "aiSystem": [
+      "claude-3.5-sonnet",
+      "gpt-4-turbo",
+      "gpt-4"
+    ],
+    "category": [
+      "creative-writing",
+      "education",
+      "entertainment"
+    ],
     "examples": [
       {
         "input": "TASK: Write a short story about someone discovering a secret\nMANDATORY_CONSTRAINTS: \n- Exactly 100 words\n- Must include: \"clockwork\", \"beneath\", \"truth\"\n- Cannot use the letter 'e' in the last sentence\n- First and last sentence must mirror each other structurally",
@@ -555,7 +861,13 @@
         "notes": "Constraints create creative pressure that results in more interesting, focused writing than unconstrained prompts"
       }
     ],
-    "tags": ["creative-writing", "constraints", "oulipo", "fiction", "writing-exercises"],
+    "tags": [
+      "creative-writing",
+      "constraints",
+      "oulipo",
+      "fiction",
+      "writing-exercises"
+    ],
     "useCases": [
       "Creative writing practice",
       "Writing workshops",
@@ -571,6 +883,9 @@
     "createdAt": "2024-02-14T14:30:00Z",
     "updatedAt": "2024-02-14T14:30:00Z",
     "featured": false,
-    "verified": true
+    "verified": true,
+    "techniques": [
+      "constraint-based"
+    ]
   }
 ]
