@@ -9,13 +9,14 @@ export async function GET(request: NextRequest) {
     const filter: PromptFilter = {
       aiSystem: searchParams.get('aiSystem')?.split(',') as any,
       category: searchParams.get('category')?.split(',') as any,
+      techniques: searchParams.get('techniques')?.split(',') as any,
       tags: searchParams.get('tags')?.split(','),
       search: searchParams.get('search') || undefined,
       featured: searchParams.get('featured') === 'true',
       sortBy: (searchParams.get('sortBy') as any) || 'recent',
     };
 
-    const hasFilters = filter.aiSystem || filter.category || filter.tags || filter.search || filter.featured;
+    const hasFilters = filter.aiSystem || filter.category || filter.techniques || filter.tags || filter.search || filter.featured;
     
     const prompts = hasFilters ? searchPrompts(filter) : getAllPrompts();
     
@@ -42,6 +43,7 @@ export async function POST(request: NextRequest) {
       promptText: body.promptText,
       aiSystem: body.aiSystem || [],
       category: body.category || [],
+      techniques: body.techniques || [],
       examples: body.examples || [],
       tags: body.tags || [],
       useCases: body.useCases || [],

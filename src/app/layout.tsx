@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google'
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics'
 import { Providers } from '@/components/providers'
 import { Navbar } from '@/components/layout/Navbar'
+import { Footer } from '@/components/layout/Footer'
 import { cn } from '@/lib/utils'
 import '@/styles/globals.css'
 
@@ -56,6 +57,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>

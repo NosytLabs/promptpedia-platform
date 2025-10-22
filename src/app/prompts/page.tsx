@@ -74,6 +74,7 @@ export default function PromptsPage() {
       if (searchQuery) params.append('search', searchQuery);
       if (selectedAISystem) params.append('aiSystem', selectedAISystem);
       if (selectedCategory) params.append('category', selectedCategory);
+      if (selectedTechnique) params.append('techniques', selectedTechnique);
       params.append('sortBy', sortBy);
 
       const response = await fetch(`/api/prompts?${params.toString()}`);
@@ -112,7 +113,7 @@ export default function PromptsPage() {
         </motion.div>
 
         <div className="mb-8 bg-white rounded-xl shadow-sm p-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <input
               type="text"
               placeholder="Search prompts..."
@@ -143,6 +144,19 @@ export default function PromptsPage() {
               {CATEGORIES.map((category) => (
                 <option key={category.value} value={category.value}>
                   {category.label}
+                </option>
+              ))}
+            </select>
+
+            <select
+              value={selectedTechnique}
+              onChange={(e) => setSelectedTechnique(e.target.value as PromptTechnique | '')}
+              className="px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="">All Techniques</option>
+              {TECHNIQUES.map((technique) => (
+                <option key={technique.value} value={technique.value}>
+                  {technique.label}
                 </option>
               ))}
             </select>

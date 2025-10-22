@@ -19,7 +19,7 @@ export const metadata = {
 const faqs = [
   {
     question: 'What happens after my trial ends?',
-    answer: 'After your 14-day trial, you'll automatically switch to our Free plan unless you choose to upgrade. We'll notify you before the trial ends.',
+    answer: 'After your 14-day trial, you will automatically switch to our Free plan unless you choose to upgrade. We will notify you before the trial ends.',
   },
   {
     question: 'Can I change plans later?',
