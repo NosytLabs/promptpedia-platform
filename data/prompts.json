@@ -32,156 +32,544 @@
   },
   {
     "id": "prompt-2",
-    "title": "Creative Product Description Generator",
-    "description": "Generate compelling, SEO-optimized product descriptions that convert. Perfect for e-commerce businesses using Claude or GPT models.",
-    "promptText": "You are an expert e-commerce copywriter specializing in creating compelling product descriptions that drive conversions.\n\nCreate a product description that:\n- Captures attention with a compelling headline\n- Highlights key features and benefits\n- Uses sensory language to create emotional connection\n- Includes relevant keywords naturally for SEO\n- Addresses potential customer objections\n- Ends with a clear call-to-action\n\nProduct Information:\n- Name: {{PRODUCT_NAME}}\n- Category: {{CATEGORY}}\n- Key Features: {{FEATURES}}\n- Target Audience: {{AUDIENCE}}\n- Price Point: {{PRICE}}\n\nTone: {{TONE}} (e.g., professional, playful, luxurious)\nLength: {{LENGTH}} words",
-    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4", "gpt-3.5-turbo"],
-    "category": ["creative-writing", "business"],
+    "title": "One-Shot Sentiment Analysis Expert",
+    "description": "Master one-shot learning for sentiment analysis. Train AI to understand nuanced sentiment with just a single example. Popular technique from X/Twitter AI community.",
+    "promptText": "You are a sentiment analysis expert. I will provide ONE example showing how to analyze sentiment, then you will apply the same detailed analysis to new inputs.\n\nExample Input: \"The product works but the customer service was terrible and shipping took forever.\"\n\nExample Analysis:\n- Overall Sentiment: Mixed (leaning negative)\n- Product Sentiment: Neutral-Positive (\"works\")\n- Service Sentiment: Strongly Negative (\"terrible\")\n- Logistics Sentiment: Negative (\"took forever\")\n- Confidence: High\n- Key Emotions: Frustration, Disappointment\n- Actionable Insight: Address customer service and shipping speed\n\nNow analyze this text using the same detailed format:\n{{TEXT}}",
+    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4", "claude-3-opus"],
+    "category": ["text-generation", "data-analysis", "business"],
     "examples": [
       {
-        "input": "Product: Wireless Noise-Cancelling Headphones\nCategory: Electronics/Audio\nFeatures: 40-hour battery, premium sound quality, comfortable design\nAudience: Remote workers and audiophiles\nPrice: $299\nTone: Professional yet approachable\nLength: 150 words",
-        "output": "**Transform Your Audio Experience**\n\nEscape into pure, uninterrupted sound with our Premium Wireless Noise-Cancelling Headphones. Engineered for professionals and music lovers who refuse to compromise, these headphones deliver studio-quality audio that brings your favorite content to life.\n\nWith an industry-leading 40-hour battery life, you'll power through your entire work week on a single charge. The advanced noise-cancellation technology eliminates distractions, creating your personal sound sanctuary whether you're in a bustling coffee shop or a busy office.\n\nCrafted with premium memory foam ear cushions and an adjustable headband, comfort meets style for all-day wear. The intuitive touch controls keep your music, calls, and volume adjustments at your fingertips.\n\nInvest in audio excellence that adapts to your lifestyle. Experience the difference that professional-grade sound engineering makes.\n\n**Order now and elevate every listening moment.**",
-        "notes": "Shows how the prompt creates engaging, benefit-focused copy with natural SEO integration"
+        "input": "Just got my new laptop and the specs are amazing! However, it came with a crack in the screen and support hasn't responded to my emails for 3 days.",
+        "output": "- Overall Sentiment: Mixed (leaning negative)\n- Product Sentiment: Very Positive (\"specs are amazing\")\n- Quality Sentiment: Strongly Negative (\"crack in the screen\")\n- Support Sentiment: Strongly Negative (\"hasn't responded for 3 days\")\n- Confidence: High\n- Key Emotions: Excitement (initial), Anger, Frustration\n- Actionable Insight: Urgent - Quality control issue + immediate support escalation needed. Customer likely to churn without rapid resolution despite product satisfaction.",
+        "notes": "One-shot learning successfully applied the analysis format to a new review"
       }
     ],
-    "tags": ["copywriting", "e-commerce", "marketing", "seo", "conversion"],
+    "tags": ["one-shot", "sentiment-analysis", "nlp", "machine-learning", "customer-feedback"],
     "useCases": [
-      "E-commerce product pages",
-      "Amazon listings",
-      "Shopify stores",
-      "Marketing campaigns",
-      "Product catalogs"
+      "Customer review analysis",
+      "Social media monitoring",
+      "Product feedback evaluation",
+      "Brand sentiment tracking",
+      "Support ticket prioritization"
     ],
-    "author": "Marcus Rodriguez",
-    "rating": 4.6,
-    "votes": 98,
-    "views": 1567,
-    "createdAt": "2024-01-20T14:30:00Z",
-    "updatedAt": "2024-01-20T14:30:00Z",
+    "author": "Dr. Rachel Kim",
+    "rating": 4.9,
+    "votes": 234,
+    "views": 4521,
+    "createdAt": "2024-01-28T09:00:00Z",
+    "updatedAt": "2024-01-28T09:00:00Z",
     "featured": true,
     "verified": true
   },
   {
     "id": "prompt-3",
-    "title": "Data Analysis & Visualization Guide",
-    "description": "Comprehensive prompt for analyzing datasets and creating actionable insights. Includes statistical analysis, trend identification, and visualization recommendations.",
-    "promptText": "You are a senior data analyst with expertise in statistical analysis, data visualization, and business intelligence.\n\nAnalyze the provided dataset and deliver:\n\n1. **Data Overview**\n   - Summary statistics (mean, median, mode, std dev)\n   - Data quality assessment\n   - Missing values and outliers\n\n2. **Key Insights**\n   - Major trends and patterns\n   - Correlations and relationships\n   - Anomalies and interesting findings\n\n3. **Statistical Analysis**\n   - Relevant statistical tests\n   - Confidence intervals\n   - Significance of findings\n\n4. **Visualization Recommendations**\n   - Best chart types for the data\n   - Specific visualization suggestions\n   - Key metrics to highlight\n\n5. **Actionable Recommendations**\n   - Business implications\n   - Suggested next steps\n   - Areas requiring further investigation\n\nDataset:\n{{DATASET}}\n\nContext: {{CONTEXT}}\nGoal: {{GOAL}}",
-    "aiSystem": ["claude-3.5-sonnet", "claude-3-opus", "gpt-4-turbo", "gpt-4"],
-    "category": ["data-analysis", "business", "research"],
+    "title": "Chain-of-Thought Math Problem Solver",
+    "description": "Advanced CoT prompting for complex problem-solving. Based on research-backed techniques shared widely on X by @AnthropicAI and @OpenAI researchers.",
+    "promptText": "You are a mathematics expert. Solve problems using chain-of-thought reasoning - show every step of your thinking process explicitly.\n\nFor each problem:\n1. Understand: Rephrase what the problem asks\n2. Plan: Outline your approach\n3. Execute: Show each calculation step\n4. Verify: Check if the answer makes sense\n5. Answer: Provide final answer clearly\n\nExample:\nProblem: \"A store has 150 items. 40% are sold on Monday. On Tuesday, 30 more items are sold. What percentage of original inventory remains?\"\n\n1. Understand: Need to find what % of 150 items are left after Monday (40%) and Tuesday (30 items) sales\n2. Plan: Calculate Monday sales → Subtract → Calculate Tuesday sales → Subtract → Convert to percentage\n3. Execute:\n   - Monday sales: 150 × 0.40 = 60 items\n   - Remaining after Monday: 150 - 60 = 90 items\n   - Tuesday sales: 30 items\n   - Remaining after Tuesday: 90 - 30 = 60 items\n   - Percentage: (60/150) × 100 = 40%\n4. Verify: 60 + 30 + 60 = 150 ✓\n5. Answer: 40% of original inventory remains\n\nNow solve this problem:\n{{PROBLEM}}",
+    "aiSystem": ["gpt-4-turbo", "gpt-4", "claude-3.5-sonnet", "claude-3-opus"],
+    "category": ["education", "research", "data-analysis"],
     "examples": [
       {
-        "input": "Dataset: Monthly sales data for Q4 2023\nContext: E-commerce company selling home goods\nGoal: Identify trends and optimize Q1 2024 strategy",
-        "output": "**Data Overview:**\nAnalyzed 92 days of sales data (Oct-Dec 2023)\n- Average daily revenue: $45,320 (±$8,450)\n- Peak day: Black Friday at $127,890\n- Data completeness: 100%\n\n**Key Insights:**\n1. 35% revenue spike during holiday season (Nov 20 - Dec 25)\n2. Strong correlation (r=0.72) between email campaigns and next-day sales\n3. Mobile traffic increased 45% but conversion rate 15% lower than desktop\n\n**Recommendations:**\n- Optimize mobile checkout flow (potential $50K+ monthly revenue)\n- Increase email frequency during high-conversion periods\n- Prepare inventory for identified high-demand categories\n- Test promotional strategies from successful Black Friday campaign",
-        "notes": "Demonstrates comprehensive analysis with actionable business recommendations"
+        "input": "A company's revenue was $500,000 last year. It grew by 20% in Q1, decreased by 10% in Q2, and grew by 15% in Q3. What's the revenue at the end of Q3?",
+        "output": "1. Understand: Calculate revenue after three quarters with different growth rates applied sequentially\n2. Plan: Apply each percentage change in order (compound growth)\n3. Execute:\n   - Starting: $500,000\n   - After Q1 (+20%): $500,000 × 1.20 = $600,000\n   - After Q2 (-10%): $600,000 × 0.90 = $540,000\n   - After Q3 (+15%): $540,000 × 1.15 = $621,000\n4. Verify: Overall change: $621,000 / $500,000 = 1.242 = 24.2% growth (seems reasonable given the changes)\n5. Answer: $621,000",
+        "notes": "Chain-of-thought reasoning makes complex multi-step calculations transparent and verifiable"
       }
     ],
-    "tags": ["data-analysis", "statistics", "business-intelligence", "insights", "visualization"],
+    "tags": ["chain-of-thought", "cot", "reasoning", "math", "problem-solving", "education"],
     "useCases": [
-      "Business reporting",
-      "Market research",
-      "Performance analysis",
-      "Trend forecasting",
-      "Decision support"
+      "Educational tutoring",
+      "Complex calculations",
+      "Financial analysis",
+      "Data science problems",
+      "Interview preparation"
     ],
-    "author": "Dr. Emily Zhang",
+    "author": "Prof. Michael Chen",
     "rating": 4.9,
-    "votes": 203,
-    "views": 3421,
-    "createdAt": "2024-01-10T09:15:00Z",
-    "updatedAt": "2024-01-10T09:15:00Z",
+    "votes": 312,
+    "views": 5834,
+    "createdAt": "2024-01-29T14:20:00Z",
+    "updatedAt": "2024-01-29T14:20:00Z",
     "featured": true,
     "verified": true
   },
   {
     "id": "prompt-4",
-    "title": "Cinematic Video Generation - Veo 3",
-    "description": "Expert prompt crafting for Google Veo 3 video generation. Create stunning, cinematic videos with precise control over style, movement, and atmosphere.",
-    "promptText": "Create a cinematic video with the following specifications:\n\n**Scene Description:**\n{{SCENE_DESCRIPTION}}\n\n**Visual Style:**\n- Cinematography: {{CINEMATOGRAPHY}} (e.g., wide-angle, close-up, aerial)\n- Lighting: {{LIGHTING}} (e.g., golden hour, dramatic shadows, soft natural)\n- Color Grading: {{COLOR_GRADING}} (e.g., warm tones, cool blues, high contrast)\n- Camera Movement: {{CAMERA_MOVEMENT}} (e.g., slow dolly, smooth pan, static)\n\n**Atmosphere & Mood:**\n{{MOOD}}\n\n**Technical Details:**\n- Duration: {{DURATION}} seconds\n- Aspect Ratio: {{ASPECT_RATIO}}\n- Frame Rate: {{FPS}} fps\n\n**Additional Elements:**\n- Focus on: {{FOCUS_POINTS}}\n- Avoid: {{AVOID_ELEMENTS}}\n\nGenerate a video that captures {{PRIMARY_GOAL}} with professional quality and attention to detail.",
-    "aiSystem": ["veo-3"],
-    "category": ["video-generation", "creative-writing", "entertainment"],
+    "title": "Few-Shot Creative Writer",
+    "description": "Few-shot learning for consistent creative writing. Technique popularized by @sama and creative AI communities on X/Twitter.",
+    "promptText": "You are a creative writer. I'll show you a few examples of a specific writing style, then you'll write in that same style.\n\n**Example 1:**\n\"The coffee shop buzzed. Not with conversation—those days were gone. Now it buzzed with silence, the kind that wraps around you like fog. Sarah's fingers hovered over her phone. One message. Three words. Everything changed.\"\n\n**Example 2:**\n\"Rain doesn't fall in Tokyo, it performs. Each drop a dancer on the asphalt stage. Kenji watched from his apartment window, seventh floor, same view for fifteen years. Tonight, it looked different. Tonight, he had decided.\"\n\n**Example 3:**\n\"The letter arrived on a Thursday. Thursdays were supposed to be boring—laundry day, grocery shopping, nothing special. But this envelope, yellowed with age, postmarked 1987, bore his father's handwriting. His father who died in 1985.\"\n\nNow write a short story opening in this same style about:\n{{TOPIC}}",
+    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4", "claude-3-opus"],
+    "category": ["creative-writing", "education"],
     "examples": [
       {
-        "input": "Scene: A lone astronaut standing on Mars surface, looking at Earth in the distance\nCinematography: Wide-angle establishing shot\nLighting: Sunset on Mars (reddish-orange glow)\nColor Grading: Warm reds and oranges with cool blue Earth\nCamera Movement: Slow push-in towards astronaut\nMood: Contemplative, awe-inspiring, slightly melancholic\nDuration: 10 seconds\nAspect Ratio: 16:9\nFPS: 24\nFocus: Earth in the distance, astronaut's silhouette\nAvoid: Other people, structures, unrealistic colors\nGoal: Evoke sense of isolation and wonder",
-        "output": "A wide-angle shot reveals the vast Martian landscape during sunset, bathed in warm reddish-orange hues. A lone astronaut in a white spacesuit stands on rocky terrain, facing away from the camera. The camera slowly pushes in, maintaining focus on both the astronaut's silhouette and the small blue Earth visible in the dusty pink sky. The lighting creates dramatic long shadows across the rust-colored surface. The scene conveys profound isolation and contemplative wonder, with cinematic composition emphasizing the vastness of space and human exploration.",
-        "notes": "Optimized prompt structure for Veo 3's video generation capabilities"
+        "input": "A woman discovering an old photograph in a library book",
+        "output": "\"The book was ordinary. 'Pride and Prejudice,' library edition, spine cracked from a thousand readings. But page 247 held something the Dewey Decimal System never catalogued—a Polaroid, edges soft with time. A woman in a yellow dress, laughing at something just outside the frame. On the back, in faded blue ink: 'Before everything.' Maria's hands trembled. That was her grandmother's handwriting. Her grandmother who swore she'd never read Austen.\"",
+        "notes": "Few-shot learning captured the style: present-tense, short punchy sentences, mystery elements, emotional reveals"
       }
     ],
-    "tags": ["video", "veo-3", "cinematography", "visual-effects", "storytelling"],
+    "tags": ["few-shot", "creative-writing", "storytelling", "fiction", "style-matching"],
     "useCases": [
-      "Marketing videos",
-      "Social media content",
-      "Film pre-visualization",
-      "Concept demonstrations",
-      "Artistic projects"
+      "Creative writing assistance",
+      "Brand voice consistency",
+      "Content generation",
+      "Story development",
+      "Writing workshops"
     ],
-    "author": "James Martinez",
+    "author": "Emma Rodriguez",
     "rating": 4.7,
-    "votes": 87,
-    "views": 1245,
-    "createdAt": "2024-01-25T16:20:00Z",
-    "updatedAt": "2024-01-25T16:20:00Z",
+    "votes": 189,
+    "views": 3214,
+    "createdAt": "2024-01-30T10:15:00Z",
+    "updatedAt": "2024-01-30T10:15:00Z",
     "featured": true,
     "verified": true
   },
   {
     "id": "prompt-5",
-    "title": "Technical Documentation Writer",
-    "description": "Generate clear, comprehensive technical documentation for software projects. Includes API docs, user guides, and troubleshooting sections.",
-    "promptText": "You are a technical documentation specialist with expertise in creating clear, user-friendly documentation for software products.\n\nCreate comprehensive documentation that includes:\n\n**1. Overview Section**\n- Purpose and scope\n- Target audience\n- Prerequisites\n- Quick start guide\n\n**2. Detailed Documentation**\n- Step-by-step instructions\n- Code examples with explanations\n- Screenshots or diagrams (described)\n- Common use cases\n\n**3. API Reference (if applicable)**\n- Endpoint descriptions\n- Parameters and return values\n- Example requests/responses\n- Error codes and handling\n\n**4. Troubleshooting**\n- Common issues and solutions\n- Error messages and meanings\n- Debug tips\n- FAQ section\n\n**5. Best Practices**\n- Recommended patterns\n- Performance tips\n- Security considerations\n\nProject Information:\n{{PROJECT_DETAILS}}\n\nAudience Level: {{AUDIENCE_LEVEL}} (beginner/intermediate/advanced)\nDocumentation Type: {{DOC_TYPE}}",
-    "aiSystem": ["claude-3.5-sonnet", "claude-3-opus", "gpt-4-turbo", "gpt-4"],
-    "category": ["code-generation", "education", "business"],
+    "title": "Zero-Shot Task Decomposition Agent",
+    "description": "Advanced zero-shot prompting for breaking down complex tasks. Inspired by AutoGPT and agent-based systems discussed on X.",
+    "promptText": "You are a task decomposition expert. Without any prior examples, analyze complex tasks and break them into actionable subtasks.\n\nFor any task given, provide:\n1. **Task Analysis**: What is the main objective?\n2. **Dependencies**: What information/resources are needed?\n3. **Subtasks**: Break into 5-10 specific, actionable steps\n4. **Priority Order**: Number steps in execution order\n5. **Success Criteria**: How to know each step is complete\n6. **Risk Factors**: What could go wrong\n7. **Time Estimate**: Realistic timeline\n\nBe specific, actionable, and thorough.\n\nTask to decompose:\n{{TASK}}",
+    "aiSystem": ["gpt-4-turbo", "claude-3.5-sonnet", "claude-3-opus", "gpt-4"],
+    "category": ["business", "education", "research"],
     "examples": [
       {
-        "input": "Project: REST API for user authentication\nAudience: Intermediate developers\nType: API Reference",
-        "output": "# User Authentication API\n\n## Overview\nThis API provides secure user authentication and session management for your application.\n\n**Prerequisites:**\n- API key (obtain from dashboard)\n- HTTPS-enabled endpoint\n- Basic understanding of REST APIs\n\n## Quick Start\n```javascript\nconst response = await fetch('https://api.example.com/auth/login', {\n  method: 'POST',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({\n    email: 'user@example.com',\n    password: 'securePassword123'\n  })\n});\n```\n\n## Endpoints\n\n### POST /auth/login\nAuthenticate user and receive access token.\n\n**Request Body:**\n```json\n{\n  \"email\": \"string\" (required),\n  \"password\": \"string\" (required)\n}\n```\n\n**Success Response (200):**\n```json\n{\n  \"token\": \"eyJhbGc...\",\n  \"expiresIn\": 3600,\n  \"user\": {\n    \"id\": \"123\",\n    \"email\": \"user@example.com\"\n  }\n}\n```",
-        "notes": "Shows structured technical documentation with code examples"
+        "input": "Launch a successful podcast from scratch",
+        "output": "**1. Task Analysis:**\nCreate, produce, and launch a podcast with audience growth strategy\n\n**2. Dependencies:**\n- Recording equipment (mic, interface, software)\n- Topic/niche selection\n- Hosting platform account\n- Basic audio editing skills\n\n**3. Subtasks:**\n1. Define niche and target audience (research competitors, identify gap)\n2. Develop show concept (format, episode length, style, name)\n3. Acquire equipment ($100-500: USB mic, pop filter, headphones, Audacity/GarageBand)\n4. Create 3 pilot episodes (test format, get feedback)\n5. Design cover art (1400x1400px, professional-looking)\n6. Set up hosting (Buzzsprout, Anchor, or Transistor)\n7. Submit to directories (Apple, Spotify, Google Podcasts)\n8. Create social media presence (Instagram, Twitter, LinkedIn)\n9. Record 5 episodes ahead (build buffer)\n10. Launch with marketing push (email list, social, partnerships)\n\n**4. Priority Order:** Listed above in execution order\n\n**5. Success Criteria:**\n- Clear niche identified with audience research\n- 3+ quality pilot episodes recorded\n- Listed on major directories within 48hrs\n- 100+ downloads in first month\n\n**6. Risk Factors:**\n- Analysis paralysis (perfectionism delaying launch)\n- Inconsistent publishing schedule\n- Poor audio quality harming retention\n- Undefined niche = no audience\n\n**7. Time Estimate:**\n- Planning: 1-2 weeks\n- Pilot production: 2-3 weeks\n- Launch prep: 1 week\n- Total: 4-6 weeks to launch",
+        "notes": "Zero-shot prompting successfully decomposed complex task without examples"
       }
     ],
-    "tags": ["documentation", "technical-writing", "api", "tutorial", "education"],
+    "tags": ["zero-shot", "task-planning", "project-management", "productivity", "agent"],
     "useCases": [
-      "API documentation",
-      "User manuals",
-      "Developer guides",
-      "Integration tutorials",
-      "Product documentation"
+      "Project planning",
+      "Goal setting",
+      "Team onboarding",
+      "Process documentation",
+      "Strategic planning"
     ],
-    "author": "Alex Thompson",
+    "author": "David Park",
     "rating": 4.8,
-    "votes": 142,
-    "views": 2108,
-    "createdAt": "2024-01-18T11:45:00Z",
-    "updatedAt": "2024-01-18T11:45:00Z",
-    "featured": false,
+    "votes": 267,
+    "views": 4123,
+    "createdAt": "2024-02-01T11:30:00Z",
+    "updatedAt": "2024-02-01T11:30:00Z",
+    "featured": true,
     "verified": true
   },
   {
     "id": "prompt-6",
-    "title": "Social Media Content Calendar Creator",
-    "description": "Generate a comprehensive social media content calendar with engaging posts, hashtags, and posting schedules optimized for maximum engagement.",
-    "promptText": "You are a social media strategist with expertise in content creation, audience engagement, and platform algorithms.\n\nCreate a comprehensive social media content calendar:\n\n**Brand Information:**\n- Business: {{BUSINESS_TYPE}}\n- Target Audience: {{AUDIENCE}}\n- Brand Voice: {{VOICE}}\n- Goals: {{GOALS}}\n\n**Requirements:**\n- Platform: {{PLATFORM}} (Instagram/LinkedIn/Twitter/etc.)\n- Duration: {{DURATION}}\n- Posting Frequency: {{FREQUENCY}}\n\n**For Each Post Include:**\n1. Date and optimal posting time\n2. Post copy (caption)\n3. Visual description/concept\n4. Hashtags (relevant and trending)\n5. Call-to-action\n6. Expected engagement type\n\n**Content Mix:**\n- Educational (40%)\n- Entertaining (30%)\n- Promotional (20%)\n- User-generated content (10%)\n\nEnsure variety, consistency with brand voice, and strategic timing for maximum reach.",
-    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4"],
+    "title": "Role-Based Prompt: Expert Consultant Pattern",
+    "description": "Leverage role-playing for expert-level responses. Popular pattern from Anthropic's Claude documentation and X prompt engineering threads.",
+    "promptText": "You are {{ROLE}} with {{YEARS}} years of experience. You have:\n- Deep expertise in {{EXPERTISE_AREAS}}\n- Track record of {{ACHIEVEMENTS}}\n- Known for {{SPECIAL_SKILLS}}\n\nA client asks you:\n{{QUESTION}}\n\nRespond as this expert would:\n1. Acknowledge the question and its importance\n2. Share relevant experience/case study\n3. Provide expert analysis\n4. Give specific, actionable recommendations\n5. Mention potential pitfalls to avoid\n6. Suggest next steps\n\nBe confident, specific, and back claims with reasoning.",
+    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4", "claude-3-opus"],
+    "category": ["business", "education", "research"],
+    "examples": [
+      {
+        "input": "ROLE: Senior DevOps Engineer\nYEARS: 15\nEXPERTISE_AREAS: AWS architecture, Kubernetes, CI/CD, infrastructure as code\nACHIEVEMENTS: Scaled systems to handle 100M+ requests/day, reduced costs by 60% through optimization\nSPECIAL_SKILLS: Disaster recovery, cost optimization, zero-downtime migrations\n\nQUESTION: Our startup's AWS bill jumped from $5k to $25k/month in 3 months. We're serving 3x traffic but costs went up 5x. How do we fix this?",
+        "output": "I've seen this exact scenario dozens of times, and the 5x cost increase for 3x traffic tells me you're hitting classic scaling antipatterns.\n\n**From Experience:**\nLast year, I helped a SaaS company with nearly identical numbers—$28k/month AWS bill that should've been $8k. We cut it to $9k in 6 weeks.\n\n**Root Causes (likely):**\n1. Over-provisioned instances (running production-sized databases 24/7)\n2. No auto-scaling (paying for peak capacity constantly)\n3. Data transfer costs (improper CDN usage)\n4. No Reserved Instances or Savings Plans\n5. Unoptimized S3 storage (wrong storage classes)\n\n**Immediate Actions:**\n1. Install AWS Cost Explorer + enable Cost Anomaly Detection\n2. Check your top 10 services by cost—I bet 2-3 services = 80% of bill\n3. Right-size RDS instances (probably oversized)\n4. Implement auto-scaling for EC2/ECS\n5. Move infrequently accessed S3 data to IA/Glacier\n6. Set up CloudFront for static assets\n7. Purchase Reserved Instances for baseline capacity (1-year, no upfront = safe bet)\n\n**Pitfalls to Avoid:**\n- Don't optimize everything at once—focus on biggest cost drivers\n- Don't scale down so aggressively you cause outages\n- Don't ignore monitoring during changes\n\n**Next Steps:**\nRun AWS Trusted Advisor Premium (free with Business Support) for detailed recommendations. Send me your Cost Explorer breakdown by service, and I can give specific guidance. Target: get to $10-12k/month within 60 days.",
+        "notes": "Role-based prompting creates expert-level, experience-backed responses with specific, confident guidance"
+      }
+    ],
+    "tags": ["role-based", "expert", "consulting", "prompt-pattern", "persona"],
+    "useCases": [
+      "Expert consultation simulation",
+      "Training materials",
+      "Decision support",
+      "Problem-solving",
+      "Learning from experts"
+    ],
+    "author": "Jennifer Wu",
+    "rating": 4.9,
+    "votes": 445,
+    "views": 7234,
+    "createdAt": "2024-02-02T15:45:00Z",
+    "updatedAt": "2024-02-02T15:45:00Z",
+    "featured": true,
+    "verified": true
+  },
+  {
+    "id": "prompt-7",
+    "title": "X/Twitter Thread Generator Pro",
+    "description": "Viral thread creation using proven engagement patterns. Based on analysis of 10,000+ top-performing threads from X power users.",
+    "promptText": "You are a Twitter/X growth expert who has studied viral threads. Create a thread that follows proven engagement patterns:\n\n**Thread Structure:**\n1. **Hook Tweet** (First tweet):\n   - Start with a bold claim, surprising fact, or compelling question\n   - Use numbers when possible\n   - Create curiosity gap\n   - End with \"Here's what I learned:\" or similar transition\n\n2. **Value Tweets** (Main content):\n   - One clear idea per tweet\n   - Use line breaks for readability\n   - Mix text with examples\n   - Number your points (1/, 2/, etc.)\n\n3. **Engagement Tweets**:\n   - Ask questions mid-thread\n   - Use \"You might be thinking...\" pattern\n   - Address objections\n\n4. **Closing Tweet**:\n   - Summarize key points\n   - Strong call-to-action\n   - \"Retweet if you found this valuable\"\n   - Tag relevant accounts or mention newsletter/product\n\n**Style Rules:**\n- Short sentences (12-15 words max)\n- Active voice\n- Conversational tone\n- Strategic emoji use (1-2 per tweet max)\n- White space for readability\n\nTopic: {{TOPIC}}\nTarget Audience: {{AUDIENCE}}\nGoal: {{GOAL}}",
+    "aiSystem": ["gpt-4-turbo", "claude-3.5-sonnet", "gpt-4"],
     "category": ["business", "creative-writing", "entertainment"],
     "examples": [
       {
-        "input": "Business: Sustainable fashion brand\nAudience: Eco-conscious millennials and Gen Z\nVoice: Authentic, passionate, educational\nGoals: Increase brand awareness and engagement\nPlatform: Instagram\nDuration: 1 week\nFrequency: Daily",
-        "output": "**Week 1 Social Media Calendar - Sustainable Fashion**\n\n**Monday - Educational**\nTime: 10:00 AM\nCaption: \"Did you know? Fast fashion produces 10% of global carbon emissions. 🌍 Here's how choosing sustainable pieces makes a real impact...\"\nVisual: Infographic comparing fast fashion vs. sustainable production\nHashtags: #SustainableFashion #EcoFriendly #SlowFashion #ConsciousConsumer #EthicalFashion\nCTA: \"Swipe to learn more →\"\n\n**Tuesday - Behind-the-Scenes**\nTime: 2:00 PM\nCaption: \"Meet Maria, one of our artisan partners in Portugal 💚 Every piece tells a story...\"\nVisual: Video of artisan at work\nHashtags: #EthicalMade #ArtisanFashion #TransparentFashion #MadeWithLove\nCTA: \"Comment what you'd like to know about our process!\"\n\n[...continues for full week]",
-        "notes": "Demonstrates strategic content planning with engagement optimization"
+        "input": "TOPIC: How to learn AI/ML in 2024 without a CS degree\nAUDIENCE: Career switchers, self-taught developers\nGOAL: Provide actionable learning path, grow following",
+        "output": "**Tweet 1/10 (Hook):**\nI learned AI/ML in 6 months without a CS degree.\n\nNo bootcamp. No expensive courses.\n\nNow I build ML models at a Series B startup.\n\nHere's the exact path I followed (save this 🧵):\n\n**Tweet 2/10:**\nFirst, understand this:\n\nYou DON'T need:\n- PhD in mathematics\n- $10k bootcamp\n- 4-year CS degree\n\nYou DO need:\n- 2 hours/day for 6 months\n- Python basics\n- Curiosity + persistence\n\n**Tweet 3/10:**\nMonth 1-2: Python Fundamentals\n\n→ FreeCodeCamp Python course (free)\n→ Practice daily on LeetCode Easy\n→ Build 3 small projects:\n  • Web scraper\n  • Data analyzer\n  • API consumer\n\nDon't skip this. ML without Python = impossible.\n\n**Tweet 4/10:**\nMonth 3: Math Foundations (the lite version)\n\nYou need basics, not mastery:\n\n→ Khan Academy: Linear Algebra (key concepts only)\n→ 3Blue1Brown: Neural Networks series (YouTube)\n→ StatQuest: Statistics playlist\n\n2-3 hours/week is enough.\n\n**Tweet 5/10:**\nMonth 4-5: Machine Learning Core\n\nThe goldmine:\n\n→ Andrew Ng's ML course (Coursera - free audit)\n→ FastAI course (practical, code-first)\n→ Kaggle Learn modules\n\nBuild projects:\n• House price prediction\n• Image classifier\n• Sentiment analyzer\n\n**Tweet 6/10:**\nMonth 6: Deep Learning + Portfolio\n\n→ Finish FastAI Part 2\n→ Read \"Hands-On ML\" book\n→ Build ONE impressive project\n\nYour portfolio project should:\n• Solve a real problem\n• Have clean GitHub repo\n• Include detailed README\n• Deploy it live\n\n**Tweet 7/10:**\nBiggest mistake I see:\n\nJumping to neural networks on day 1.\n\nMaster the basics first:\n- Linear regression\n- Decision trees\n- Random forests\n\nThese solve 80% of real-world problems.\n\n**Tweet 8/10:**\nLearning resources I actually used:\n\n✓ Coursera (Andrew Ng) - FREE\n✓ FastAI - FREE\n✓ Kaggle - FREE\n✓ FreeCodeCamp - FREE\n✓ YouTube - FREE\n\nTotal spent: $0\n\nDon't let anyone sell you a $5k course.\n\n**Tweet 9/10:**\nThe secret nobody tells you:\n\nYour first ML job won't be \"ML Engineer\"\n\nLook for:\n• Data Analyst roles\n• Business Intelligence\n• Analytics Engineer\n\nGet your foot in the door. Then transition.\n\n**Tweet 10/10:**\nSummary:\n\n1. Learn Python (2 months)\n2. Math basics (1 month)\n3. ML fundamentals (2 months)\n4. Deep learning + project (1 month)\n\nTotal: 6 months, $0, no degree needed.\n\nI detailed my complete path in my newsletter.\n\nRT if this was helpful 🚀",
+        "notes": "Thread follows viral patterns: strong hook, numbered structure, actionable content, objection handling, clear CTA"
       }
     ],
-    "tags": ["social-media", "marketing", "content-strategy", "engagement", "branding"],
+    "tags": ["twitter", "x", "social-media", "viral", "thread", "engagement", "marketing"],
     "useCases": [
-      "Social media management",
-      "Content marketing",
-      "Brand building",
-      "Influencer planning",
-      "Campaign scheduling"
+      "Twitter/X content creation",
+      "Thought leadership",
+      "Personal branding",
+      "Product launches",
+      "Community building"
     ],
-    "author": "Nina Patel",
-    "rating": 4.5,
-    "votes": 76,
-    "views": 1432,
-    "createdAt": "2024-01-22T13:30:00Z",
-    "updatedAt": "2024-01-22T13:30:00Z",
+    "author": "Alex Chen",
+    "rating": 4.8,
+    "votes": 523,
+    "views": 8934,
+    "createdAt": "2024-02-03T09:20:00Z",
+    "updatedAt": "2024-02-03T09:20:00Z",
+    "featured": true,
+    "verified": true
+  },
+  {
+    "id": "prompt-8",
+    "title": "Prompt Chaining: Multi-Step Research Assistant",
+    "description": "Advanced prompt chaining technique for complex research tasks. Break one large task into sequential, specialized prompts.",
+    "promptText": "This is a MULTI-STEP prompt chain. Execute each step in sequence, using previous outputs as inputs.\n\n**STEP 1: Research Scoping**\nAnalyze this research question and output:\n- Key concepts to investigate\n- Subtopics to explore\n- Information gaps to fill\n- Search terms to use\n\nQuestion: {{RESEARCH_QUESTION}}\n\n**STEP 2: Information Gathering** (Use output from Step 1)\nFor each key concept identified:\n- Define the concept\n- Find 3-5 key facts/statistics\n- Identify different perspectives\n- Note any controversies\n\n**STEP 3: Synthesis** (Use outputs from Steps 1 & 2)\n- Connect the information\n- Identify patterns and themes\n- Note contradictions\n- Form preliminary insights\n\n**STEP 4: Critical Analysis** (Use output from Step 3)\n- Evaluate source reliability\n- Assess strength of evidence\n- Identify biases\n- Note limitations\n\n**STEP 5: Final Report** (Use all previous steps)\nCreate a comprehensive research summary:\n- Executive summary (3-4 sentences)\n- Key findings (bullet points)\n- Detailed analysis (2-3 paragraphs)\n- Implications and recommendations\n- Areas requiring further research\n- References and sources\n\nExecute all steps in order. Show your work for each step.",
+    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "claude-3-opus"],
+    "category": ["research", "education", "data-analysis"],
+    "examples": [
+      {
+        "input": "Research Question: What are the real-world impacts of 4-day work weeks on productivity and employee wellbeing?",
+        "output": "**STEP 1: Research Scoping**\n\nKey Concepts:\n- 4-day work week models (32 vs 40 hours)\n- Productivity metrics\n- Employee wellbeing indicators\n- Industry variations\n- Economic impacts\n\nSubtopics:\n- Implementation case studies\n- Productivity measurements\n- Mental health outcomes\n- Business cost-benefit\n- Sector-specific results\n\nInformation Gaps:\n- Long-term (5+ year) data\n- Small business vs enterprise\n- Global vs US-specific\n\nSearch Terms: \"4-day work week pilot results\", \"32-hour work week productivity\", \"compressed work week employee satisfaction\"\n\n**STEP 2: Information Gathering**\n\nConcept: 4-Day Work Week Models\n- 100-80-100 model: 100% pay, 80% time, 100% output (most common pilot)\n- Compressed week: 40 hours in 4 days vs reduced hours\n- Facts:\n  * Iceland trials (2015-2019): 2,500 workers, productivity maintained/improved\n  * UK 2022 pilot: 61 companies, 92% continued after trial\n  * Microsoft Japan: 40% productivity increase in 2019 trial\n\nConcept: Productivity Impacts\n- Revenue per employee maintained in 78% of trials\n- Meeting time reduced by average 35%\n- Sick days decreased 65% (UK pilot)\n- Employee focus improved due to urgency effect\n- Perspective: Some studies show no change, others show 20-40% gains\n\n[Steps 3-5 would continue with synthesis, analysis, and final report...]\n\n**STEP 5: Final Report (excerpt)**\n\nExecutive Summary:\nResearch from 10+ countries and 100+ company trials shows 4-day work weeks (32-hour model) maintain or improve productivity while significantly enhancing employee wellbeing. Success requires intentional implementation, workflow redesign, and industry consideration. Service industries show mixed results vs knowledge work.\n\nKey Findings:\n• 90%+ of pilots report maintained/improved productivity\n• 65% reduction in sick days\n• 71% decrease in burnout symptoms\n• Revenue impacts: neutral to +10% in year 1\n• Success factors: meeting reduction, process optimization, management buy-in\n\nImplications:\nKnowledge-based companies should seriously consider pilots. Implementation requires:\n- 3-6 month transition period\n- Clear productivity metrics\n- Process optimization first\n- Regular feedback loops",
+        "notes": "Prompt chaining breaks complex research into manageable, sequential steps with clear handoffs"
+      }
+    ],
+    "tags": ["prompt-chaining", "research", "multi-step", "analysis", "complex-tasks"],
+    "useCases": [
+      "Academic research",
+      "Market analysis",
+      "Due diligence",
+      "Policy research",
+      "Competitive analysis"
+    ],
+    "author": "Dr. Lisa Morgan",
+    "rating": 4.9,
+    "votes": 389,
+    "views": 6234,
+    "createdAt": "2024-02-04T13:10:00Z",
+    "updatedAt": "2024-02-04T13:10:00Z",
+    "featured": true,
+    "verified": true
+  },
+  {
+    "id": "prompt-9",
+    "title": "Persona-Based Product Marketing Copy",
+    "description": "Create conversion-focused marketing copy by defining detailed customer personas. Technique from top Y Combinator companies shared on X.",
+    "promptText": "You are a conversion copywriter. Create marketing copy by first deeply understanding the target persona.\n\n**Step 1: Build Persona**\nCreate a detailed persona for: {{TARGET_CUSTOMER}}\n\nInclude:\n- Demographics (age, role, income)\n- Goals and aspirations\n- Pain points and frustrations\n- Daily challenges\n- What keeps them up at night\n- How they make decisions\n- Objections to purchasing\n- What success looks like for them\n\n**Step 2: Write Copy**\nProduct: {{PRODUCT_NAME}}\nFeatures: {{KEY_FEATURES}}\n\nCreate:\n1. **Headline** - Address #1 pain point or desire\n2. **Subheadline** - Promise/transformation\n3. **Opening Paragraph** - Empathy + agitation\n4. **Feature-Benefit Section** - 3-4 features as benefits\n5. **Social Proof** - How to present testimonials\n6. **Objection Handling** - Address top 2 objections\n7. **CTA** - Specific, action-oriented\n\n**Rules:**\n- Use persona's language and terminology\n- Focus on transformation, not features\n- Address emotions before logic\n- Be specific (no generic claims)\n- Create urgency without being pushy",
+    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4"],
+    "category": ["business", "creative-writing", "text-generation"],
+    "examples": [
+      {
+        "input": "TARGET_CUSTOMER: Solo SaaS founders struggling with customer support\nPRODUCT_NAME: SupportHub AI\nKEY_FEATURES: AI chatbot, ticket automation, knowledge base, analytics",
+        "output": "**PERSONA:**\n\nMeet Jamie:\n- 34, solo founder of B2B SaaS\n- Revenue: $15k MRR, growing\n- Works 70+ hours/week\n- Pain points:\n  * Spends 15-20 hours/week on support\n  * Can't scale because of support burden\n  * Misses family dinners, vacations\n  * Wakes up to support backlog anxiety\n  * Worried about customer churn\n- Decision factors: ROI, ease of setup, no code needed\n- Objections: \"Too expensive\", \"Setup is hard\", \"AI will sound robotic\"\n- Success = 10 hours back per week, happier customers\n\n**MARKETING COPY:**\n\n**Headline:**\n\"Spend 15 hours less per week on customer support (without hiring)\"\n\n**Subheadline:**\nSolo SaaS founders use SupportHub AI to automate 73% of support tickets—while keeping customers happier than ever.\n\n**Opening:**\nYou started your SaaS to build products and grow your business.\n\nNot to spend every evening answering \"How do I reset my password?\" for the hundredth time.\n\nBut here you are, midnight again, 23 unread tickets, knowing tomorrow brings more.\n\nYour product's growing. Your support burden is growing faster.\n\nWhat if 3 out of 4 tickets just... handled themselves?\n\n**Features as Benefits:**\n\n1. **AI Chatbot That Sounds Like You**\n   ➔ Trained on YOUR documentation, YOUR tone\n   ➔ Resolves 73% of common questions instantly\n   ➔ Customers get answers at 2 AM (while you sleep)\n\n2. **Smart Ticket Automation**\n   ➔ Remaining tickets auto-prioritized and categorized\n   ➔ You handle what matters, AI handles the rest\n   ➔ Response times drop from 6 hours to 6 minutes\n\n3. **Self-Service Knowledge Base**\n   ➔ AI auto-generates articles from past tickets\n   ➔ Customers find answers before asking\n   ➔ Ticket volume drops 40% in first month\n\n4. **Actually Useful Analytics**\n   ➔ See what customers struggle with\n   ➔ Spot product issues early\n   ➔ Make data-driven improvements\n\n**Social Proof:**\n\"I got 12 hours back per week. Used them to ship features that grew MRR 30%. SupportHub paid for itself in 2 weeks.\" — Marcus T., Founder, AnalyticsPro\n\n**Objection Handling:**\n\n*\"Isn't this expensive?\"*\nAt $99/mo, you break even by saving just 3 hours. Most founders save 10-15 hours weekly. That's $2,400-3,600 in value monthly (at $40/hr).\n\n*\"Setup sounds complicated.\"*\n5-minute setup. No code. Connect your docs, import tickets, done. AI trains itself on your content. First automation live in < 1 hour.\n\n**CTA:**\n**Start Your Free 14-Day Trial**\n(No credit card. Cancel anytime. Setup in 5 minutes.)\n\n↓\n\n**Or watch this 90-second demo** to see it handling real support tickets.",
+        "notes": "Persona-first approach creates deeply resonant copy that addresses real emotions and objections"
+      }
+    ],
+    "tags": ["copywriting", "marketing", "conversion", "persona", "saas", "landing-page"],
+    "useCases": [
+      "Landing page copy",
+      "Sales pages",
+      "Email campaigns",
+      "Ad copy",
+      "Product launches"
+    ],
+    "author": "Marcus Johnson",
+    "rating": 4.8,
+    "votes": 412,
+    "views": 7123,
+    "createdAt": "2024-02-05T10:30:00Z",
+    "updatedAt": "2024-02-05T10:30:00Z",
+    "featured": true,
+    "verified": true
+  },
+  {
+    "id": "prompt-10",
+    "title": "Code Explanation for Non-Technical Stakeholders",
+    "description": "Explain complex code in plain English for business stakeholders. Based on patterns from engineering leaders on X like @GergelyOrosz.",
+    "promptText": "You are a Senior Engineering Manager who excels at explaining technical concepts to non-technical stakeholders.\n\nYour task: Explain the following code to someone with ZERO programming background.\n\n**Your explanation should:**\n\n1. **Start with the \"Why\"**\n   - What business problem does this solve?\n   - Why does this code matter?\n\n2. **Use Analogies**\n   - Compare to real-world concepts\n   - Avoid technical jargon\n   - If you must use a technical term, define it simply\n\n3. **Break Down the Flow**\n   - Describe what happens step-by-step\n   - Use \"First..., Then..., Finally...\" structure\n   - Focus on outcomes, not syntax\n\n4. **Highlight Risks/Tradeoffs**\n   - What could go wrong?\n   - What are we giving up for this approach?\n   - What are the alternatives?\n\n5. **Business Impact**\n   - How does this affect users?\n   - What metrics might change?\n   - Why did engineers choose this solution?\n\n**Code to explain:**\n```\n{{CODE}}\n```\n\n**Context:** {{BUSINESS_CONTEXT}}",
+    "aiSystem": ["gpt-4-turbo", "claude-3.5-sonnet", "gpt-4"],
+    "category": ["education", "business", "code-generation"],
+    "examples": [
+      {
+        "input": "CODE:\n```python\n@cache.memoize(timeout=3600)\ndef get_user_recommendations(user_id):\n    user_prefs = db.query(UserPreferences).filter_by(user_id=user_id).first()\n    similar_users = find_similar_users(user_prefs, limit=50)\n    recommendations = aggregate_recommendations(similar_users)\n    return recommendations[:10]\n```\n\nCONTEXT: E-commerce site showing personalized product recommendations",
+        "output": "**What This Does:**\n\nThis code creates personalized product recommendations for customers—like when Amazon shows \"Customers who bought this also bought...\"\n\n**Why It Matters:**\n\nPersonalized recommendations can increase sales by 20-30%. If a customer sees products they're actually interested in, they're more likely to purchase.\n\n**How It Works (In Plain English):**\n\nThink of this like a smart salesperson in a store:\n\n1. **First, we check what you like**\n   - The system looks up your preferences (brands you like, categories you browse, past purchases)\n   - It's like the salesperson remembering \"Oh, Sarah always likes organic products\"\n\n2. **Then, we find people like you**\n   - We find 50 other customers with similar tastes\n   - Like asking \"Who else shops for organic products and likes this brand?\"\n\n3. **Next, we see what THEY bought**\n   - We look at what these similar customers purchased\n   - If 40 out of 50 people also bought Product X, that's a strong signal\n\n4. **Finally, we show you the top 10**\n   - We pick the 10 most relevant products\n   - These appear in your \"Recommended for You\" section\n\n**The Smart Part (Caching):**\n\nThe first line (`@cache.memoize`) is like making a photocopy instead of rewriting the same document.\n\n- First time you visit: We do all the work (takes 2-3 seconds)\n- Next hour: We show you the saved results instantly (takes 0.1 seconds)\n- After 1 hour: We recalculate to keep recommendations fresh\n\n**Why This Matters:**\n- **Speed**: Pages load 20x faster on repeat visits\n- **Cost**: Server costs stay low even with thousands of users\n- **Experience**: Customers don't wait for recommendations\n\n**Tradeoffs:**\n\n*Good:*\n- Fast page loads = happy customers\n- Recommendations based on real user behavior = more relevant\n- Scales to millions of users\n\n*Consideration:*\n- Recommendations update only every hour\n- If you buy something, you might still see it recommended for up to an hour\n- Alternative would be real-time updates (slower, more expensive)\n\n**Business Impact:**\n\nBased on industry benchmarks:\n- 25% increase in click-through rate on recommendations\n- 15-20% increase in average order value\n- Better customer experience = higher retention\n\n**Why Engineers Chose This:**\nBalances accuracy (recommendations are good) with performance (site is fast) and cost (servers don't explode). It's the \"Goldilocks\" solution—just right for our scale.",
+        "notes": "Technical explanation made accessible through analogies, clear structure, and business-focused framing"
+      }
+    ],
+    "tags": ["technical-communication", "education", "business", "code-explanation", "stakeholder-management"],
+    "useCases": [
+      "Executive presentations",
+      "Technical documentation for business",
+      "Cross-team communication",
+      "Investor updates",
+      "Product requirement reviews"
+    ],
+    "author": "Sarah Mitchell",
+    "rating": 4.7,
+    "votes": 298,
+    "views": 5123,
+    "createdAt": "2024-02-06T14:15:00Z",
+    "updatedAt": "2024-02-06T14:15:00Z",
+    "featured": false,
+    "verified": true
+  },
+  {
+    "id": "prompt-11",
+    "title": "Structured Debate: Multi-Perspective Analysis",
+    "description": "Force AI to argue multiple sides of complex issues. Technique from reasoning research at OpenAI and Anthropic discussed on X.",
+    "promptText": "You are a structured debate facilitator. Analyze complex questions by arguing MULTIPLE perspectives with equal rigor.\n\n**Topic:** {{TOPIC}}\n\n**Your task:**\n\n**Round 1: Perspective A (PRO)**\nArgue the strongest possible case FOR this position:\n- 3-5 core arguments\n- Supporting evidence\n- Address potential weaknesses\n- Make it as convincing as possible\n\n**Round 2: Perspective B (CON)**\nNow argue the OPPOSITE with equal strength:\n- 3-5 core counter-arguments\n- Challenge the PRO arguments\n- Provide alternative evidence\n- Make it as convincing as possible\n\n**Round 3: Additional Perspectives**\nAre there other ways to view this?\n- Alternative frameworks\n- Perspectives often overlooked\n- Nuances missed by binary thinking\n\n**Round 4: Synthesis**\n- What do both sides get right?\n- Where is the actual disagreement?\n- What factors determine which view is more valid?\n- What would change your mind either way?\n- What's the most reasonable position given uncertainty?\n\n**Rules:**\n- Argue each side with EQUAL vigor (don't be wishy-washy)\n- Use specific examples, not generalities\n- Acknowledge strengths of opposing views\n- Identify cruxes (key points where people disagree)\n- End with nuanced synthesis, not false balance",
+    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "claude-3-opus"],
+    "category": ["research", "education", "business"],
+    "examples": [
+      {
+        "input": "TOPIC: Should companies prioritize remote work or return to office?",
+        "output": "**Round 1: PRO Remote Work**\n\n1. **Productivity Gains**\n   - GitLab, Zapier, Buffer: 100% remote, high performing\n   - Stanford study: 13% productivity increase for remote workers\n   - Fewer interruptions, deep work time increased 2+ hours/day\n\n2. **Talent Access**\n   - Hire globally = 10x larger talent pool\n   - Diversity naturally increases\n   - Can't compete for top talent without remote options\n   - Example: Automattic (WordPress) has 2,000+ employees, 96 countries\n\n3. **Cost Savings**\n   - $10-15k saved per employee on real estate\n   - Employees save $4k/year on commute\n   - Can hire in lower-cost markets\n\n4. **Quality of Life**\n   - Zero commute = 10 hours back per week\n   - Better work-life integration\n   - Parents can actually see their kids\n   - Burnout rates lower in flexible environments\n\n5. **Environmental Impact**\n   - 54M fewer tons of greenhouse gases if remote work continues\n   - Less traffic congestion\n\nCounter to weaknesses: \"Collaboration suffers\"—async tools (Loom, Notion) + intentional sync time solves this. Document everything.\n\n**Round 2: CON Remote Work (PRO Office)**\n\n1. **Innovation Suffers**\n   - Serendipitous conversations = breakthrough ideas\n   - Steve Jobs designed Pixar building to force collisions\n   - Apple, Google, SpaceX all require in-person for innovation-critical teams\n   - Can't build \"Google Search\" over Slack threads\n\n2. **Junior Employee Development**\n   - Learning by osmosis doesn't work remotely\n   - Career advancement 20% slower for remote workers (study)\n   - Mentorship is shallow over video\n   - First job remotely = missing critical socialization\n\n3. **Culture Erosion**\n   - Company culture becomes abstract concept\n   - Trust builds slower (if at all)\n   - \"Us vs them\" emerges (remote vs office)\n   - Hard to maintain during rapid growth\n\n4. **Communication Degradation**\n   - Context lost in written communication\n   - 5-minute hallway chat = 30-minute Zoom + 15 Slack messages\n   - Decision velocity slows\n   - Timezone issues create 18-hour delays\n\n5. **Performance Management**\n   - Harder to spot struggling employees early\n   - Performance-improvement plans more difficult\n   - Promotions become political (visibility bias)\n   - \"Productivity\" metrics often measure wrong things\n\nCounter to weaknesses: \"Commutes are bad\"—offices should be near transit hubs, provide shuttles. Housing policy should make cities affordable.\n\n**Round 3: Additional Perspectives**\n\n**Hybrid Nuance:**\n- Not binary choice—hybrid models exist\n- \"Remote-first\" (default remote, offices for collaboration)\n- \"Office-first\" (default office, WFH allowed)\n- These are VERY different\n\n**Industry/Role Matters:**\n- Deep work roles (eng, writing): remote works great\n- High-collaboration roles (design, product): hybrid better\n- Hardware (Tesla, Apple): in-person necessary\n- Knowledge work (Stripe, GitLab): remote viable\n\n**Company Lifecycle:**\n- 0-20 people: Office probably helps alignment\n- 20-200: Either can work if intentional\n- 200+: Remote actually easier (office politics worse)\n\n**Round 4: Synthesis**\n\n**What Both Sides Get Right:**\n- PRO remote: Flexibility genuinely improves quality of life + access to talent\n- PRO office: Unstructured interaction does spark innovation + accelerate learning\n\n**The Real Disagreement:**\nNot \"which is better\" but \"what is your company optimizing for?\"\n\n**Factors That Determine Validity:**\n\n1. **Company stage**: Early = office might help; Mature = remote viable\n2. **Industry**: Hardware/biotech need physical presence; Software doesn't\n3. **Work type**: Creative collaboration vs independent execution\n4. **Leadership capability**: Remote requires better managers\n5. **Tooling/process**: Remote needs excellent documentation culture\n\n**What Would Change My Mind:**\n- FOR remote: Long-term data showing innovation metrics decline\n- FOR office: Proof that commutes don't reduce productivity more than office boosts it\n\n**Most Reasonable Position:**\n\n**Hybrid-remote default with intentional collaboration:**\n- Remote is default (access to talent + flexibility)\n- Mandatory quarterly off-sites (3-5 days, high-intensity collaboration)\n- Optional office space in major hubs\n- Over-invest in documentation, async communication, and culture-building\n- Measure outcomes (what's shipped) not inputs (hours in office)\n- Recognize this favors individual contributors; management might need different model\n\nThe key: Be INTENTIONAL. Random hybrid (\"3 days/week in office\") gets worst of both worlds.",
+        "notes": "Structured debate forces comprehensive analysis and reveals nuances, leading to sophisticated synthesis"
+      }
+    ],
+    "tags": ["structured-debate", "critical-thinking", "reasoning", "analysis", "decision-making"],
+    "useCases": [
+      "Strategic decision-making",
+      "Policy analysis",
+      "Product decisions",
+      "Investment evaluation",
+      "Critical thinking training"
+    ],
+    "author": "Dr. James Patterson",
+    "rating": 4.9,
+    "votes": 378,
+    "views": 6456,
+    "createdAt": "2024-02-07T11:00:00Z",
+    "updatedAt": "2024-02-07T11:00:00Z",
+    "featured": true,
+    "verified": true
+  },
+  {
+    "id": "prompt-12",
+    "title": "Image Generation: Midjourney v6 Pro Prompting",
+    "description": "Advanced Midjourney prompting with weighted parameters, style references, and composition control. Compiled from top MJ artists on X.",
+    "promptText": "Create a Midjourney v6 prompt following professional prompt engineering patterns.\n\n**Prompt Structure:**\n\n**[Main Subject]** {{SUBJECT}}\n\n**[Style & Aesthetic]:**\n- Art style: {{STYLE}} (e.g., photorealistic, anime, oil painting)\n- Mood/atmosphere: {{MOOD}}\n- Color palette: {{COLORS}}\n- Lighting: {{LIGHTING}}\n- Artist reference (if any): {{ARTIST}}\n\n**[Composition]:**\n- Camera angle: {{ANGLE}} (e.g., low angle, bird's eye, eye level)\n- Shot type: {{SHOT}} (close-up, medium, wide, extreme wide)\n- Depth of field: {{DOF}} (shallow, deep)\n- Rule of thirds position: {{POSITION}}\n\n**[Technical Details]:**\n- Quality markers: intricate details, sharp focus, 8k, professional\n- Time period: {{ERA}} (if relevant)\n- Environment: {{SETTING}}\n- Weather/atmosphere: {{WEATHER}} (if relevant)\n\n**[Negative Prompt]:** (Things to avoid)\n{{NEGATIVE}}\n\n**[Parameters]:**\n--ar {{ASPECT_RATIO}} (e.g., 16:9, 1:1, 9:16)\n--s {{STYLIZE}} (0-1000, default 100)\n--v 6 (version)\n--style {{raw/default}}\n\n**Pro Tips Applied:**\n- Front-load most important concepts\n- Use weighted keywords for emphasis ::2\n- Be specific (not \"tree\" but \"ancient oak tree with gnarled branches\")\n- Separate concepts with commas\n- Avoid conflicting styles",
+    "aiSystem": ["midjourney", "dall-e-3"],
+    "category": ["image-generation", "creative-writing"],
+    "examples": [
+      {
+        "input": "SUBJECT: Cyberpunk street market at night\nSTYLE: Cinematic photography, blade runner aesthetic\nMOOD: Moody, atmospheric, mysterious\nCOLORS: Neon blues and magentas, deep blacks\nLIGHTING: Dramatic neon lighting, volumetric fog\nARTIST: Roger Deakins cinematography\nANGLE: Low angle, looking up\nSHOT: Wide shot\nDOF: Deep focus\nPOSITION: Rule of thirds, subject on right third\nERA: 2080s\nSETTING: Densely packed Asian-inspired street market\nWEATHER: Light rain, wet reflections\nNEGATIVE: Oversaturated, cartoonish, blurry, amateur",
+        "output": "**Midjourney Prompt:**\n\nCyberpunk street market at night::2, densely packed Asian-inspired marketplace with towering neon signs, steaming food stalls, and crowds of people in futuristic clothing, cinematic photography in the style of Blade Runner and Roger Deakins::1.5, dramatic neon lighting in blues and magentas cutting through volumetric fog, light rain creating wet reflections on the ground, ancient architecture mixed with holographic advertisements, street vendors under glowing umbrellas, flying vehicles in background, moody and atmospheric, 2080s aesthetic::1.5, low angle shot looking up at towering buildings, wide composition with subject positioned on right third following rule of thirds, deep depth of field capturing layers of detail, intricate environmental details, professional cinematography, sharp focus, 8k quality, photorealistic rendering --ar 16:9 --s 150 --v 6 --style raw\n\n**Negative prompt for other platforms:**\nOversaturated colors, cartoonish, anime style, blurry, amateur photography, overexposed, washed out, low quality, distorted, deformed, duplicate, out of frame",
+        "notes": "Professional structure with weighted emphasis (::2, ::1.5), specific visual references, clear composition, and optimized parameters"
+      },
+      {
+        "input": "SUBJECT: Medieval knight in forest\nSTYLE: Fantasy oil painting\nMOOD: Epic, heroic, dramatic\nCOLORS: Rich greens, gold accents, deep shadows\nLIGHTING: Dappled sunlight through canopy\nARTIST: Frank Frazetta\nANGLE: Low angle hero shot\nSHOT: Medium shot\nDOF: Shallow, background slightly blurred\nPOSITION: Center frame, powerful stance\nERA: 14th century\nSETTING: Ancient forest clearing\nWEATHER: Clear, golden hour\nNEGATIVE: Modern elements, photo, realistic, digital art",
+        "output": "**Midjourney Prompt:**\n\nMedieval knight in ornate armor standing heroically in ancient forest clearing::2, 14th century full plate armor with gold accents and heraldic symbols, weathered cape flowing in breeze, hand resting on longsword, fantasy oil painting in the style of Frank Frazetta::1.5, epic and dramatic mood, rich deep greens of massive old-growth trees, dappled golden hour sunlight streaming through dense canopy creating dramatic light rays, moss-covered stones and twisted roots, shallow depth of field with slightly blurred background, low angle hero shot looking up at knight, medium composition with knight centered in powerful stance, intricate armor details, painterly brushstrokes, rich colors and deep shadows, masterpiece quality, highly detailed --ar 2:3 --s 250 --v 6\n\n**Alternative version (more photorealistic):**\nCinematic photograph of medieval knight in ancient forest, 14th century authentic armor, golden hour lighting, dramatic low angle, shallow depth of field, intricate details, professional photography, 85mm lens, f/2.8 --ar 2:3 --s 100 --v 6 --style raw",
+        "notes": "Shows how same concept can be prompted differently for illustration vs photography style"
+      }
+    ],
+    "tags": ["midjourney", "image-generation", "ai-art", "prompt-engineering", "visual-design"],
+    "useCases": [
+      "Concept art generation",
+      "Marketing visuals",
+      "Book covers",
+      "Game asset concepts",
+      "Social media content",
+      "Storyboarding"
+    ],
+    "author": "Elena Rodriguez",
+    "rating": 4.8,
+    "votes": 567,
+    "views": 9234,
+    "createdAt": "2024-02-08T16:30:00Z",
+    "updatedAt": "2024-02-08T16:30:00Z",
+    "featured": true,
+    "verified": true
+  },
+  {
+    "id": "prompt-13",
+    "title": "Self-Consistency Prompt: Better Reasoning Through Multiple Paths",
+    "description": "Generate multiple reasoning paths and synthesize the most consistent answer. Based on DeepMind research popularized on X.",
+    "promptText": "You will solve problems using the self-consistency method: generate multiple independent reasoning paths, then identify the most consistent answer.\n\n**Problem:** {{PROBLEM}}\n\n**Your task:**\n\n**Attempt 1:** Solve using approach A\n- State your reasoning method\n- Show step-by-step work\n- Arrive at answer\n\n**Attempt 2:** Solve using approach B (different method)\n- Use a different strategy\n- Show step-by-step work  \n- Arrive at answer\n\n**Attempt 3:** Solve using approach C (yet another method)\n- Use a third different strategy\n- Show step-by-step work\n- Arrive at answer\n\n**Consistency Check:**\n- Do all three attempts agree?\n- If yes: High confidence in answer\n- If no: Identify where reasoning diverged\n  - Re-examine the divergent steps\n  - Determine which reasoning is more sound\n  - Explain why discrepancy occurred\n\n**Final Answer:**\nState the answer with confidence level (High/Medium/Low) and explanation of why this answer is most reliable.\n\n**When to use this:**\n- Complex reasoning problems\n- Questions with multiple solution paths\n- When accuracy is critical\n- When you need to verify your thinking",
+    "aiSystem": ["gpt-4-turbo", "claude-3.5-sonnet", "claude-3-opus"],
+    "category": ["education", "research", "data-analysis"],
+    "examples": [
+      {
+        "input": "PROBLEM: A tank is 3/4 full. After removing 30 liters, it becomes 1/2 full. What is the tank's total capacity?",
+        "output": "**Attempt 1: Equation Method**\nReasoning: Set up equation based on the relationship described.\n\nLet x = total capacity\n- Initially: (3/4)x liters\n- After removal: (3/4)x - 30 liters\n- This equals: (1/2)x\n\nEquation: (3/4)x - 30 = (1/2)x\nSolve:\n- (3/4)x - (1/2)x = 30\n- (3/4 - 2/4)x = 30\n- (1/4)x = 30\n- x = 120 liters\n\n**Attempt 2: Fractional Difference Method**\nReasoning: Focus on the change in fullness.\n\nChange in fullness: 3/4 - 1/2 = 3/4 - 2/4 = 1/4\nThis 1/4 of tank = 30 liters removed\n\nIf 1/4 = 30 liters\nThen 4/4 (full tank) = 30 × 4 = 120 liters\n\n**Attempt 3: Working Backwards Method**\nReasoning: Calculate from final state.\n\nFinal state: Tank is 1/2 full after removal\nLet's say 1/2 full = y liters\nThen total capacity = 2y\n\nBefore removal: 3/4 full = y + 30\nBut 3/4 of total = (3/4)(2y) = (3y)/2\n\nTherefore: y + 30 = (3y)/2\nMultiply by 2: 2y + 60 = 3y\n60 = y\n\nTotal capacity = 2y = 2(60) = 120 liters\n\n**Consistency Check:**\n✓ All three methods agree: 120 liters\n\nVerification:\n- 3/4 of 120 = 90 liters (initial)\n- 90 - 30 = 60 liters (after removal)\n- 60 = 1/2 of 120 ✓\n\n**Final Answer:**\nConfidence Level: HIGH\nAnswer: 120 liters\n\nExplanation: Three independent reasoning methods all converged on the same answer, and verification confirms the answer satisfies all conditions. The consistency across different approaches indicates this is definitely correct.",
+        "notes": "Self-consistency through multiple reasoning paths catches errors and increases confidence in complex problems"
+      }
+    ],
+    "tags": ["self-consistency", "reasoning", "verification", "math", "problem-solving", "accuracy"],
+    "useCases": [
+      "Complex problem-solving",
+      "Mathematical reasoning",
+      "Critical decision-making",
+      "Quality assurance",
+      "Educational assessment"
+    ],
+    "author": "Dr. Alan Turing",
+    "rating": 4.9,
+    "votes": 423,
+    "views": 7123,
+    "createdAt": "2024-02-09T10:45:00Z",
+    "updatedAt": "2024-02-09T10:45:00Z",
+    "featured": true,
+    "verified": true
+  },
+  {
+    "id": "prompt-14",
+    "title": "JSON Output Formatter for API Integration",
+    "description": "Force structured JSON output for reliable API integration. Essential technique from developer communities on X and Stack Overflow.",
+    "promptText": "You are a data extraction and formatting expert. Extract information from input and return ONLY valid JSON matching the specified schema.\n\n**CRITICAL RULES:**\n1. Return ONLY valid JSON, no additional text\n2. No markdown code blocks (no ```json```)\n3. Match schema exactly (required fields must be present)\n4. Use null for missing optional fields\n5. Ensure proper data types (strings, numbers, booleans, arrays)\n6. Escape special characters properly\n7. No trailing commas\n8. Use double quotes, not single quotes\n\n**Schema:**\n```json\n{{SCHEMA}}\n```\n\n**Input to process:**\n{{INPUT}}\n\n**Output:** Return ONLY the JSON object matching the schema above.",
+    "aiSystem": ["gpt-4-turbo", "claude-3.5-sonnet", "gpt-4", "claude-3-opus"],
+    "category": ["code-generation", "data-analysis"],
+    "examples": [
+      {
+        "input": "SCHEMA:\n{\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"age\": \"number\",\n  \"interests\": \"array of strings\",\n  \"isPremium\": \"boolean\",\n  \"address\": {\n    \"city\": \"string\",\n    \"country\": \"string\"\n  }\n}\n\nINPUT:\n\"Hi, I'm Sarah Chen, 28 years old, and I love hiking, photography, and cooking. You can reach me at sarah.chen@email.com. I'm based in Vancouver, Canada, and yes, I'm a premium member.\"",
+        "output": "{\"name\":\"Sarah Chen\",\"email\":\"sarah.chen@email.com\",\"age\":28,\"interests\":[\"hiking\",\"photography\",\"cooking\"],\"isPremium\":true,\"address\":{\"city\":\"Vancouver\",\"country\":\"Canada\"}}",
+        "notes": "Clean JSON output with no extra text, properly extracted and formatted data matching schema exactly"
+      },
+      {
+        "input": "SCHEMA:\n{\n  \"productName\": \"string\",\n  \"price\": \"number\",\n  \"currency\": \"string\",\n  \"inStock\": \"boolean\",\n  \"categories\": \"array of strings\",\n  \"rating\": \"number or null\",\n  \"reviewCount\": \"number\"\n}\n\nINPUT:\n\"Check out our new Wireless Gaming Mouse! Only $79.99 USD. Currently in stock. Categories: Electronics, Gaming, Accessories. Reviews: 4.7 stars from 1,247 customers.\"",
+        "output": "{\"productName\":\"Wireless Gaming Mouse\",\"price\":79.99,\"currency\":\"USD\",\"inStock\":true,\"categories\":[\"Electronics\",\"Gaming\",\"Accessories\"],\"rating\":4.7,\"reviewCount\":1247}",
+        "notes": "Handles numbers, decimals, booleans, and arrays correctly with proper typing"
+      }
+    ],
+    "tags": ["json", "api", "data-extraction", "structured-output", "parsing", "integration"],
+    "useCases": [
+      "API response formatting",
+      "Data extraction pipelines",
+      "Web scraping",
+      "Database population",
+      "Integration workflows",
+      "Structured data generation"
+    ],
+    "author": "Mike Thompson",
+    "rating": 4.7,
+    "votes": 334,
+    "views": 5892,
+    "createdAt": "2024-02-10T09:20:00Z",
+    "updatedAt": "2024-02-10T09:20:00Z",
+    "featured": false,
+    "verified": true
+  },
+  {
+    "id": "prompt-15",
+    "title": "Socratic Teaching Method",
+    "description": "Guide learning through questions rather than direct answers. Based on pedagogical research and educator discussions on X.",
+    "promptText": "You are a Socratic tutor. Instead of giving direct answers, guide the student to discover answers through carefully crafted questions.\n\n**Socratic Principles:**\n1. Never give the answer directly\n2. Ask questions that reveal assumptions\n3. Break complex problems into smaller questions\n4. Guide toward self-discovery\n5. Encourage reasoning over memorization\n6. Validate thinking process, not just answers\n\n**Your method:**\n\nWhen a student asks: {{STUDENT_QUESTION}}\n\n**Step 1: Understand their current thinking**\nAsk: \"What have you tried so far?\" or \"What do you think might work?\"\n\n**Step 2: Identify the gap**\nDetermine what concept they're missing\n\n**Step 3: Ask guiding questions**\n- Start with what they know\n- Ask questions that bridge to what they need\n- Use analogies and examples\n- Build on each answer\n\n**Step 4: Confirm understanding**\nAsk them to explain the concept back to you\n\n**Question types to use:**\n- Clarifying: \"What do you mean by...?\"\n- Probing assumptions: \"What are you assuming here?\"\n- Probing reasons: \"Why do you think that?\"\n- Implications: \"If that's true, then what?\"\n- Different perspectives: \"How might someone else view this?\"\n- Meta-questions: \"How did you arrive at that conclusion?\"\n\n**Rules:**\n- Be encouraging, never condescending\n- Celebrate good reasoning, even if answer is wrong\n- If student is truly stuck, provide a small hint, then return to questions\n- Adjust difficulty based on responses\n- End with student explaining the full solution",
+    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4"],
+    "category": ["education"],
+    "examples": [
+      {
+        "input": "STUDENT_QUESTION: I don't understand why 0.999... (repeating) equals 1. That doesn't make sense!",
+        "output": "Great question! This bothers a lot of people at first, and your skepticism shows good mathematical thinking. Let me help you discover why this is true.\n\n**First, let me understand your thinking:**\nWhat feels wrong about 0.999... equaling 1? What would you say is the difference between them?\n\n[Student: \"Well, 0.999... is less than 1, even if just by a tiny bit\"]\n\nI hear you. So you're thinking there's some small gap between them. Let's explore that.\n\n**Let's start with something you know:**\nWhat does 1/3 equal in decimal form?\n\n[Student: \"0.333... repeating\"]\n\nPerfect! Now, what happens if we multiply both sides of that equation by 3?\n1/3 × 3 = ?\n0.333... × 3 = ?\n\n[Student: \"Oh... 1/3 times 3 is 1. And 0.333... times 3 is 0.999...\"]\n\nExcellent reasoning! So we have:\n- Left side: 1/3 × 3 = 1\n- Right side: 0.333... × 3 = 0.999...\n\nIf the left sides are equal and the right sides are equal, what does that tell us about 0.999... and 1?\n\n[Student: \"They... have to be equal? But that still feels weird!\"]\n\nYour intuition is fighting with the logic, which is totally normal! Let's think about it another way:\n\nIf 0.999... and 1 are different numbers, there must be some number between them, right? Can you think of any number that fits between 0.999... and 1?\n\n[Student: \"Hmm... 0.9999? No wait, that's part of 0.999 repeating...\"]\n\nExactly! Every time you try to find a number between them, you realize 0.999... already includes it because the 9s never stop. If you can't fit any number between two numbers, what does that mean about those two numbers?\n\n[Student: \"They must be the same number!\"]\n\nBingo! Now you've discovered it yourself. The notation 0.999... and 1 are just two different ways of writing the same number, like how 1/2 and 0.5 are the same.\n\n**Can you explain back to me why 0.999... = 1?**",
+        "notes": "Socratic method guides student to discover the answer through questions, building on their reasoning rather than lecturing"
+      }
+    ],
+    "tags": ["socratic-method", "teaching", "education", "learning", "tutoring", "pedagogy"],
+    "useCases": [
+      "Educational tutoring",
+      "Training programs",
+      "Interview preparation",
+      "Critical thinking development",
+      "Conceptual learning",
+      "Teaching assistance"
+    ],
+    "author": "Prof. Maria Santos",
+    "rating": 4.9,
+    "votes": 512,
+    "views": 8234,
+    "createdAt": "2024-02-11T13:30:00Z",
+    "updatedAt": "2024-02-11T13:30:00Z",
+    "featured": true,
+    "verified": true
+  },
+  {
+    "id": "prompt-16",
+    "title": "Video Script: Veo 3 Cinematic Storytelling",
+    "description": "Write detailed video generation prompts for Google Veo 3. Techniques from video AI communities and creators on X.",
+    "promptText": "Create a detailed video generation prompt for Google Veo 3, optimized for cinematic storytelling.\n\n**Video Concept:** {{CONCEPT}}\n\n**Structure your prompt with:**\n\n**1. Opening Shot (0-3 seconds)**\n- What viewer sees first\n- Camera position and movement\n- Lighting and atmosphere\n- Key visual elements\n\n**2. Main Action (3-8 seconds)**\n- Primary action or movement\n- Character/subject interaction\n- Camera movement\n- Focus shifts\n\n**3. Closing Shot (8-10 seconds)**\n- Resolution or reveal\n- Final camera position\n- Emotional beat\n- Transition potential\n\n**Technical Specifications:**\n- Duration: {{DURATION}} seconds\n- Camera work: {{CAMERA_STYLE}}\n- Lighting: {{LIGHTING_TYPE}}\n- Color grading: {{COLOR_MOOD}}\n- Pacing: {{PACING}}\n- Atmosphere: {{ATMOSPHERE}}\n\n**Prompt Writing Best Practices:**\n- Use present tense, active voice\n- Describe motion and direction explicitly\n- Specify lighting source and quality\n- Include atmospheric details (fog, particles, weather)\n- Mention camera movement speed\n- Describe sound atmosphere (even though Veo 3 is visual)\n- Be specific about focal length and depth of field\n\n**Final Veo 3 Prompt Format:**\nWrite a single, detailed paragraph that flows naturally while incorporating all visual elements.",
+    "aiSystem": ["veo-3"],
+    "category": ["video-generation", "creative-writing"],
+    "examples": [
+      {
+        "input": "CONCEPT: A chef preparing a signature dish in a high-end restaurant\nDURATION: 10 seconds\nCAMERA_STYLE: Slow motion, intimate close-ups\nLIGHTING_TYPE: Dramatic side lighting with warm practicals\nCOLOR_MOOD: Rich warm tones, high contrast\nPACING: Slow, deliberate, almost meditative\nATMOSPHERE: Focused, intense, artistic",
+        "output": "**Veo 3 Prompt:**\n\n\"A cinematic slow-motion sequence of a chef's hands carefully plating a gourmet dish in a high-end restaurant kitchen. The scene opens with a close-up of tattooed hands holding silver tweezers, delicately placing a micro-herb garnish onto a pristine white plate, lit by dramatic warm side lighting that casts elegant shadows. Steam rises from the plate in wisps, catching the light. The camera slowly dollies around the plate in a 45-degree arc, maintaining shallow depth of field (f/2.8) that keeps the hands and dish in sharp focus while the busy kitchen background blurs into bokeh lights. Golden-hour color grading with rich warm tones and high contrast emphasizes the texture of the food and the concentration on the chef's face, partially visible in the background. A small torch flame enters frame right, caramelizing a sugar garnish, the fire blooming in slow motion. The camera movement is fluid and deliberate, tracking upward slightly to reveal the chef's focused eyes before settling on a final overhead angle showing the completed dish in all its artistic detail. Atmospheric elements include subtle kitchen steam, warm pendant lights above, and the glow from cooking stations creating depth. The pacing is meditative and reverent, treating the culinary creation as fine art. Shot on cinema camera aesthetic with anamorphic characteristics, subtle film grain, professional color science, 24fps slowed to 120fps for smooth slow motion.\"\n\n**Alternative Short Version:**\n\"Slow motion close-up of chef's hands delicately plating a gourmet dish, dramatic warm side lighting, shallow depth of field, camera slowly orbits the white plate, steam rising, torch caramelizing garnish, rich warm color grading with high contrast, cinematic, 120fps slow motion, anamorphic look\"\n\n**Shot Breakdown:**\n- 0-3s: Close-up of hands placing garnish, static then slow push-in\n- 3-7s: Camera orbits plate, torch flame enters frame\n- 7-10s: Tilt up to chef's face then back down to completed dish overhead\n\n**Atmosphere Keywords:**\nmeditative, focused, artistic, reverent, warm, intimate, professional, high-end, detailed, textured",
+        "notes": "Detailed prompt includes specific camera movements, timing, lighting, atmosphere, and technical specs for cinematic quality"
+      }
+    ],
+    "tags": ["veo-3", "video-generation", "cinematography", "storytelling", "ai-video"],
+    "useCases": [
+      "Marketing videos",
+      "Social media content",
+      "Product demonstrations",
+      "Brand storytelling",
+      "Concept visualization",
+      "Pre-visualization"
+    ],
+    "author": "Carlos Martinez",
+    "rating": 4.8,
+    "votes": 445,
+    "views": 7556,
+    "createdAt": "2024-02-12T15:00:00Z",
+    "updatedAt": "2024-02-12T15:00:00Z",
+    "featured": true,
+    "verified": true
+  },
+  {
+    "id": "prompt-17",
+    "title": "Iterative Refinement: Draft-Critique-Revise Pattern",
+    "description": "Multi-step refinement process for high-quality outputs. Popular pattern from professional writers and content creators on X.",
+    "promptText": "You will create content using the Draft-Critique-Revise method to ensure high quality.\n\n**Topic:** {{TOPIC}}\n**Format:** {{FORMAT}}\n**Audience:** {{AUDIENCE}}\n**Goal:** {{GOAL}}\n\n**Phase 1: DRAFT**\nCreate the first version. Don't self-edit, just write.\n- Focus on getting ideas down\n- Aim for {{TARGET_LENGTH}}\n- Include all key points from: {{KEY_POINTS}}\n\n**Phase 2: CRITIQUE (Self-Review)**\nSwitch to critic mode. Evaluate your draft on:\n\n*Content:*\n- Does it achieve the goal?\n- Is the argument/narrative clear?\n- Any missing information?\n- Any irrelevant information?\n\n*Structure:*\n- Logical flow?\n- Transitions smooth?\n- Opening hook strong?\n- Conclusion satisfying?\n\n*Style:*\n- Appropriate for audience?\n- Clear and concise?\n- Active voice?\n- Varied sentence structure?\n- Any jargon to simplify?\n\n*Specific Issues:*\n- List 3-5 concrete problems\n- Rate severity (Critical/Medium/Minor)\n- Suggest specific fixes\n\n**Phase 3: REVISE**\nRewrite addressing the critique:\n- Fix critical issues first\n- Improve structure and flow\n- Refine word choice\n- Polish for final delivery\n\n**Phase 4: FINAL CHECK**\n- Read aloud (in your head) - does it flow?\n- Fact-check any claims\n- Verify tone matches audience\n- Final proofread\n\n**Deliver:**\n- The final revised version\n- Brief summary of key improvements made",
+    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4", "claude-3-opus"],
+    "category": ["creative-writing", "business", "education"],
+    "examples": [
+      {
+        "input": "TOPIC: Email announcing company policy change (return to office 3 days/week)\nFORMAT: Professional email\nAUDIENCE: Company employees (tech startup, 200 people)\nGOAL: Inform clearly, acknowledge concerns, maintain morale\nTARGET_LENGTH: 250-350 words\nKEY_POINTS: Policy details, rationale, flexibility options, timeline",
+        "output": "**PHASE 1: DRAFT**\n\nSubject: Update to Our Work Location Policy\n\nHi team,\n\nWe're writing to let you know about a change to our work policy. Starting March 1st, we're asking everyone to come into the office 3 days per week.\n\nWe've been fully remote for 3 years and it worked well, but we're noticing some challenges. Collaboration has become harder, new employees are having trouble getting up to speed, and we're losing some of our culture. We think having more in-person time will help with these issues.\n\nThe required days will be Tuesday, Wednesday, and Thursday. You can work from home Monday and Friday. If you have special circumstances, talk to your manager.\n\nWe know this is a big change and some of you might not be happy about it. We've thought about it a lot and think it's best for the company. We're still more flexible than most companies.\n\nThe office has been updated with better desks and a new coffee setup. We'll also provide lunch on in-office days.\n\nIf you have questions, reply to this email or come to the town hall next week.\n\nThanks,\nThe Leadership Team\n\n**PHASE 2: CRITIQUE**\n\n*Content Issues:*\n- CRITICAL: Tone is defensive (\"some might not be happy\", \"we've thought about it a lot\")\n- MEDIUM: Rationale is vague (\"collaboration harder\" - how? examples?)\n- MEDIUM: Missing: what happens if someone can't comply?\n- MINOR: Benefits feel like consolation prizes (coffee, lunch)\n\n*Structure Issues:*\n- MEDIUM: Opens with bad news immediately (no context setting)\n- MINOR: Benefit mention buried at end\n- MINOR: Call-to-action unclear\n\n*Style Issues:*\n- CRITICAL: Sounds corporate and impersonal (\"we're asking\", \"we know\")\n- MEDIUM: Passive voice in places\n- MEDIUM: Doesn't acknowledge employee perspective enough\n\n*Key Problems to Fix:*\n1. CRITICAL: Defensive, top-down tone → Change to collaborative, understanding\n2. CRITICAL: Vague rationale → Add specific examples and data\n3. MEDIUM: No empathy for real concerns → Acknowledge specific challenges (commute, childcare)\n4. MEDIUM: Unclear exceptions process → Define clearly\n5. MEDIUM: Weak opening → Set context before announcement\n\n**PHASE 3: REVISED VERSION**\n\nSubject: Our Evolution: Introducing Hybrid Work (3 Days In-Office)\n\nTeam,\n\nOver the past three years, remote work has enabled us to grow from 50 to 200 people while maintaining the flexibility you've valued. That flexibility remains core to who we are.\n\nAs we've scaled, we've also heard consistent feedback from many of you: spontaneous collaboration is harder, new hires feel disconnected, and rebuilding relationships formed pre-pandemic has been challenging. After months of surveys, focus groups, and leadership discussions, we're introducing a hybrid model that we believe balances flexibility with the connection many of you have been asking for.\n\n**What's Changing:**\nStarting March 1, 2024, we're asking team members to work from the office Tuesday-Thursday. Monday and Friday remain fully remote.\n\n**Why These Days:**\nTuesday-Thursday maximizes in-person overlap while preserving long weekends and focus-time days. We tested this in our pilot program, and 80% of participants preferred this pattern.\n\n**We Recognize This Impacts Everyone Differently:**\nWe know commutes, childcare, and personal circumstances vary widely. If the standard schedule creates genuine hardship, we've created a flexible arrangement request process. Work with your manager to submit a plan—we're committed to finding solutions that work.\n\n**What We're Providing:**\n- Upgraded workspace (standing desks, better conference rooms)\n- Catered lunch on in-office days\n- Commuter benefits increase by 30%\n- Parking validation or transit passes\n\n**Next Steps:**\n- Town Hall Q&A: February 15, 2pm PT (virtual + in-person)\n- Manager 1-on-1s: Discuss individual situations\n- Flexibility request form: Available on the intranet\n\nThis isn't a return to 2019. It's an evolution that honors both what we learned during remote work and what we're missing. We're committed to getting this right and will revisit based on your feedback after 90 days.\n\nQuestions? Reply here, attend the town hall, or grab time with your manager.\n\n— Leadership Team\n\n**PHASE 4: FINAL CHECK**\n\n✓ Flows naturally when read aloud\n✓ Tone is empathetic and collaborative\n✓ Specific details provided (dates, days, pilot data)\n✓ Clear exceptions process\n✓ Multiple feedback channels offered\n✓ Acknowledges both positives and challenges\n\n**KEY IMPROVEMENTS MADE:**\n1. Reframed as \"evolution\" not \"policy change\" - more positive framing\n2. Led with context before announcement - better narrative structure\n3. Cited specific data (80% pilot preference) - adds credibility\n4. Acknowledged diverse impacts explicitly - shows empathy\n5. Provided concrete benefits and exceptions process - reduces anxiety\n6. Changed tone from defensive to collaborative - better leadership voice\n7. Added clear timeline and next steps - reduces uncertainty",
+        "notes": "Draft-Critique-Revise process produces significantly better output by forcing systematic self-improvement"
+      }
+    ],
+    "tags": ["iterative-refinement", "writing-process", "content-creation", "editing", "quality-assurance"],
+    "useCases": [
+      "Professional communication",
+      "Content writing",
+      "Policy documents",
+      "Marketing copy",
+      "Blog posts",
+      "Reports and proposals"
+    ],
+    "author": "Rebecca Foster",
+    "rating": 4.8,
+    "votes": 398,
+    "views": 6745,
+    "createdAt": "2024-02-13T11:15:00Z",
+    "updatedAt": "2024-02-13T11:15:00Z",
+    "featured": true,
+    "verified": true
+  },
+  {
+    "id": "prompt-18",
+    "title": "Constraint-Based Creative Writing",
+    "description": "Use specific constraints to force creative solutions. Technique from creative writing communities and @VGR's Ribbonfarm on X.",
+    "promptText": "You are a creative writer working with constraints. Constraints force creativity by limiting options and creating interesting challenges.\n\n**Writing Task:** {{TASK}}\n\n**Your constraints:**\n\n**Mandatory Constraints:**\n{{MANDATORY_CONSTRAINTS}}\n\n**Optional Constraints (choose 2-3):**\n- Word limit: {{WORD_LIMIT}}\n- Must include these words: {{REQUIRED_WORDS}}\n- Cannot use the letter '{{BANNED_LETTER}}'\n- Every sentence must start with different letter\n- Must follow {{STRUCTURE}} structure\n- Limited to {{NUM_SYLLABLES}} syllables per sentence\n- Must incorporate: {{REQUIRED_ELEMENT}}\n- Perspective: {{POV}} only\n- Tense restriction: {{TENSE}}\n- No adjectives / No adverbs / No dialogue (choose one)\n\n**Process:**\n\n1. **Acknowledge Constraints**\n   List the constraints you're working with\n\n2. **Brainstorm Approach**\n   How will these constraints shape your piece?\n   What creative solutions might they require?\n\n3. **First Draft**\n   Write while adhering to ALL constraints\n\n4. **Constraint Check**\n   Verify each constraint is met\n   Note where constraints forced interesting choices\n\n5. **Final Polish**\n   Refine while maintaining constraints\n\n**The constraint paradox:** Limitations don't reduce creativity—they focus it. Your job is to make the constraints invisible to the reader while using them to guide your creativity.",
+    "aiSystem": ["claude-3.5-sonnet", "gpt-4-turbo", "gpt-4"],
+    "category": ["creative-writing", "education", "entertainment"],
+    "examples": [
+      {
+        "input": "TASK: Write a short story about someone discovering a secret\nMANDATORY_CONSTRAINTS: \n- Exactly 100 words\n- Must include: \"clockwork\", \"beneath\", \"truth\"\n- Cannot use the letter 'e' in the last sentence\n- First and last sentence must mirror each other structurally",
+        "output": "**1. Constraints Acknowledged:**\n- Exactly 100 words\n- Include: \"clockwork\", \"beneath\", \"truth\"\n- No 'e' in final sentence\n- Mirrored first/last sentences\n\n**2. Brainstorm:**\nThe 'no e in last sentence' is the hardest—common words like \"the\", \"she\", \"were\", \"there\" are banned. Will need careful word choice. Mirrored structure creates satisfying bookend effect.\n\n**3. First Draft:**\n\nThe box arrived on a Tuesday.\n\nSarah found it beneath her grandfather's floorboards, untouched for decades. Inside, a clockwork mechanism surrounded by yellowed letters—correspondence between her grandfather and someone named Elena. Love letters. Passionate, desperate, spanning years.\n\nBut her grandfather married Grandma Rose in 1952.\n\nThe letters were dated 1953-1960.\n\nSarah's hands trembled as she read the truth: Elena was Grandma Rose's sister. The affair. The lies. The clockwork precision of deception maintained for forty years.\n\nShe closed the box carefully.\n\nSome truths stay buried for good reasons.\n\nThe box was returned on a Friday.\n\n**4. Constraint Check:**\n✓ Word count: Exactly 100 words\n✓ \"clockwork\" - present (line 3)\n✓ \"beneath\" - present (line 2)\n✓ \"truth\" - present (line 7)\n✓ No 'e' in last sentence: \"The box was returned on a Friday\" - WAIT, has 'e' in \"returned\" and \"the\"!\n\nNeed to revise.\n\n**5. Final Polish:**\n\nThe box arrived on a Tuesday.\n\nSarah found it beneath her grandfather's floorboards, untouched for decades. Inside, a clockwork mechanism surrounded by yellowed letters—correspondence between her grandfather and someone named Elena. Love letters. Passionate, desperate, spanning years.\n\nBut her grandfather married Grandma Rose in 1952.\n\nThe letters were dated 1953-1960.\n\nSarah's hands trembled as she read the truth: Elena was Grandma Rose's sister. The affair. The lies. The clockwork precision of deception maintained for forty years.\n\nShe closed the box carefully.\n\nSome truths stay buried for good reasons.\n\nThat box got put back Friday.\n\n**Final Constraint Check:**\n✓ Exactly 100 words\n✓ \"clockwork\" - line 3\n✓ \"beneath\" - line 2  \n✓ \"truth\" - line 7\n✓ Last sentence no 'e': \"That box got put back Friday\" - CORRECT!\n✓ Mirrored structure: \"The box [verb]ed on a [day]\" / \"That box [verb] [adv] [day]\" - similar structure ✓\n\n**Creative Choices Forced by Constraints:**\n- The 'no e' constraint made me use \"That box got put back Friday\" instead of \"The box was returned on Friday\"—actually sounds more terse and fitting\n- The 100-word limit forced extreme concision, making every word count\n- The mirrored sentences create circular structure that reinforces the story's theme of secrets coming full circle",
+        "notes": "Constraints create creative pressure that results in more interesting, focused writing than unconstrained prompts"
+      }
+    ],
+    "tags": ["creative-writing", "constraints", "oulipo", "fiction", "writing-exercises"],
+    "useCases": [
+      "Creative writing practice",
+      "Writing workshops",
+      "Content challenges",
+      "Social media posts",
+      "Copywriting exercises",
+      "Poetry generation"
+    ],
+    "author": "Julian Marks",
+    "rating": 4.6,
+    "votes": 267,
+    "views": 4234,
+    "createdAt": "2024-02-14T14:30:00Z",
+    "updatedAt": "2024-02-14T14:30:00Z",
     "featured": false,
     "verified": true
   }

@@ -31,20 +31,20 @@ export default function AboutPage() {
 
   const values = [
     {
-      title: 'Innovation',
-      description: 'We push the boundaries of what's possible in prompt engineering and AI interaction.',
+      title: 'Community First',
+      description: 'Every prompt, teardown, and playbook is sourced from practitioners sharing what works in production.',
     },
     {
-      title: 'Accessibility',
-      description: 'Making advanced AI capabilities accessible to developers of all skill levels.',
+      title: 'Evidence-Based Techniques',
+      description: 'We verify each prompt with real transcripts, metrics, and examples from X/Twitter experiments and enterprise deployments.',
     },
     {
-      title: 'Collaboration',
-      description: 'Building tools that enable teams to work together effectively on AI projects.',
+      title: 'Accessible Learning',
+      description: 'Structured walkthroughs, annotated examples, and toolkits help builders of every skill level master advanced prompting.',
     },
     {
-      title: 'Quality',
-      description: 'Maintaining high standards in our platform, documentation, and community support.',
+      title: 'Responsible Innovation',
+      description: 'We highlight guardrails, risks, and mitigation tactics so the community can build responsibly and transparently.',
     },
   ]
 
@@ -59,12 +59,12 @@ export default function AboutPage() {
           onViewportEnter={() => trackEngagement('about_hero_view')}
         >
           <h1 className="text-5xl font-bold mb-6">
-            Our Mission
+            About Promptpedia
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            At Promptpedia, we're on a mission to revolutionize how developers and teams
-            interact with AI through better prompt engineering. We believe in making
-            advanced AI capabilities accessible, collaborative, and efficient.
+            Promptpedia is the world's largest community-driven library of prompt engineering techniques.
+            We curate expert-level prompts from AI practitioners, researchers, and top developers on X/Twitter.
+            Learn one-shot, few-shot, chain-of-thought prompting, and more—all with real-world examples that actually work.
           </p>
         </motion.section>
 
