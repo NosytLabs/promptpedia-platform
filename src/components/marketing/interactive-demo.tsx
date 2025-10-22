@@ -1,10 +1,11 @@
+'use client';
+
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Card } from '@/components/ui/card'
-import { Icons } from '@/components/icons'
 import { trackFeatureUsage } from '@/lib/analytics'
 
 interface DemoStep {
@@ -13,7 +14,7 @@ interface DemoStep {
   component: React.ReactNode
 }
 
-export function InteractiveDemo() {
+export default function InteractiveDemo() {
   const [currentStep, setCurrentStep] = useState(0)
   const [prompt, setPrompt] = useState('')
   const [response, setResponse] = useState('')
@@ -39,7 +40,7 @@ export function InteractiveDemo() {
                 trackFeatureUsage('demo_template_used')
               }}
             >
-              <Icons.template className="mr-2 h-4 w-4" />
+              <span className="mr-2">📝</span>
               Use Template
             </Button>
             <Button
@@ -49,7 +50,7 @@ export function InteractiveDemo() {
                 trackFeatureUsage('demo_clear_prompt')
               }}
             >
-              <Icons.trash className="mr-2 h-4 w-4" />
+              <span className="mr-2">🧹</span>
               Clear
             </Button>
           </div>
@@ -77,12 +78,12 @@ export function InteractiveDemo() {
           >
             {isLoading ? (
               <>
-                <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                <span className="mr-2">⏳</span>
                 Optimizing...
               </>
             ) : (
               <>
-                <Icons.wand className="mr-2 h-4 w-4" />
+                <span className="mr-2">✨</span>
                 Optimize Prompt
               </>
             )}
@@ -108,14 +109,14 @@ export function InteractiveDemo() {
             <Button
               onClick={() => trackFeatureUsage('demo_save_prompt')}
             >
-              <Icons.save className="mr-2 h-4 w-4" />
+              <span className="mr-2">💾</span>
               Save to Library
             </Button>
             <Button
               variant="outline"
               onClick={() => trackFeatureUsage('demo_share_prompt')}
             >
-              <Icons.share className="mr-2 h-4 w-4" />
+              <span className="mr-2">🔗</span>
               Share
             </Button>
           </div>
@@ -173,7 +174,7 @@ export function InteractiveDemo() {
           }}
           disabled={currentStep === 0}
         >
-          <Icons.arrowLeft className="mr-2 h-4 w-4" />
+          <span className="mr-2">←</span>
           Previous
         </Button>
         <Button
@@ -184,7 +185,7 @@ export function InteractiveDemo() {
           disabled={currentStep === demoSteps.length - 1}
         >
           Next
-          <Icons.arrowRight className="ml-2 h-4 w-4" />
+          <span className="ml-2">→</span>
         </Button>
       </div>
     </div>

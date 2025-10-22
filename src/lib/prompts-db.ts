@@ -46,6 +46,12 @@ export function searchPrompts(filter: PromptFilter): Prompt[] {
     );
   }
 
+  if (filter.techniques && filter.techniques.length > 0) {
+    prompts = prompts.filter(p => 
+      p.techniques && p.techniques.some(tech => filter.techniques!.includes(tech))
+    );
+  }
+
   if (filter.tags && filter.tags.length > 0) {
     prompts = prompts.filter(p => 
       p.tags.some(tag => filter.tags!.includes(tag))
@@ -58,7 +64,8 @@ export function searchPrompts(filter: PromptFilter): Prompt[] {
       p.title.toLowerCase().includes(searchLower) ||
       p.description.toLowerCase().includes(searchLower) ||
       p.promptText.toLowerCase().includes(searchLower) ||
-      p.tags.some(tag => tag.toLowerCase().includes(searchLower))
+      p.tags.some(tag => tag.toLowerCase().includes(searchLower)) ||
+      (p.techniques?.some(tech => tech.toLowerCase().includes(searchLower)) ?? false)
     );
   }
 
@@ -92,6 +99,7 @@ export function createPrompt(submission: PromptSubmission): Prompt {
   const newPrompt: Prompt = {
     id: `prompt-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
     ...submission,
+    techniques: submission.techniques && submission.techniques.length > 0 ? submission.techniques : ['standard'],
     rating: 0,
     votes: 0,
     views: 0,
