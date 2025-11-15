@@ -1,49 +1,31 @@
-import { NextRequest, NextResponse } from "next/server"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { NextRequest } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { apiResponse, handleApiError } from "@/lib/api-response"
+import { requireAuth } from "@/lib/api-auth"
 
 export const dynamic = "force-dynamic"
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
-
-    if (!session || !session.user?.id) {
-      return NextResponse.json(
-        { message: "Unauthorized" },
-        { status: 401 }
-      )
-    }
+    const session = await requireAuth(request)
 
     const membership = await prisma.membership.findUnique({
       where: { userId: session.user.id },
     })
 
     if (!membership) {
-      return NextResponse.json(
-        { message: "Membership not found" },
-        { status: 404 }
-      )
+      return apiResponse.notFound("Membership not found")
     }
 
-    // Update membership to mark as cancel at period end
     await prisma.membership.update({
       where: { userId: session.user.id },
       data: { cancelAtPeriodEnd: true },
     })
 
-    // TODO: Call Stripe API to cancel the subscription
-
-    return NextResponse.json(
-      { message: "Subscription scheduled for cancellation" },
-      { status: 200 }
-    )
+    return apiResponse.success({ 
+      message: "Subscription scheduled for cancellation" 
+    })
   } catch (error) {
-    console.error("Error cancelling subscription:", error)
-    return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 }
-    )
+    return handleApiError(error)
   }
 }

@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from "next/server"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { NextRequest } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { apiResponse, ApiError, handleApiError } from "@/lib/api-response"
+import { requireAuth } from "@/lib/api-auth"
+import { parseJson, schemas } from "@/lib/api-validation"
 
 export const dynamic = "force-dynamic"
 
@@ -20,25 +21,17 @@ export async function GET(
     })
 
     if (!prompt) {
-      return NextResponse.json(
-        { message: "Prompt not found" },
-        { status: 404 }
-      )
+      return apiResponse.notFound("Prompt not found")
     }
 
-    // Increment view count
     await prisma.prompt.update({
       where: { id: params.id },
       data: { viewCount: { increment: 1 } },
     })
 
-    return NextResponse.json(prompt, { status: 200 })
+    return apiResponse.success(prompt)
   } catch (error) {
-    console.error("Error fetching prompt:", error)
-    return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 }
-    )
+    return handleApiError(error)
   }
 }
 
@@ -47,47 +40,30 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
-    const session = await getServerSession(authOptions)
-
-    if (!session || !session.user?.id) {
-      return NextResponse.json(
-        { message: "Unauthorized" },
-        { status: 401 }
-      )
-    }
+    const session = await requireAuth(request)
 
     const prompt = await prisma.prompt.findUnique({
       where: { id: params.id },
     })
 
     if (!prompt) {
-      return NextResponse.json(
-        { message: "Prompt not found" },
-        { status: 404 }
-      )
+      return apiResponse.notFound("Prompt not found")
     }
 
     if (prompt.userId !== session.user.id) {
-      return NextResponse.json(
-        { message: "Forbidden" },
-        { status: 403 }
-      )
+      return apiResponse.forbidden()
     }
 
-    const updates = await request.json()
+    const updates = await parseJson(request, schemas.prompt.update)
 
     const updatedPrompt = await prisma.prompt.update({
       where: { id: params.id },
       data: updates,
     })
 
-    return NextResponse.json(updatedPrompt, { status: 200 })
+    return apiResponse.success(updatedPrompt)
   } catch (error) {
-    console.error("Error updating prompt:", error)
-    return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 }
-    )
+    return handleApiError(error)
   }
 }
 
@@ -96,46 +72,26 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const session = await getServerSession(authOptions)
-
-    if (!session || !session.user?.id) {
-      return NextResponse.json(
-        { message: "Unauthorized" },
-        { status: 401 }
-      )
-    }
+    const session = await requireAuth(request)
 
     const prompt = await prisma.prompt.findUnique({
       where: { id: params.id },
     })
 
     if (!prompt) {
-      return NextResponse.json(
-        { message: "Prompt not found" },
-        { status: 404 }
-      )
+      return apiResponse.notFound("Prompt not found")
     }
 
     if (prompt.userId !== session.user.id && session.user.role !== "admin") {
-      return NextResponse.json(
-        { message: "Forbidden" },
-        { status: 403 }
-      )
+      return apiResponse.forbidden()
     }
 
     await prisma.prompt.delete({
       where: { id: params.id },
     })
 
-    return NextResponse.json(
-      { message: "Prompt deleted successfully" },
-      { status: 200 }
-    )
+    return apiResponse.success({ message: "Prompt deleted successfully" })
   } catch (error) {
-    console.error("Error deleting prompt:", error)
-    return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 }
-    )
+    return handleApiError(error)
   }
 }

@@ -1,26 +1,17 @@
-import { NextRequest, NextResponse } from "next/server"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { NextRequest } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { apiResponse, handleApiError } from "@/lib/api-response"
+import { requireAuth } from "@/lib/api-auth"
 
 export const dynamic = "force-dynamic"
 
 export async function GET(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
-
-    if (!session || !session.user?.id) {
-      return NextResponse.json(
-        { message: "Unauthorized" },
-        { status: 401 }
-      )
-    }
-
-    const userId = session.user.id
+    const session = await requireAuth(request)
 
     const [prompts, forumPosts] = await Promise.all([
       prisma.prompt.findMany({
-        where: { userId },
+        where: { userId: session.user.id },
         select: {
           id: true,
           status: true,
@@ -29,7 +20,7 @@ export async function GET(request: NextRequest) {
         },
       }),
       prisma.forumPost.count({
-        where: { userId },
+        where: { userId: session.user.id },
       }),
     ])
 
@@ -41,12 +32,8 @@ export async function GET(request: NextRequest) {
       forumPostsCount: forumPosts,
     }
 
-    return NextResponse.json(stats, { status: 200 })
+    return apiResponse.success(stats)
   } catch (error) {
-    console.error("Error fetching user stats:", error)
-    return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 }
-    )
+    return handleApiError(error)
   }
 }

@@ -1,7 +1,9 @@
-import { NextRequest, NextResponse } from "next/server"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { NextRequest } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { apiResponse, ApiError, handleApiError } from "@/lib/api-response"
+import { requireAuth } from "@/lib/api-auth"
+import { parseJson, schemas } from "@/lib/api-validation"
+import { getPaginationParams, createPaginatedResponse } from "@/lib/api-pagination"
 
 export const dynamic = "force-dynamic"
 
@@ -12,6 +14,7 @@ export async function GET(request: NextRequest) {
     const technique = searchParams.get("technique")
     const search = searchParams.get("search")
     const userId = searchParams.get("userId")
+    const { skip, take } = getPaginationParams(searchParams, 100)
 
     const where: any = { isPublic: true, status: "PUBLISHED" }
 
@@ -25,8 +28,8 @@ export async function GET(request: NextRequest) {
 
     if (search) {
       where.OR = [
-        { title: { contains: search, mode: "insensitive" } },
-        { description: { contains: search, mode: "insensitive" } },
+        { title: { contains: search, mode: "insensitive" as const } },
+        { description: { contains: search, mode: "insensitive" as const } },
       ]
     }
 
@@ -34,66 +37,41 @@ export async function GET(request: NextRequest) {
       where.userId = userId
     }
 
-    const prompts = await prisma.prompt.findMany({
-      where,
-      include: {
-        user: {
-          select: { name: true, image: true },
+    const [prompts, total] = await Promise.all([
+      prisma.prompt.findMany({
+        where,
+        include: {
+          user: {
+            select: { name: true, image: true },
+          },
         },
-      },
-      orderBy: { createdAt: "desc" },
-      take: 100,
-    })
+        orderBy: { createdAt: "desc" },
+        skip,
+        take,
+      }),
+      prisma.prompt.count({ where }),
+    ])
 
-    return NextResponse.json(prompts, { status: 200 })
-  } catch (error) {
-    console.error("Error fetching prompts:", error)
-    return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 }
+    return apiResponse.success(
+      createPaginatedResponse(prompts, total, skip, take)
     )
+  } catch (error) {
+    return handleApiError(error)
   }
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await requireAuth(request)
 
-    if (!session || !session.user?.id) {
-      return NextResponse.json(
-        { message: "Unauthorized" },
-        { status: 401 }
-      )
-    }
+    const body = await parseJson(request, schemas.prompt.create)
 
-    const {
-      title,
-      description,
-      promptText,
-      category,
-      techniques,
-      aiSystems,
-      tags,
-      examples,
-    } = await request.json()
-
-    if (!title || !promptText) {
-      return NextResponse.json(
-        { message: "Title and promptText are required" },
-        { status: 400 }
-      )
-    }
-
-    // Check membership limit
     const membership = await prisma.membership.findUnique({
       where: { userId: session.user.id },
     })
 
     if (!membership) {
-      return NextResponse.json(
-        { message: "Membership not found" },
-        { status: 404 }
-      )
+      throw new ApiError("Membership not found", 404)
     }
 
     const existingPromptsCount = await prisma.prompt.count({
@@ -101,36 +79,30 @@ export async function POST(request: NextRequest) {
     })
 
     if (existingPromptsCount >= membership.customPromptsLimit) {
-      return NextResponse.json(
-        {
-          message: `You have reached the limit of ${membership.customPromptsLimit} custom prompts for your ${membership.tier} plan`,
-        },
-        { status: 403 }
+      throw new ApiError(
+        `You have reached the limit of ${membership.customPromptsLimit} custom prompts for your ${membership.tier} plan`,
+        403
       )
     }
 
     const prompt = await prisma.prompt.create({
       data: {
         userId: session.user.id,
-        title,
-        description,
-        promptText,
-        category: category || "General",
-        techniques: techniques || [],
-        aiSystems: aiSystems || [],
-        tags: tags || [],
-        examples,
+        title: body.title,
+        description: body.description,
+        promptText: body.promptText,
+        category: body.category || "General",
+        techniques: body.techniques || [],
+        aiSystems: body.aiSystems || [],
+        tags: body.tags || [],
+        examples: body.examples,
         isPublic: true,
         status: "PUBLISHED",
       },
     })
 
-    return NextResponse.json(prompt, { status: 201 })
+    return apiResponse.created(prompt)
   } catch (error) {
-    console.error("Error creating prompt:", error)
-    return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 }
-    )
+    return handleApiError(error)
   }
 }

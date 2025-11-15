@@ -1,32 +1,32 @@
-import { NextRequest, NextResponse } from "next/server"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { NextRequest } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { apiResponse, handleApiError } from "@/lib/api-response"
+import { requireAuth } from "@/lib/api-auth"
+import { getPaginationParams, createPaginatedResponse } from "@/lib/api-pagination"
 
 export const dynamic = "force-dynamic"
 
 export async function GET(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await requireAuth(request)
+    const { skip, take } = getPaginationParams(request.nextUrl.searchParams, 100)
 
-    if (!session || !session.user?.id) {
-      return NextResponse.json(
-        { message: "Unauthorized" },
-        { status: 401 }
-      )
-    }
+    const [prompts, total] = await Promise.all([
+      prisma.prompt.findMany({
+        where: { userId: session.user.id },
+        orderBy: { createdAt: "desc" },
+        skip,
+        take,
+      }),
+      prisma.prompt.count({
+        where: { userId: session.user.id },
+      }),
+    ])
 
-    const prompts = await prisma.prompt.findMany({
-      where: { userId: session.user.id },
-      orderBy: { createdAt: "desc" },
-    })
-
-    return NextResponse.json(prompts, { status: 200 })
-  } catch (error) {
-    console.error("Error fetching user prompts:", error)
-    return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 }
+    return apiResponse.success(
+      createPaginatedResponse(prompts, total, skip, take)
     )
+  } catch (error) {
+    return handleApiError(error)
   }
 }

@@ -1,7 +1,9 @@
-import { NextRequest, NextResponse } from "next/server"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { NextRequest } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { apiResponse, handleApiError } from "@/lib/api-response"
+import { requireAuth } from "@/lib/api-auth"
+import { parseJson, schemas } from "@/lib/api-validation"
+import { getPaginationParams, createPaginatedResponse } from "@/lib/api-pagination"
 
 export const dynamic = "force-dynamic"
 
@@ -10,6 +12,7 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
     const category = searchParams.get("category")
     const search = searchParams.get("search")
+    const { skip, take } = getPaginationParams(searchParams, 50)
 
     const where: any = { status: "PUBLISHED" }
 
@@ -19,24 +22,28 @@ export async function GET(request: NextRequest) {
 
     if (search) {
       where.OR = [
-        { title: { contains: search, mode: "insensitive" } },
-        { content: { contains: search, mode: "insensitive" } },
+        { title: { contains: search, mode: "insensitive" as const } },
+        { content: { contains: search, mode: "insensitive" as const } },
       ]
     }
 
-    const posts = await prisma.forumPost.findMany({
-      where,
-      include: {
-        user: {
-          select: { name: true, image: true },
+    const [posts, total] = await Promise.all([
+      prisma.forumPost.findMany({
+        where,
+        include: {
+          user: {
+            select: { name: true, image: true },
+          },
+          _count: {
+            select: { replies: true },
+          },
         },
-        _count: {
-          select: { replies: true },
-        },
-      },
-      orderBy: { createdAt: "desc" },
-      take: 50,
-    })
+        orderBy: { createdAt: "desc" },
+        skip,
+        take,
+      }),
+      prisma.forumPost.count({ where }),
+    ])
 
     const formattedPosts = posts.map((post) => ({
       ...post,
@@ -44,52 +51,32 @@ export async function GET(request: NextRequest) {
       _count: undefined,
     }))
 
-    return NextResponse.json(formattedPosts, { status: 200 })
-  } catch (error) {
-    console.error("Error fetching forum posts:", error)
-    return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 }
+    return apiResponse.success(
+      createPaginatedResponse(formattedPosts, total, skip, take)
     )
+  } catch (error) {
+    return handleApiError(error)
   }
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await requireAuth(request)
 
-    if (!session || !session.user?.id) {
-      return NextResponse.json(
-        { message: "Unauthorized" },
-        { status: 401 }
-      )
-    }
-
-    const { title, content, category } = await request.json()
-
-    if (!title || !content) {
-      return NextResponse.json(
-        { message: "Missing required fields" },
-        { status: 400 }
-      )
-    }
+    const body = await parseJson(request, schemas.forum.createPost)
 
     const post = await prisma.forumPost.create({
       data: {
-        title,
-        content,
-        category: category || "general",
+        title: body.title,
+        content: body.content,
+        category: body.category || "general",
         userId: session.user.id,
         status: "PUBLISHED",
       },
     })
 
-    return NextResponse.json(post, { status: 201 })
+    return apiResponse.created(post)
   } catch (error) {
-    console.error("Error creating forum post:", error)
-    return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 }
-    )
+    return handleApiError(error)
   }
 }
