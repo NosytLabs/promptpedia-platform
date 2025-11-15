@@ -1,3 +1,5 @@
+'use client'
+
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
@@ -10,11 +12,6 @@ import { trackFeatureUsage } from '@/lib/analytics'
 const PricingComparison = dynamic(() => import('@/components/marketing/pricing-comparison'), {
   loading: () => <Loading />,
 })
-
-export const metadata = {
-  title: 'Pricing - Promptpedia',
-  description: 'Choose the perfect plan for your prompt engineering needs.',
-}
 
 const faqs = [
   {

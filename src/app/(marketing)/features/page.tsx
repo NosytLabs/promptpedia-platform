@@ -1,3 +1,5 @@
+'use client'
+
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
@@ -14,11 +16,6 @@ const FeatureCard = dynamic(() => import('@/components/ui/feature-card'), {
 const InteractiveDemo = dynamic(() => import('@/components/marketing/interactive-demo'), {
   loading: () => <Loading />,
 })
-
-export const metadata = {
-  title: 'Features - Promptpedia',
-  description: 'Discover the powerful features of Promptpedia for prompt engineering and optimization.',
-}
 
 export default function FeaturesPage() {
   const features = [
