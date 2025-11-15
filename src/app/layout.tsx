@@ -9,6 +9,7 @@ import '@/styles/globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
+  metadataBase: new URL('https://promptpedia.com'),
   title: 'Promptpedia - Expert Prompt Engineering Library & Community',
   description: 'Master one-shot, few-shot, chain-of-thought & more. 18+ expert prompt techniques with real examples from X/Twitter\'s top AI practitioners.',
   keywords: 'prompt engineering, one-shot learning, few-shot learning, chain-of-thought, AI prompts, ChatGPT, Claude, prompt library, community',

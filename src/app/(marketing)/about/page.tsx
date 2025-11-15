@@ -1,11 +1,8 @@
+'use client'
+
 import { motion } from 'framer-motion'
 import { trackEngagement } from '@/lib/analytics'
 import { ErrorBoundary } from '@/components/ui/error-boundary'
-
-export const metadata = {
-  title: 'About - Promptpedia',
-  description: 'Learn about our mission to revolutionize prompt engineering and make AI more accessible.',
-}
 
 export default function AboutPage() {
   const team = [
