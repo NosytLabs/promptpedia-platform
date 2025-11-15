@@ -37,10 +37,10 @@ export default function BillingSettingsPage() {
       const response = await fetch("/api/user/billing")
       if (response.ok) {
         const data = await response.json()
-        setBilling(data)
+        setBilling(data.data)
       }
     } catch (error) {
-      console.error("Failed to fetch billing data:", error)
+      // Silently fail - defaults will be shown
     } finally {
       setLoading(false)
     }
@@ -61,9 +61,10 @@ export default function BillingSettingsPage() {
       if (response.ok) {
         fetchBillingData()
         alert("Subscription cancelled successfully")
+      } else {
+        alert("Failed to cancel subscription")
       }
     } catch (error) {
-      console.error("Failed to cancel subscription:", error)
       alert("Failed to cancel subscription")
     }
   }

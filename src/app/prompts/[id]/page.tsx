@@ -25,12 +25,11 @@ export default function PromptDetailPage() {
       const response = await fetch(`/api/prompts/${id}`);
       if (response.ok) {
         const data = await response.json();
-        setPrompt(data.prompt);
+        setPrompt(data.data);
       } else {
         router.push('/prompts');
       }
     } catch (error) {
-      console.error('Error fetching prompt:', error);
       router.push('/prompts');
     } finally {
       setLoading(false);
@@ -43,7 +42,7 @@ export default function PromptDetailPage() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (error) {
-      console.error('Failed to copy:', error);
+      // Silently fail - copy to clipboard might not be supported
     }
   };
 

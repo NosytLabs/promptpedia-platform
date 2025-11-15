@@ -25,10 +25,10 @@ export default function Home() {
       const featuredData = await featuredResponse.json();
       const recentData = await recentResponse.json();
 
-      setFeaturedPrompts(featuredData.prompts || []);
-      setRecentPrompts((recentData.prompts || []).slice(0, 6));
+      setFeaturedPrompts(featuredData.data?.items || []);
+      setRecentPrompts((recentData.data?.items || []).slice(0, 6));
     } catch (error) {
-      console.error('Error fetching prompts:', error);
+      // Silently fail - prompts will just not display
     } finally {
       setLoading(false);
     }

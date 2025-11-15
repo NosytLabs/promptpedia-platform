@@ -57,15 +57,15 @@ export default function DashboardPage() {
 
       if (statsRes.ok) {
         const statsData = await statsRes.json()
-        setStats(statsData)
+        setStats(statsData.data)
       }
 
       if (membershipRes.ok) {
         const membershipData = await membershipRes.json()
-        setMembership(membershipData)
+        setMembership(membershipData.data)
       }
     } catch (error) {
-      console.error("Failed to fetch dashboard data:", error)
+      // Silently fail - defaults will be shown
     } finally {
       setLoading(false)
     }
