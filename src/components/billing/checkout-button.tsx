@@ -2,13 +2,42 @@
 
 import { useState } from "react"
 import { useSession } from "next-auth/react"
+import { AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { MEMBERSHIP_TIERS, MembershipTierConfig } from "@/lib/membership-tiers"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { MEMBERSHIP_TIERS } from "@/lib/membership-tiers"
+import * as toast from "@/lib/toast"
 
 interface CheckoutButtonProps {
   tier: "PRO" | "PREMIUM" | "ENTERPRISE"
   className?: string
   text?: string
+}
+
+async function fetchWithRetry(
+  url: string,
+  options: RequestInit = {},
+  retries = 3
+) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await fetch(url, options)
+      if (response.ok) return response
+      if (response.status >= 500 && i < retries - 1) {
+        // Retry on server error
+        await new Promise((resolve) => setTimeout(resolve, 1000 * (i + 1)))
+        continue
+      }
+      return response
+    } catch (err) {
+      if (i < retries - 1) {
+        await new Promise((resolve) => setTimeout(resolve, 1000 * (i + 1)))
+        continue
+      }
+      throw err
+    }
+  }
+  throw new Error("Failed after retries")
 }
 
 export function CheckoutButton({
@@ -30,44 +59,50 @@ export function CheckoutButton({
 
     setLoading(true)
     setError(null)
+    const toastId = toast.loading("Preparing checkout...")
 
     try {
-      const response = await fetch(`/api/checkout?tier=${tier}`)
+      const response = await fetchWithRetry(`/api/checkout?tier=${tier}`)
       const data = await response.json()
 
       if (!response.ok) {
-        throw new Error(data.error || "Checkout failed")
+        throw new Error(data.error || data.message || "Checkout failed")
       }
 
       // Redirect to Dodo Payments checkout
       if (data.data?.checkoutUrl) {
+        toast.removeToast(toastId)
         window.location.href = data.data.checkoutUrl
       } else {
         throw new Error("No checkout URL provided")
       }
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Checkout failed"
+      const message =
+        err instanceof Error ? err.message : "Checkout failed"
       setError(message)
-      console.error("Checkout error:", err)
+      toast.removeToast(toastId)
+      toast.error(message, "Checkout Error")
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-3 w-full">
       <Button
         onClick={handleCheckout}
         disabled={loading}
         className={className}
         size="lg"
+        aria-busy={loading}
       >
-        {loading ? "Processing..." : text || "Upgrade Now"}
+        {loading ? "Preparing checkout..." : text || "Upgrade Now"}
       </Button>
       {error && (
-        <p className="text-sm text-red-600">
-          {error}
-        </p>
+        <Alert variant="destructive" className="text-sm">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       )}
     </div>
   )
