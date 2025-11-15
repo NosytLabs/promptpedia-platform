@@ -256,7 +256,7 @@ export default function SubmitPromptPage() {
                   required
                 />
                 <p className="text-sm text-slate-500">
-                  Include placeholders like {{VARIABLE}} to make your prompt reusable.
+                  Include placeholders like {'{VARIABLE}'} to make your prompt reusable.
                 </p>
               </div>
             </section>

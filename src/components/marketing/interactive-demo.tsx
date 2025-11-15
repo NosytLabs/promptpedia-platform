@@ -14,6 +14,108 @@ interface DemoStep {
   component: React.ReactNode
 }
 
+function CreatePromptStep({ prompt, setPrompt }: { prompt: string; setPrompt: (value: string) => void }) {
+  return (
+    <div className="space-y-4">
+      <Textarea
+        placeholder="Write your prompt here..."
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
+        className="min-h-[100px]"
+      />
+      <div className="flex gap-2">
+        <Button
+          variant="outline"
+          onClick={() => {
+            setPrompt('Write a blog post about AI prompt engineering best practices')
+            trackFeatureUsage('demo_template_used')
+          }}
+        >
+          <span className="mr-2">📝</span>
+          Use Template
+        </Button>
+        <Button
+          variant="outline"
+          onClick={() => {
+            setPrompt('')
+            trackFeatureUsage('demo_clear_prompt')
+          }}
+        >
+          <span className="mr-2">🧹</span>
+          Clear
+        </Button>
+      </div>
+    </div>
+  )
+}
+
+function OptimizeStep({
+  prompt,
+  response,
+  isLoading,
+  setResponse,
+  setIsLoading,
+}: {
+  prompt: string
+  response: string
+  isLoading: boolean
+  setResponse: (value: string) => void
+  setIsLoading: (value: boolean) => void
+}) {
+  return (
+    <div className="space-y-4">
+      <Card className="p-4 bg-muted/50">
+        <p className="text-sm font-mono">{prompt}</p>
+      </Card>
+      <Button
+        onClick={async () => {
+          setIsLoading(true)
+          trackFeatureUsage('demo_optimize_prompt')
+          await new Promise(resolve => setTimeout(resolve, 1500))
+          setResponse('Here is your optimized prompt:\n\nCreate a comprehensive guide on AI prompt engineering best practices')
+          setIsLoading(false)
+        }}
+        disabled={!prompt || isLoading}
+      >
+        {isLoading ? (
+          <>
+            <span className="mr-2">⏳</span>
+            Optimizing...
+          </>
+        ) : (
+          <>
+            <span className="mr-2">✨</span>
+            Optimize Prompt
+          </>
+        )}
+      </Button>
+      {response && (
+        <Card className="p-4 bg-primary/10">
+          <p className="text-sm whitespace-pre-wrap">{response}</p>
+        </Card>
+      )}
+    </div>
+  )
+}
+
+function SaveShareStep() {
+  return (
+    <div className="space-y-4">
+      <Input placeholder="Give your prompt a name..." className="mb-4" />
+      <div className="flex gap-2">
+        <Button onClick={() => trackFeatureUsage('demo_save_prompt')}>
+          <span className="mr-2">💾</span>
+          Save to Library
+        </Button>
+        <Button variant="outline" onClick={() => trackFeatureUsage('demo_share_prompt')}>
+          <span className="mr-2">🔗</span>
+          Share
+        </Button>
+      </div>
+    </div>
+  )
+}
+
 export default function InteractiveDemo() {
   const [currentStep, setCurrentStep] = useState(0)
   const [prompt, setPrompt] = useState('')
@@ -24,104 +126,25 @@ export default function InteractiveDemo() {
     {
       title: 'Create a Prompt',
       description: 'Start by writing your prompt or selecting a template',
-      component: (
-        <div className="space-y-4">
-          <Textarea
-            placeholder="Write your prompt here..."
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            className="min-h-[100px]"
-          />
-          <div className="flex gap-2">
-            <Button
-              variant="outline"
-              onClick={() => {
-                setPrompt('Write a blog post about AI prompt engineering best practices')
-                trackFeatureUsage('demo_template_used')
-              }}
-            >
-              <span className="mr-2">📝</span>
-              Use Template
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => {
-                setPrompt('')
-                trackFeatureUsage('demo_clear_prompt')
-              }}
-            >
-              <span className="mr-2">🧹</span>
-              Clear
-            </Button>
-          </div>
-        </div>
-      ),
+      component: <CreatePromptStep prompt={prompt} setPrompt={setPrompt} />,
     },
     {
       title: 'Optimize',
       description: 'Our AI will help you improve your prompt',
       component: (
-        <div className="space-y-4">
-          <Card className="p-4 bg-muted/50">
-            <p className="text-sm font-mono">{prompt}</p>
-          </Card>
-          <Button
-            onClick={async () => {
-              setIsLoading(true)
-              trackFeatureUsage('demo_optimize_prompt')
-              // Simulate optimization
-              await new Promise(resolve => setTimeout(resolve, 1500))
-              setResponse('Here's your optimized prompt:\n\nCreate a comprehensive guide on AI prompt engineering best practices, including:\n- Key principles of effective prompts\n- Common pitfalls to avoid\n- Examples of successful prompts\n- Tips for different AI models\n- Best practices for testing and iteration')
-              setIsLoading(false)
-            }}
-            disabled={!prompt || isLoading}
-          >
-            {isLoading ? (
-              <>
-                <span className="mr-2">⏳</span>
-                Optimizing...
-              </>
-            ) : (
-              <>
-                <span className="mr-2">✨</span>
-                Optimize Prompt
-              </>
-            )}
-          </Button>
-          {response && (
-            <Card className="p-4 bg-primary/10">
-              <p className="text-sm whitespace-pre-wrap">{response}</p>
-            </Card>
-          )}
-        </div>
+        <OptimizeStep
+          prompt={prompt}
+          response={response}
+          isLoading={isLoading}
+          setResponse={setResponse}
+          setIsLoading={setIsLoading}
+        />
       ),
     },
     {
       title: 'Save & Share',
       description: 'Save your prompt to your library and share with your team',
-      component: (
-        <div className="space-y-4">
-          <Input
-            placeholder="Give your prompt a name..."
-            className="mb-4"
-          />
-          <div className="flex gap-2">
-            <Button
-              onClick={() => trackFeatureUsage('demo_save_prompt')}
-            >
-              <span className="mr-2">💾</span>
-              Save to Library
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => trackFeatureUsage('demo_share_prompt')}
-            >
-              <span className="mr-2">🔗</span>
-              Share
-            </Button>
-          </div>
-        </div>
-      ),
+      component: <SaveShareStep />,
     },
   ]
 
