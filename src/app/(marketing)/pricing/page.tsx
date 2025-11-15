@@ -23,11 +23,11 @@ const faqs = [
   },
   {
     question: 'Can I change plans later?',
-    answer: 'Yes, you can upgrade, downgrade, or cancel your plan at any time. Changes take effect immediately, and we'll prorate any payments.',
+    answer: 'Yes, you can upgrade, downgrade, or cancel your plan at any time. Changes take effect immediately, and we will prorate any payments.',
   },
   {
     question: 'Do you offer refunds?',
-    answer: 'Yes, we offer a 30-day money-back guarantee. If you're not satisfied, contact our support team for a full refund.',
+    answer: 'Yes, we offer a 30-day money-back guarantee. If you are not satisfied, contact our support team for a full refund.',
   },
   {
     question: 'What payment methods do you accept?',
@@ -39,7 +39,7 @@ const faqs = [
   },
   {
     question: 'What kind of support do you offer?',
-    answer: 'All plans include community support. Pro plans include priority email support, while Enterprise plans get dedicated support and training.',
+    answer: 'All plans include community support. Pro plans include priority email support, while Enterprise plans get dedicated support and training services.',
   },
 ]
 

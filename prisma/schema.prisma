@@ -1,0 +1,207 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum MembershipTier {
+  FREE
+  PRO
+  PREMIUM
+  ENTERPRISE
+}
+
+enum PromptStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum ForumPostStatus {
+  PUBLISHED
+  ARCHIVED
+  HIDDEN
+}
+
+// NextAuth models
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// User models
+model User {
+  id                    String   @id @default(cuid())
+  name                  String?
+  email                 String?  @unique
+  emailVerified         DateTime?
+  image                 String?
+  bio                   String?
+  role                  String   @default("user") // user, moderator, admin
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  // Relationships
+  accounts              Account[]
+  sessions              Session[]
+  prompts               Prompt[]
+  forumPosts            ForumPost[]
+  forumReplies          ForumReply[]
+  membership            Membership?
+  subscriptions         Subscription[]
+  contributions         UserContribution[]
+  likedPrompts          Prompt[] @relation("PromptLikes")
+  bookmarkedPrompts     Prompt[] @relation("PromptBookmarks")
+}
+
+// Membership models
+model Membership {
+  id                    String   @id @default(cuid())
+  userId                String   @unique
+  tier                  MembershipTier @default(FREE)
+  customPromptsLimit    Int      @default(5)
+  forumAccessLevel      String   @default("basic") // basic, pro, premium, enterprise
+  supportPriority       String   @default("standard")
+  analyticsAccess       Boolean  @default(false)
+  apiAccess             Boolean  @default(false)
+  customBranding        Boolean  @default(false)
+  stripeCustomerId      String?
+  stripeSubscriptionId  String?
+  currentPeriodStart    DateTime?
+  currentPeriodEnd      DateTime?
+  cancelAtPeriodEnd     Boolean  @default(false)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Subscription {
+  id                    String   @id @default(cuid())
+  userId                String
+  stripeProductId       String
+  stripePriceId         String
+  tier                  MembershipTier
+  amount                Int
+  currency              String   @default("usd")
+  interval              String   @default("month") // month, year
+  status                String   @default("active") // active, canceled, past_due
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  cancelledAt           DateTime?
+
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Prompt models
+model Prompt {
+  id                    String   @id @default(cuid())
+  userId                String
+  title                 String
+  description           String?  @db.Text
+  promptText            String   @db.Text
+  category              String?
+  techniques            String[] @default([])
+  tags                  String[] @default([])
+  status                PromptStatus @default(DRAFT)
+  aiSystems            String[] @default([])
+  useCases              String[] @default([])
+  examples              String?  @db.Text
+  isPublic              Boolean  @default(false)
+  viewCount             Int      @default(0)
+  likeCount             Int      @default(0)
+  bookmarkCount         Int      @default(0)
+  rating                Float    @default(0)
+  ratingCount           Int      @default(0)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  // Relationships
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  likedBy               User[]   @relation("PromptLikes")
+  bookmarkedBy          User[]   @relation("PromptBookmarks")
+}
+
+// Forum models
+model ForumPost {
+  id                    String   @id @default(cuid())
+  userId                String
+  title                 String
+  content               String   @db.Text
+  category              String?
+  status                ForumPostStatus @default(PUBLISHED)
+  isPinned              Boolean  @default(false)
+  viewCount             Int      @default(0)
+  likeCount             Int      @default(0)
+  replyCount            Int      @default(0)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  // Relationships
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  replies               ForumReply[]
+}
+
+model ForumReply {
+  id                    String   @id @default(cuid())
+  forumPostId           String
+  userId                String
+  content               String   @db.Text
+  likeCount             Int      @default(0)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  // Relationships
+  forumPost             ForumPost @relation(fields: [forumPostId], references: [id], onDelete: Cascade)
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// User contributions and stats
+model UserContribution {
+  id                    String   @id @default(cuid())
+  userId                String
+  type                  String   // prompt_shared, forum_post, forum_reply, prompt_liked
+  count                 Int      @default(1)
+  month                 DateTime
+  createdAt             DateTime @default(now())
+
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, type, month])
+}
