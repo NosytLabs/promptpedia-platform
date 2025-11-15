@@ -1,36 +1,60 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { Suspense, useState, useEffect } from "react"
 import { useSession } from "next-auth/react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { ArrowLeft, CheckCircle } from "lucide-react"
+import { ArrowLeft, CheckCircle, AlertCircle } from "lucide-react"
 import { MEMBERSHIP_TIERS } from "@/lib/membership-tiers"
+import { CheckoutButton } from "@/components/billing/checkout-button"
 
 interface BillingData {
   tier: string
   currentPeriodStart?: string
   currentPeriodEnd?: string
   cancelAtPeriodEnd: boolean
+  dodoSubscriptionId?: string
   stripeSubscriptionId?: string
 }
 
-export default function BillingSettingsPage() {
+function BillingContent() {
   const { data: session, status } = useSession()
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [billing, setBilling] = useState<BillingData | null>(null)
   const [loading, setLoading] = useState(true)
+  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null)
 
   useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/auth/signin")
     } else if (status === "authenticated") {
       fetchBillingData()
+      handleUrlMessages()
     }
   }, [status, router])
+
+  const handleUrlMessages = () => {
+    const success = searchParams.get("success")
+    const canceled = searchParams.get("canceled")
+
+    if (success === "true") {
+      setMessage({
+        type: "success",
+        text: "Subscription upgraded successfully!",
+      })
+      router.replace("/settings/billing")
+    } else if (canceled === "true") {
+      setMessage({
+        type: "error",
+        text: "Checkout was canceled. Please try again.",
+      })
+      router.replace("/settings/billing")
+    }
+  }
 
   const fetchBillingData = async () => {
     try {
@@ -44,10 +68,6 @@ export default function BillingSettingsPage() {
     } finally {
       setLoading(false)
     }
-  }
-
-  const handleUpgrade = (tierId: string) => {
-    window.location.href = `/api/checkout?tier=${tierId}`
   }
 
   const handleCancelSubscription = async () => {
@@ -94,7 +114,14 @@ export default function BillingSettingsPage() {
 
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Billing & Subscription</h1>
-          <p className="text-gray-600 mb-8">Manage your subscription and billing details</p>
+          <p className="text-gray-600 mb-8">Manage your subscription and billing details with Dodo Payments</p>
+
+          {message && (
+            <Alert variant={message.type === "success" ? "default" : "destructive"} className="mb-6">
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription>{message.text}</AlertDescription>
+            </Alert>
+          )}
 
           {billing?.cancelAtPeriodEnd && (
             <Alert variant="destructive" className="mb-6">
@@ -176,12 +203,11 @@ export default function BillingSettingsPage() {
                         </div>
                       )}
                     </div>
-                    <Button
-                      onClick={() => handleUpgrade(tier.id)}
+                    <CheckoutButton
+                      tier={tier.id as "PRO" | "PREMIUM" | "ENTERPRISE"}
                       className="w-full"
-                    >
-                      Upgrade to {tier.name}
-                    </Button>
+                      text={`Upgrade to ${tier.name}`}
+                    />
                   </Card>
                 ))}
             </div>
@@ -189,5 +215,17 @@ export default function BillingSettingsPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function BillingSettingsPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    }>
+      <BillingContent />
+    </Suspense>
   )
 }
