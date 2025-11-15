@@ -79,9 +79,9 @@ export default function PromptsPage() {
 
       const response = await fetch(`/api/prompts?${params.toString()}`);
       const data = await response.json();
-      setPrompts(data.prompts || []);
+      setPrompts(data.data?.items || []);
     } catch (error) {
-      console.error('Error fetching prompts:', error);
+      setPrompts([]);
     } finally {
       setLoading(false);
     }

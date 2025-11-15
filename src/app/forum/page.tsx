@@ -53,10 +53,10 @@ export default function ForumPage() {
       const response = await fetch(`/api/forum/posts?${params.toString()}`)
       if (response.ok) {
         const data = await response.json()
-        setPosts(data)
+        setPosts(data.data?.items || [])
       }
     } catch (error) {
-      console.error("Failed to fetch posts:", error)
+      setPosts([])
     } finally {
       setLoading(false)
     }

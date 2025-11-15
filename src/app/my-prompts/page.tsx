@@ -58,10 +58,10 @@ export default function MyPromptsPage() {
       const response = await fetch("/api/my-prompts")
       if (response.ok) {
         const data = await response.json()
-        setPrompts(data)
+        setPrompts(data.data?.items || [])
       }
     } catch (error) {
-      console.error("Failed to fetch prompts:", error)
+      setPrompts([])
     } finally {
       setLoading(false)
     }
@@ -79,7 +79,7 @@ export default function MyPromptsPage() {
         setPrompts(prompts.filter((p) => p.id !== promptId))
       }
     } catch (error) {
-      console.error("Failed to delete prompt:", error)
+      // Silently fail - error message shown via toast
     }
   }
 

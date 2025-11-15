@@ -1,20 +1,14 @@
-import { NextRequest, NextResponse } from "next/server"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { NextRequest } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { apiResponse, handleApiError } from "@/lib/api-response"
+import { requireAuth } from "@/lib/api-auth"
+import { parseJson, schemas } from "@/lib/api-validation"
 
 export const dynamic = "force-dynamic"
 
 export async function GET(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
-
-    if (!session || !session.user?.id) {
-      return NextResponse.json(
-        { message: "Unauthorized" },
-        { status: 401 }
-      )
-    }
+    const session = await requireAuth(request)
 
     const user = await prisma.user.findUnique({
       where: { id: session.user.id },
@@ -28,43 +22,32 @@ export async function GET(request: NextRequest) {
       },
     })
 
-    return NextResponse.json(user, { status: 200 })
+    if (!user) {
+      return apiResponse.notFound("User not found")
+    }
+
+    return apiResponse.success(user)
   } catch (error) {
-    console.error("Error fetching profile:", error)
-    return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 }
-    )
+    return handleApiError(error)
   }
 }
 
 export async function PUT(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await requireAuth(request)
 
-    if (!session || !session.user?.id) {
-      return NextResponse.json(
-        { message: "Unauthorized" },
-        { status: 401 }
-      )
-    }
-
-    const { name, bio } = await request.json()
+    const body = await parseJson(request, schemas.profile.update)
 
     const user = await prisma.user.update({
       where: { id: session.user.id },
       data: {
-        name: name || undefined,
-        bio: bio || undefined,
+        name: body.name,
+        bio: body.bio,
       },
     })
 
-    return NextResponse.json(user, { status: 200 })
+    return apiResponse.success(user)
   } catch (error) {
-    console.error("Error updating profile:", error)
-    return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 }
-    )
+    return handleApiError(error)
   }
 }
