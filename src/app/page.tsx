@@ -114,37 +114,38 @@ export default function Home() {
               Learn from 18+ expert techniques curated from X/Twitter's top AI practitioners.
               Built by the community, for the community.
             </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mt-8">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link
-                href="/prompts"
-                className="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-600 text-white rounded-2xl font-bold text-lg shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:translate-y-[-4px]"
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mt-8">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                Browse 200+ Prompts
-              </Link>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link
-                href="/submit"
-                className="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-pink-500 via-purple-500 to-purple-600 text-white rounded-2xl font-bold text-lg shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:translate-y-[-4px] border-2 border-purple-300/30"
+                <Link
+                  href="/prompts"
+                  className="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-600 text-white rounded-2xl font-bold text-lg shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:translate-y-[-4px]"
+                >
+                  <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  Browse 200+ Prompts
+                </Link>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-                Share Your Prompt
-              </Link>
-            </motion.div>
-          </div>
-        </motion.div>
+                <Link
+                  href="/submit"
+                  className="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-pink-500 via-purple-500 to-purple-600 text-white rounded-2xl font-bold text-lg shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:translate-y-[-4px] border-2 border-purple-300/30"
+                >
+                  <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                  </svg>
+                  Share Your Prompt
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       <section className="container mx-auto px-4 py-20 bg-gradient-to-b from-white via-blue-50 to-slate-50">

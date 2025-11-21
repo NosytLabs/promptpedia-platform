@@ -98,15 +98,22 @@ export default function FAQSection() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-slate-600 mb-4">Still have questions?</p>
-          <a
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mt-16 text-center"
+        >
+          <p className="text-slate-600 mb-6 text-lg font-medium">Still have questions?</p>
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             href="mailto:hello@promptpedia.com"
-            className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition"
+            className="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:translate-y-[-2px]"
           >
-            Contact Us
-          </a>
-        </div>
+            💬 Contact Us
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );
