@@ -17,6 +17,8 @@ export function Navbar() {
     { name: '🎯 Browse', href: '/prompts' },
     { name: '⚡ Generate', href: '/generate' },
     { name: '📚 Learn', href: '/blog' },
+    { name: '🛠️ Tools', href: '/tools' },
+    { name: '📋 Templates', href: '/templates' },
   ];
 
   const isActive = (href: string) => {
