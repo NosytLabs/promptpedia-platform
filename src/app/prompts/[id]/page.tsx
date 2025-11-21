@@ -338,7 +338,7 @@ export default function PromptDetailPage() {
                 </p>
                 {prompt.rating && prompt.rating > 0 && (
                   <p className="text-sm font-medium text-slate-700 mt-1">
-                    Community average: {prompt.rating.toFixed(1)} ⭐ ({prompt.ratingCount || 0} ratings)
+                    Community average: {prompt.rating.toFixed(1)} ⭐ ({(prompt.ratingCount || 0)} ratings)
                   </p>
                 )}
               </div>
