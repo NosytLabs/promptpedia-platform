@@ -79,6 +79,7 @@ export interface Prompt {
   author: string;
   authorEmail?: string;
   rating?: number;
+  ratingCount?: number;
   votes?: number;
   views?: number;
   createdAt: string;
