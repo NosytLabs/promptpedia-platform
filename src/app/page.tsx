@@ -1,5 +1,8 @@
 'use client';
 
+// Cache homepage for 1 hour - huge cost savings
+export const revalidate = 3600;
+
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';

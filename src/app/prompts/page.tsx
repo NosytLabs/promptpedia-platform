@@ -1,5 +1,8 @@
 'use client';
 
+// Cache prompts page for 1 hour - generate static HTML then revalidate
+export const revalidate = 3600;
+
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
