@@ -19,9 +19,9 @@ For each, provide:
 3. Average pricing model
 4. Why it's profitable
 5. Getting started steps`,
-    category: 'Business',
+    category: ['Business'],
     aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Brainstorming', 'Market Analysis'],
+    techniques: ['Brainstorming', 'Analysis'],
     tags: ['freelance', 'money', 'side-hustle', 'business'],
     useCases: ['Entrepreneurship', 'Career planning'],
     examples: 'Technical writing, UI/UX design consulting, business process automation',
@@ -41,7 +41,7 @@ Create:
 5. Urgency email (close)
 
 Use copywriting formulas: AIDA, PAS, or storytelling approach`,
-    category: 'Marketing',
+    category: ['Marketing'],
     aiSystem: ['ChatGPT', 'Claude'],
     techniques: ['Copywriting', 'Psychology'],
     tags: ['sales', 'marketing', 'conversions', 'email'],
@@ -63,7 +63,7 @@ Provide analysis on:
 7. Payment term options
 
 Consider market positioning: Premium, Mid-market, Budget`,
-    category: 'Business',
+    category: ['Business'],
     aiSystem: ['ChatGPT', 'Claude'],
     techniques: ['Analysis', 'Strategy'],
     tags: ['pricing', 'business', 'strategy', 'revenue'],
@@ -86,7 +86,7 @@ Evaluate each on:
 - Time to first $100
 - Maximum possible income
 - Barriers to entry`,
-    category: 'Business',
+    category: ['Business'],
     aiSystem: ['ChatGPT', 'Claude'],
     techniques: ['Brainstorming', 'Analysis'],
     tags: ['passive-income', 'money', 'business', 'automation'],
@@ -102,1215 +102,558 @@ Current role: [YOUR ROLE]
 Ideal clients: [TARGET MARKET]
 Unique value: [YOUR EXPERTISE]
 
-Generate:
-1. Headline (220 char) - keyword-optimized for discovery
-2. About section (2600 char) - compelling story + authority
-3. Headline/tagline variations (5 options)
-4. Content strategy (5 post ideas weekly)
-5. CTA strategy (DM templates)
-6. Skills to list (top 20)
-7. Hashtag strategy
+Generate optimized:
+1. Headline (60 chars max)
+2. About section (compelling story)
+3. Experience bullets (achievement-focused)
+4. Skills endorsements strategy
+5. Content posting strategy
 
-Focus on: Credibility, relatability, conversions`,
-    category: 'Marketing',
+Make it conversion-focused for B2B sales.`,
+    category: ['Business'],
     aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Copywriting', 'Personal Branding'],
-    tags: ['linkedin', 'sales', 'leads', 'branding'],
-    useCases: ['B2B sales', 'Personal branding'],
-    examples: 'Consultants, coaches, B2B services',
+    techniques: ['Copywriting', 'Marketing'],
+    tags: ['linkedin', 'sales', 'business', 'personal-brand'],
+    useCases: ['Lead generation', 'B2B sales'],
+    examples: 'Consulting, agencies, SaaS sales professionals',
   },
   {
-    title: 'Product Launch Campaign Framework',
-    description: 'Strategic 30-day product launch plan with messaging',
-    promptText: `Create a complete product launch campaign for [PRODUCT]:
+    title: 'Create Viral TikTok/Reels Scripts',
+    description: 'Write engaging short-form video scripts with hooks',
+    promptText: `Write 5 viral TikTok/Instagram Reel scripts (15-30 seconds) about [TOPIC]:
 
-Timeline: 30 days
+For each script:
+1. Hook (first 2 seconds - stop scrolling)
+2. Body (unique value/entertainment)
+3. Call-to-action (follow, comment, share)
+4. Caption/text overlay suggestions
+5. Music/sound recommendations
+6. Hashtag strategy
 
-Phases:
-1. Pre-launch (Days 1-7)
-   - Waitlist building
-   - Content strategy
-   - Influencer outreach
-
-2. Launch day (Day 15)
-   - Email sequence
-   - Social media blitz
-   - Press release angles
-
-3. Momentum (Days 15-30)
-   - Customer stories
-   - Social proof campaigns
-   - Upsell sequences
-
-Include:
-- Messaging frameworks
-- Content calendar (posts/emails)
-- Metrics to track
-- Budget allocation`,
-    category: 'Marketing',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Strategy', 'Project management'],
-    tags: ['launch', 'marketing', 'product', 'growth'],
-    useCases: ['Product launches', 'SaaS releases'],
-    examples: 'Software launches, digital products, services',
-  },
-  {
-    title: 'High-Ticket Sales Objection Handler',
-    description: 'Handle sophisticated sales objections for premium offerings',
-    promptText: `I sell high-ticket services ($5000-50000). Create responses for:
-
-Objection 1: "I need to think about it"
-Objection 2: "I don't have the budget"
-Objection 3: "Can I get a discount?"
-Objection 4: "I need to ask my team/partner"
-Objection 5: "Your competitor is cheaper"
-
-For each, provide:
-1. Underlying concern (what they're really saying)
-2. Validation response
-3. Reframe (shift perspective)
-4. Proof/authority
-5. CTA
-
-Use psychology: loss aversion, social proof, urgency`,
-    category: 'Sales',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Persuasion', 'Sales Psychology'],
-    tags: ['sales', 'objections', 'high-ticket', 'conversion'],
-    useCases: ['B2B sales', 'Consulting'],
-    examples: 'Software sales, coaching, consulting',
-  },
-  {
-    title: 'Affiliate Marketing Strategy Builder',
-    description: 'Create profitable affiliate marketing campaigns',
-    promptText: `Build a profitable affiliate marketing strategy for [NICHE]:
-
-1. Product selection
-   - Commission rates analysis
-   - Audience alignment
-   - Demand level
-
-2. Traffic generation
-   - Channel selection (blog, YouTube, email)
-   - SEO keywords (high intent)
-   - Content calendar (30 days)
-
-3. Conversion optimization
-   - CTR improvement tactics
-   - Pre-sell content strategy
-   - A/B testing plan
-
-4. Metrics to track
-   - Commission targets
-   - ROI calculations
-   - Attribution modeling
-
-5. Scaling strategy
-   - From 0-$100/month
-   - From $100-$1000/month
-   - From $1000+/month`,
-    category: 'Business',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Marketing', 'Strategy'],
-    tags: ['affiliate', 'marketing', 'passive-income', 'growth'],
-    useCases: ['Passive income', 'Entrepreneurship'],
-    examples: 'Niche blogs, YouTube channels, email lists',
-  },
-  {
-    title: 'Customer Retention & Loyalty Program',
-    description: 'Design systems to retain customers and increase lifetime value',
-    promptText: `Design a customer retention program for [BUSINESS]:
-
-Current churn rate: [X%]
-Average customer lifetime: [Y months]
-Goal: Increase LTV by [Z%]
-
-Create:
-1. Churn analysis (why customers leave)
-2. Retention tactics by stage:
-   - Days 0-30 (onboarding)
-   - Days 30-90 (engagement)
-   - Days 90+ (loyalty)
-
-3. Loyalty program structure
-   - Point system
-   - Rewards tiers
-   - Exclusive perks
-
-4. Win-back campaigns
-   - For dormant customers
-   - Re-engagement messaging
-   - Special incentives
-
-5. Metrics & KPIs
-   - NPS, retention rate, LTV`,
-    category: 'Business',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Strategy', 'Psychology'],
-    tags: ['retention', 'loyalty', 'customer-success', 'revenue'],
-    useCases: ['SaaS', 'Subscription businesses'],
-    examples: 'Membership sites, subscriptions, software',
-  },
-  {
-    title: 'Influencer Collaboration Deal Proposal',
-    description: 'Craft compelling partnership proposals for influencers',
-    promptText: `Create an influencer partnership proposal:
-
-Brand: [YOUR BRAND]
-Budget: $[AMOUNT]
-Influencer tier: [MICRO/MACRO/MEGA]
-Goals: [AWARENESS/SALES/ENGAGEMENT]
-
-Include:
-1. Partnership overview
-2. Deliverables breakdown
-   - Posts (Instagram/TikTok)
-   - Stories/Reels
-   - Video content
-   - Duration
-
-3. Performance metrics
-   - Expected reach
-   - Engagement rate targets
-   - Click-through metrics
-
-4. Timeline & payments
-   - Payment schedule
-   - Content approval process
-   - Rights & exclusivity
-
-5. Influencer benefits
-   - Compensation
-   - Product/access
-   - Personal branding`,
-    category: 'Marketing',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Negotiation', 'Marketing'],
-    tags: ['influencer', 'marketing', 'partnerships', 'growth'],
-    useCases: ['Brand marketing', 'Product launches'],
-    examples: 'Startups, e-commerce, SaaS',
-  },
-  
-  // Making Books & Content (8)
-  {
-    title: 'Book Outline Generator (Non-Fiction)',
-    description: 'Create detailed chapter outlines for non-fiction books',
-    promptText: `Create a detailed book outline for:
-Title: [YOUR BOOK TITLE]
-Topic: [MAIN TOPIC]
-Target audience: [WHO READS THIS]
-Book length: [50k/80k/100k words]
-
-Provide:
-1. Front matter (intro, why now, benefits)
-2. 8-12 chapter breakdown
-   - Chapter title
-   - Main thesis
-   - Key points (3-5)
-   - Real-world examples
-   - Word count target
-
-3. For each chapter:
-   - Opening hook
-   - Story/anecdote
-   - Core concepts
-   - Actionable takeaways
-   - Transitions
-
-4. Back matter (conclusion, resources, glossary)
-5. Writing timeline (weeks needed)`,
-    category: 'Writing',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Outlining', 'Storytelling'],
-    tags: ['book', 'writing', 'non-fiction', 'content'],
-    useCases: ['Self-publishing', 'Authority building'],
-    examples: 'Memoir, how-to, business books',
-  },
-  {
-    title: 'Fiction Novel Story Bible',
-    description: 'Develop comprehensive story bibles for fiction novels',
-    promptText: `Create a story bible for a novel:
-Genre: [FANTASY/SCI-FI/THRILLER]
-Premise: [ONE SENTENCE]
-Target length: [WORDS]
-
-Include:
-1. World-building
-   - Setting details
-   - Rules/magic systems
-   - History/lore
-
-2. Characters (5-7 main)
-   - Background
-   - Motivations
-   - Flaws
-   - Character arc
-
-3. Plot outline
-   - Act 1: Setup (inciting incident)
-   - Act 2: Confrontation (complications)
-   - Act 3: Resolution (climax)
-   - Subplots (3-4)
-
-4. Theme & message
-5. Tone & style
-6. Scene-by-scene breakdown (chapter 1-3 detailed)
-7. Pacing strategy`,
-    category: 'Writing',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Storytelling', 'Character Development'],
-    tags: ['fiction', 'novel', 'writing', 'storytelling'],
-    useCases: ['Novel writing', 'Self-publishing'],
-    examples: 'Fantasy, sci-fi, mystery, romance',
-  },
-  {
-    title: 'Blog Content Calendar (90 Days)',
-    description: 'Strategic content plan for blog growth and SEO',
-    promptText: `Create a 90-day blog content calendar for [NICHE]:
-
-Goals: [TRAFFIC/LEADS/BRAND]
-Target keywords: [MAIN TOPICS]
-Publishing frequency: [X posts/week]
-
-Provide:
-1. Pillar topics (5 main themes)
-2. Keyword research
-   - High-intent keywords (conversions)
-   - Long-tail keywords (traffic)
-   - Content clusters
-
-3. Content calendar
-   - Week-by-week breakdown
-   - Post titles (SEO-optimized)
-   - Target keywords
-   - Content type (guide/how-to/listicle)
-   - CTA strategy
-
-4. Cross-promotion plan
-   - Social media angles
-   - Email sequences
-   - Internal linking
-
-5. Content repurposing
-   - Video scripts
-   - Podcast episodes
-   - Infographics`,
-    category: 'Marketing',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Content Strategy', 'SEO'],
-    tags: ['blog', 'content', 'seo', 'growth'],
-    useCases: ['Content marketing', 'Lead generation'],
-    examples: 'SaaS blogs, agency sites, personal brands',
-  },
-  {
-    title: 'Social Media Content Strategy (3 Months)',
-    description: 'Comprehensive social media playbook for growth',
-    promptText: `Create social media strategy for [PLATFORMS]:
-Brand: [BRAND NAME]
-Goal: [FOLLOWERS/ENGAGEMENT/SALES]
-Current followers: [COUNT]
-Target growth: [X% in 90 days]
-
-Include:
-1. Content pillars (5 types)
-   - Educational (40%)
-   - Entertaining (30%)
-   - Promotional (20%)
-   - Community (10%)
-
-2. Platform-specific strategies
-   - Instagram (Reels, Stories, Posts)
-   - TikTok (trends, trends)
-   - LinkedIn (professional content)
-   - YouTube (Shorts/videos)
-
-3. Posting schedule
-   - Frequency per platform
-   - Best times to post
-   - Content calendar (30 days sample)
-
-4. Engagement strategy
-   - Hashtag research
-   - Comment/DM templates
-   - Community building tactics
-
-5. Performance metrics
-   - KPIs to track
-   - Benchmarks
-   - Monthly goals`,
-    category: 'Marketing',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Social Strategy', 'Growth Hacking'],
-    tags: ['social-media', 'marketing', 'growth', 'engagement'],
-    useCases: ['Brand growth', 'Lead generation'],
-    examples: 'Personal brands, businesses, creators',
-  },
-  {
-    title: 'Email Newsletter Launch Plan',
-    description: 'Build and grow an engaged email subscriber base',
-    promptText: `Create email newsletter strategy:
-Topic: [NEWSLETTER TOPIC]
-Target subscribers: [X in 90 days]
-Monetization: [SPONSORSHIPS/PRODUCTS/ADS]
-
-Include:
-1. Newsletter positioning
-   - Target audience profile
-   - Unique angle
-   - Value proposition
-
-2. Launch sequence (first 5 emails)
-   - Welcome email
-   - Value preview
-   - Reader profile
-   - Engagement setup
-   - Content preview
-
-3. Content format
-   - Recurring sections
-   - Content sources
-   - Tone & voice
-   - Word count target
-
-4. Growth strategy
-   - Lead magnet
-   - Signup locations
-   - Cross-promotion
-   - Referral strategy
-
-5. Monetization
-   - Sponsor rates
-   - Product recommendations
-   - Conversion strategy
-
-6. Analytics to track
-   - Open rate target
-   - Click rate
-   - Unsubscribe rate`,
-    category: 'Marketing',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Email Marketing', 'Growth'],
-    tags: ['email', 'newsletter', 'marketing', 'growth'],
-    useCases: ['Audience building', 'Monetization'],
-    examples: 'Creator newsletters, niche content, B2B',
-  },
-  {
-    title: 'Podcast Launch Blueprint',
-    description: 'Complete guide to starting and growing a podcast',
-    promptText: `Create podcast launch plan:
-Podcast name: [NAME]
-Topic: [NICHE]
-Format: [SOLO/INTERVIEW/NARRATIVE]
-Episode length: [MINS]
-Release frequency: [X per week]
-
-Include:
-1. Show positioning
-   - Unique angle
-   - Target listener
-   - Competitive advantage
-
-2. Technical setup
-   - Recording equipment (budget)
-   - Software/hosting
-   - Distribution platforms
-
-3. Content strategy
-   - 12-episode outline
-   - Intro/outro music ideas
-   - Guest list (if interviews)
-   - Outline template
-
-4. Launch strategy
-   - Pre-launch buzz (social)
-   - Guest appearances
-   - Cross-promotion
-
-5. Growth tactics
-   - Guest exchange strategy
-   - Review generation
-   - Guesting on other shows
-   - YouTube clips from audio
-
-6. Monetization (Month 6+)
-   - Sponsorship rates
-   - Affiliate opportunities
-   - Premium content`,
-    category: 'Marketing',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Content Strategy', 'Audio Production'],
-    tags: ['podcast', 'content', 'audio', 'growth'],
-    useCases: ['Audience building', 'Authority'],
-    examples: 'Creator economy, thought leadership',
-  },
-  {
-    title: 'White Paper/Case Study Template',
-    description: 'Professional B2B sales collateral generator',
-    promptText: `Create a white paper/case study for [SOLUTION]:
-Industry: [TARGET INDUSTRY]
-Problem: [MAIN PAIN POINT]
-Solution type: [TECHNOLOGY/PROCESS/SERVICE]
-Target decision maker: [ROLE]
-
-Structure:
-1. Cover page & executive summary (2-3 paragraphs)
-
-2. Problem statement
-   - Market context
-   - Industry challenges
-   - Impact/costs
-
-3. Solution overview
-   - How it works
-   - Key features
-   - Differentiation
-
-4. Case study section
-   - Client background
-   - Implementation
-   - Results (metrics)
-   - ROI calculation
-
-5. Best practices
-   - Recommendations
-   - Implementation timeline
-   - Success factors
-
-6. Call to action
-   - Demo offer
-   - Consultation link
-   - Resources
-
-Design: Professional, data-driven, credible`,
-    category: 'Business',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Technical Writing', 'B2B Marketing'],
-    tags: ['case-study', 'b2b', 'sales', 'content'],
-    useCases: ['B2B marketing', 'Lead generation'],
-    examples: 'SaaS, enterprise software, consulting',
-  },
-  {
-    title: 'Email Sales Funnel Sequence',
-    description: 'Automated email sequences that convert subscribers to customers',
-    promptText: `Create email funnel for [OFFER]:
-Product/service: [DESCRIPTION]
-Price: $[AMOUNT]
-Target market: [AUDIENCE]
-Goal: [SALES/LEADS]
-
-Sequence (7-10 emails):
-1. Welcome/hook email
-2. Problem identification email
-3. Pain point deep dive
-4. Solution introduction
-5. Social proof email (testimonials)
-6. Objection handler email
-7. Special offer/scarcity email
-8. Last chance email
-9. Post-purchase/upsell
-
-For each email:
-- Subject line (urgency/curiosity)
-- Opening hook
-- Main copy
-- CTA
-- Timing (days apart)
-
-Include:
-- Segmentation by behavior
-- A/B testing recommendations
-- Expected conversion rates`,
-    category: 'Marketing',
+Use psychology: curiosity gap, storytelling, relatable content, trend-jacking`,
+    category: ['Marketing'],
     aiSystem: ['ChatGPT', 'Claude'],
     techniques: ['Copywriting', 'Psychology'],
-    tags: ['email', 'sales', 'funnel', 'conversion'],
-    useCases: ['E-commerce', 'Digital products', 'Services'],
-    examples: 'Online courses, SaaS, digital downloads',
-  },
-  
-  // Making Websites & Apps (8)
-  {
-    title: 'Website Technical SEO Audit Prompt',
-    description: 'Comprehensive technical SEO analysis checklist',
-    promptText: `Analyze website technical SEO for [DOMAIN]:
-
-Audit areas:
-1. Site structure
-   - URL structure optimization
-   - Crawlability (robots.txt)
-   - XML sitemaps
-   - Pagination handling
-   - Hreflang tags
-
-2. Performance metrics
-   - Core Web Vitals (LCP, FID, CLS)
-   - Mobile-Friendliness
-   - Load time optimization
-   - Image optimization
-   - CSS/JS minification
-
-3. On-page elements
-   - Title tags (50-60 chars)
-   - Meta descriptions
-   - Header hierarchy (H1-H6)
-   - Schema markup
-   - Internal linking
-
-4. Mobile optimization
-   - Responsive design
-   - Touch elements size
-   - Mobile menu
-   - Viewport meta tag
-
-5. Issues & fixes
-   - Duplicate content
-   - Broken links
-   - Redirect chains
-   - Mixed content warnings
-
-6. Priority fixes list
-   - High impact items
-   - Implementation timeline
-   - Expected traffic gain`,
-    category: 'Web Development',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Technical Analysis', 'SEO'],
-    tags: ['seo', 'web', 'technical', 'optimization'],
-    useCases: ['Website optimization', 'SEO'],
-    examples: 'Agency audits, e-commerce, content sites',
+    tags: ['social-media', 'video', 'marketing', 'viral'],
+    useCases: ['Content creation', 'Personal branding'],
+    examples: 'Education, comedy, product demos, life tips',
   },
   {
-    title: 'Landing Page Conversion Optimization',
-    description: 'Identify and fix conversion rate killers',
-    promptText: `Analyze landing page for conversion optimization:
-Goal: [SIGNUP/PURCHASE/DOWNLOAD]
-Current conversion rate: [X%]
-Target conversion rate: [Y%]
-
-Analyze:
-1. Copy & messaging
-   - Headline effectiveness
-   - Subheading clarity
-   - Value prop positioning
-   - Benefit-driven language
-   - CTA clarity
-
-2. Design & layout
-   - Above-the-fold content
-   - Visual hierarchy
-   - CTA button prominence
-   - Form length & fields
-   - Social proof placement
-
-3. User psychology
-   - Loss aversion tactics
-   - FOMO elements
-   - Authority signals
-   - Testimonial quality
-   - Guarantee strength
-
-4. Technical elements
-   - Form fields needed
-   - Load time
-   - Mobile responsiveness
-   - Redirects/tracking
-
-5. A/B testing recommendations
-   - Headline variations
-   - CTA button text/color
-   - Form field count
-   - Layout changes
-
-6. Implementation priority
-   - High-impact changes first
-   - Expected uplift per change`,
-    category: 'Web Design',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['UX/CRO', 'Psychology'],
-    tags: ['conversion', 'cro', 'landing-page', 'optimization'],
-    useCases: ['SaaS', 'E-commerce', 'Lead generation'],
-    examples: 'Startup landing pages, product pages',
-  },
-  {
-    title: 'Mobile App Feature Prioritization Matrix',
-    description: 'Framework for prioritizing app features using RICE/Kano',
-    promptText: `Create feature prioritization matrix for [APP]:
-Current users: [COUNT]
-Monthly growth: [X%]
-Dev resources: [TEAM SIZE]
-
-For top 15 proposed features, evaluate:
-
-RICE scoring:
-- Reach: Users impacted monthly
-- Impact: Usage change per user (3x/2x/1x)
-- Confidence: Certainty level (%)
-- Effort: Dev weeks needed
-
-Kano analysis:
-- Must-have: Baseline expectations
-- Performance: More = better
-- Delighter: Surprise & delight
-
-Output:
-1. Ranked feature list (RICE score)
-2. Quadrant matrix (Effort vs Impact)
-3. 90-day roadmap
-4. Release timing strategy
-5. Success metrics per feature
+    title: 'Write SEO-Optimized Blog Post',
+    description: 'Create search-engine-friendly content with natural keywords',
+    promptText: `Write a 2000-word SEO-optimized blog post on [TOPIC]:
 
 Include:
-- Dependencies between features
-- Technical complexity
-- Resource allocation`,
-    category: 'Product Management',
+1. SEO title (60 chars, keyword-rich)
+2. Meta description (160 chars, call-to-action)
+3. H1 headline (primary keyword)
+4. H2 subheadings (LSI keywords)
+5. Intro (hook + keyword + value proposition)
+6. 5 body sections with strategic keyword placement
+7. Conclusion with CTA
+8. Internal linking suggestions (3-5 links)
+9. External links (authority sources)
+10. FAQ section (featured snippet optimization)
+
+Target ranking position: Top 3`,
+    category: ['Business'],
     aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Product Strategy', 'Analysis'],
-    tags: ['product', 'prioritization', 'strategy', 'app'],
-    useCases: ['App development', 'Product management'],
-    examples: 'SaaS, mobile apps, web platforms',
+    techniques: ['SEO', 'Content creation'],
+    tags: ['seo', 'blog', 'content', 'ranking'],
+    useCases: ['Organic traffic', 'Lead generation'],
+    examples: 'Product reviews, tutorials, how-to guides',
   },
   {
-    title: 'API Documentation Template',
-    description: 'Generate OpenAPI/Swagger documentation',
-    promptText: `Create API documentation for [API NAME]:
-Base URL: [API_URL]
-Authentication: [AUTH_TYPE]
-Rate limit: [REQUESTS/HOUR]
+    title: 'Design Midjourney Prompts for Product Photos',
+    description: 'Generate high-quality product photography with AI',
+    promptText: `Create 10 detailed Midjourney prompts to generate professional product photos of [PRODUCT]:
 
-For each endpoint, document:
-1. Endpoint details
-   - HTTP method
-   - URL path
-   - Description
-   - Required/optional params
+For each include:
+1. Product description (materials, colors, style)
+2. Lighting setup (key light direction, shadows)
+3. Camera angle (3/4 view, overhead, etc.)
+4. Background (lifestyle, minimalist, white)
+5. Props/styling elements
+6. Mood/atmosphere (luxury, playful, professional)
+7. Photography style reference
+8. Settings: --ar [aspect ratio] --q 2 --v 6
 
-2. Request format
-   - Headers needed
-   - Request body example
-   - Parameter descriptions
-   - Data types
-
-3. Response format
-   - Success response (200)
-   - Error responses (400, 401, 500)
-   - Response body examples
-   - Status codes
-
-4. Authentication
-   - API key setup
-   - OAuth/JWT flow
-   - Rate limiting info
-
-5. Code examples
-   - cURL
-   - Python
-   - JavaScript
-   - Go
-
-6. Error handling
-   - Error codes
-   - Error messages
-   - Retry logic
-
-Generate: OpenAPI 3.0 spec (YAML/JSON)`,
-    category: 'Web Development',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Technical Writing', 'Documentation'],
-    tags: ['api', 'documentation', 'development', 'technical'],
-    useCases: ['Developer platforms', 'API services'],
-    examples: 'SaaS APIs, payment gateways, data APIs',
+Make prompts photorealistic and commerce-ready.`,
+    category: ['Design'],
+    aiSystem: ['midjourney-v7', 'dall-e-3'],
+    techniques: ['Visual design', 'Descriptive'],
+    tags: ['midjourney', 'product-photography', 'e-commerce', 'design'],
+    useCases: ['E-commerce', 'Product marketing'],
+    examples: 'Fashion, electronics, furniture, jewelry',
   },
   {
-    title: 'Database Schema Design for [Use Case]',
-    description: 'Design normalized, efficient database schemas',
-    promptText: `Design database schema for [APPLICATION]:
-Use case: [DESCRIPTION]
-Expected scale: [USERS/RECORDS]
-Performance: [LATENCY/THROUGHPUT]
+    title: 'React Component Code Generation',
+    description: 'Generate production-ready React components with hooks',
+    promptText: `Generate a production-ready React component for [COMPONENT_TYPE]:
+
+Requirements:
+1. Use React Hooks (useState, useEffect)
+2. TypeScript types included
+3. Tailwind CSS styling (responsive)
+4. Accessibility (ARIA labels, keyboard support)
+5. Error handling
+6. Loading states
+7. Edge cases handled
+8. Proper component documentation (JSDoc)
+9. Props interface well-defined
+
+Style: Modern, follows React best practices, no external UI libraries unless specified.`,
+    category: ['Development'],
+    aiSystem: ['ChatGPT', 'claude-3.5-sonnet'],
+    techniques: ['Code generation', 'Best practices'],
+    tags: ['react', 'code', 'components', 'typescript'],
+    useCases: ['Web development', 'UI engineering'],
+    examples: 'Forms, tables, modals, dashboards',
+  },
+  {
+    title: 'Create YouTube Video Script (5-10 min)',
+    description: 'Write engaging scripts with pacing and transitions',
+    promptText: `Write a complete YouTube video script for [TOPIC] (5-10 minute video):
+
+Include:
+1. Hook (first 10 seconds - grab attention)
+2. Intro (who you are, what they'll learn)
+3. Problem statement (why this matters)
+4. 3-5 main points (each with transitions)
+5. Examples/case studies (real stories)
+6. Objections/common mistakes addressed
+7. Call-to-action (subscribe, like, comment prompt)
+8. Outro (summary + CTA again)
+9. Pacing notes (where to pause, show visuals)
+10. B-roll suggestions (what to show during talking)
+
+Target: Educational, conversational, energetic tone.`,
+    category: ['Content'],
+    aiSystem: ['ChatGPT', 'Claude'],
+    techniques: ['Storytelling', 'Copywriting'],
+    tags: ['youtube', 'video', 'content', 'scripting'],
+    useCases: ['Video marketing', 'Education'],
+    examples: 'Tutorials, reviews, advice, How-to guides',
+  },
+  // Code & Development (5)
+  {
+    title: 'Debug TypeScript Errors',
+    description: 'Analyze and fix TypeScript type errors quickly',
+    promptText: `I'm getting TypeScript errors in this code:
+
+[PASTE YOUR CODE]
+
+Errors:
+[PASTE ERROR MESSAGES]
+
+Please:
+1. Explain what each error means
+2. Provide the corrected code
+3. Explain the fix (why it works)
+4. Suggest how to prevent similar errors
+
+Keep explanations simple and actionable.`,
+    category: ['Development'],
+    aiSystem: ['ChatGPT', 'claude-3.5-sonnet'],
+    techniques: ['Debugging', 'Technical'],
+    tags: ['typescript', 'debugging', 'code', 'errors'],
+    useCases: ['Development', 'Error fixing'],
+    examples: 'Type mismatches, missing properties, inference issues',
+  },
+  {
+    title: 'Generate Database Schema Design',
+    description: 'Design efficient database schemas with relations',
+    promptText: `Design a PostgreSQL/MySQL database schema for [APPLICATION]:
+
+Include:
+1. All required tables with columns
+2. Data types (VARCHAR, INT, TIMESTAMP, etc.)
+3. Primary keys and foreign keys
+4. Indexes on frequently queried columns
+5. Constraints (NOT NULL, UNIQUE, CHECK)
+6. Relationships (1:1, 1:N, M:N)
+7. Normalization (3NF recommended)
+8. Sample data (10 rows) for testing
+9. Query examples for common operations
+10. Performance optimization notes
+
+Use industry-standard naming conventions.`,
+    category: ['Development'],
+    aiSystem: ['ChatGPT', 'claude-3.5-sonnet'],
+    techniques: ['Database design', 'Technical'],
+    tags: ['database', 'sql', 'schema', 'backend'],
+    useCases: ['Backend development', 'System design'],
+    examples: 'E-commerce, CRM, social media, SaaS apps',
+  },
+  {
+    title: 'Create API Documentation',
+    description: 'Generate complete API reference documentation',
+    promptText: `Generate API documentation for [YOUR_API]:
+
+For each endpoint, include:
+1. Endpoint path (/api/v1/users)
+2. HTTP method (GET, POST, PUT, DELETE)
+3. Description (what it does)
+4. Authentication (required, type)
+5. Request parameters (query, body, headers)
+6. Request example (cURL, JavaScript)
+7. Response structure (success + error)
+8. Response examples (JSON)
+9. Status codes (200, 400, 401, 404, 500)
+10. Rate limiting info
+11. Error messages (when things go wrong)
+
+Format: OpenAPI 3.0 compatible`,
+    category: ['Development'],
+    aiSystem: ['ChatGPT', 'claude-3.5-sonnet'],
+    techniques: ['Documentation', 'Technical writing'],
+    tags: ['api', 'documentation', 'backend', 'developer-tools'],
+    useCases: ['API development', 'Developer experience'],
+    examples: 'REST APIs, GraphQL, Webhooks',
+  },
+  {
+    title: 'Optimize Website Performance',
+    description: 'Improve Core Web Vitals and page speed',
+    promptText: `Analyze and optimize my website for performance:
+
+Current metrics:
+- Largest Contentful Paint (LCP): [TIME]ms
+- First Input Delay (FID): [TIME]ms
+- Cumulative Layout Shift (CLS): [VALUE]
+
+Current issues (from Lighthouse):
+[PASTE LIGHTHOUSE REPORT]
 
 Provide:
-1. Entity relationship diagram (ERD)
-   - Entities & attributes
-   - Relationships (1-to-many, many-to-many)
-   - Primary/foreign keys
-   - Data types
+1. Root causes analysis
+2. Actionable fixes (code snippets if applicable)
+3. Priority order (quick wins first)
+4. Expected improvement for each fix
+5. Tools to measure progress
+6. Best practices to prevent regression
 
-2. Normalization
-   - 3NF compliance
-   - Denormalization where beneficial
-   - Aggregate tables for reporting
-
-3. Indexing strategy
-   - Primary indexes
-   - Secondary indexes
-   - Composite indexes
-   - Query optimization
-
-4. Scalability
-   - Sharding strategy (if needed)
-   - Replication approach
-   - Backup strategy
-
-5. SQL schema code
-   - CREATE TABLE statements
-   - Index definitions
-   - Constraints
-
-6. Query examples
-   - Common queries
-   - Optimization tips
-   - N+1 query prevention`,
-    category: 'Web Development',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Database Design', 'System Design'],
-    tags: ['database', 'sql', 'development', 'architecture'],
-    useCases: ['App backend', 'Data platforms'],
-    examples: 'SaaS apps, marketplaces, social platforms',
+Focus on: images, CSS, JavaScript, caching, CDN`,
+    category: ['Development'],
+    aiSystem: ['ChatGPT', 'claude-3.5-sonnet'],
+    techniques: ['Performance', 'Technical'],
+    tags: ['performance', 'web', 'optimization', 'core-web-vitals'],
+    useCases: ['Web development', 'SEO', 'UX'],
+    examples: 'Next.js apps, React sites, WordPress',
   },
+  // Design & UX (5)
   {
-    title: 'Component Library Documentation',
-    description: 'Create Storybook/design system documentation',
-    promptText: `Document React component library for [DESIGN_SYSTEM]:
-
-For each component:
-1. Overview
-   - Purpose
-   - When to use
-   - When not to use
-   - Similar components
-
-2. Props interface
-   - Prop names & types
-   - Default values
-   - Required/optional
-   - Descriptions
-
-3. Usage examples
-   - Basic usage
-   - With variations
-   - Advanced patterns
-   - Common mistakes
-
-4. Accessibility
-   - ARIA attributes
-   - Keyboard navigation
-   - Screen reader support
-
-5. Design tokens
-   - Colors used
-   - Typography
-   - Spacing
-   - Shadows/borders
-
-6. Storybook stories
-   - Primary story
-   - All variants
-   - Edge cases
-   - Dark mode
-
-Include: TypeScript definitions, CSS/Tailwind classes`,
-    category: 'Web Design',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Design Systems', 'Documentation'],
-    tags: ['design-system', 'components', 'documentation', 'frontend'],
-    useCases: ['Design systems', 'Team collaboration'],
-    examples: 'Enterprise design systems, design agencies',
-  },
-  {
-    title: 'Progressive Web App (PWA) Implementation Guide',
-    description: 'Convert web app to PWA with offline support',
-    promptText: `Create PWA implementation checklist for [APP]:
-
-1. Service Worker setup
-   - Registration code
-   - Lifecycle management
-   - Caching strategies
-
-2. Web App Manifest
-   - App icons
-   - Metadata
-   - Display modes
-   - Theme colors
-
-3. Offline functionality
-   - Network fallback
-   - Cached assets
-   - Dynamic content strategies
-   - Sync strategies
-
-4. Installation
-   - Home screen installation
-   - App shelf support
-   - Launch screen
-
-5. Performance optimization
-   - Code splitting
-   - Lazy loading
-   - Image optimization
-   - Resource caching
-
-6. Testing checklist
-   - Offline testing
-   - Installation flow
-   - Performance metrics (Lighthouse)
-   - Cross-browser compatibility
-
-7. Deployment
-   - HTTPS requirement
-   - Server configuration
-   - Manifest hosting
-
-Code examples: JavaScript, service worker snippets`,
-    category: 'Web Development',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Web Development', 'Performance'],
-    tags: ['pwa', 'offline', 'performance', 'mobile-web'],
-    useCases: ['Web app optimization', 'Mobile experience'],
-    examples: 'SaaS apps, productivity tools, marketplaces',
-  },
-  
-  // UI/UX Design (8)
-  {
-    title: 'Mobile App UI Kit Component Prompt',
-    description: 'Generate comprehensive mobile design components',
-    promptText: `Design mobile UI kit for [APP_TYPE]:
-Platform: [iOS/Android/Both]
-Design system: [Material Design/Human Interface]
-Target users: [DEMOGRAPHIC]
-
-Create components:
-1. Navigation
-   - Tab bars
-   - Drawers
-   - Bottom navigation
-   - Breadcrumbs
-
-2. Forms
-   - Text inputs
-   - Dropdowns
-   - Checkboxes/radio
-   - Date pickers
-   - Error states
-
-3. Cards & lists
-   - List items
-   - Card layouts
-   - Media cards
-   - Section headers
-
-4. Buttons & CTAs
-   - Primary/secondary
-   - Disabled states
-   - Loading states
-   - Sizes (small/medium/large)
-
-5. Modals & overlays
-   - Alerts/dialogs
-   - Bottom sheets
-   - Snackbars
-   - Loading spinners
-
-6. States
-   - Empty states
-   - Loading states
-   - Error states
-   - Success states
-
-Include: Figma file structure, component specs, spacing/color usage`,
-    category: 'UI/UX Design',
-    aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Design Systems', 'UI Design'],
-    tags: ['ui-design', 'mobile', 'design-system', 'ux'],
-    useCases: ['App development', 'Design handoff'],
-    examples: 'Startups, agencies, design studios',
-  },
-  {
-    title: 'User Research Interview Script',
-    description: 'Prepare structured user interview questions',
-    promptText: `Create user research interview script:
-Product: [PRODUCT]
-Research goal: [UNDERSTAND PROBLEM/VALIDATE SOLUTION]
-Target user: [PERSONA]
-Interview length: 30-45 minutes
+    title: 'UI/UX Design System Guidelines',
+    description: 'Create comprehensive design system documentation',
+    promptText: `Create design system guidelines for [APPLICATION_TYPE]:
 
 Include:
-1. Warm-up questions (5 min)
-   - Background info
-   - Comfort building
-   - Rapport
+1. Color palette (primary, secondary, grays, semantic colors)
+2. Typography (font families, sizes, weights, line-height)
+3. Spacing system (8px grid, padding/margin scale)
+4. Button styles (primary, secondary, ghost, sizes)
+5. Form components (inputs, selects, checkboxes, radios)
+6. Cards and containers (border radius, shadows, padding)
+7. Navigation patterns (nav bar, sidebar, breadcrumbs)
+8. Icons (size system, stroke width)
+9. Shadows and elevations (depth system)
+10. Responsive breakpoints (mobile, tablet, desktop)
+11. Animation guidelines (ease, duration, use cases)
+12. Accessibility requirements (contrast, focus states)
 
-2. Problem exploration (10 min)
-   - Current workflow
-   - Pain points
-   - Workarounds
-   - Frequency
+Output: Figma design file structure or HTML component library guide.`,
+    category: ['Design'],
+    aiSystem: ['ChatGPT', 'Claude'],
+    techniques: ['Design', 'UX'],
+    tags: ['design-system', 'ui-ux', 'components', 'guidelines'],
+    useCases: ['Product design', 'Team collaboration'],
+    examples: 'SaaS apps, dashboards, consumer apps',
+  },
+  {
+    title: 'Figma to React Component',
+    description: 'Convert Figma design to production React code',
+    promptText: `Convert this Figma component to React:
 
-3. Solution validation (15 min)
-   - Prototype/concept walkthrough
-   - First impressions
-   - Concerns
-   - Willingness to pay
+Component name: [NAME]
+Figma link: [LINK]
 
-4. Follow-up questions (10 min)
-   - Motivation drivers
-   - Decision factors
-   - Competitive comparison
+Requirements:
+1. Pixel-perfect recreation
+2. Responsive design (mobile, tablet, desktop)
+3. Tailwind CSS styling
+4. React props (customizable text, colors, sizes)
+5. Hover/active states
+6. Accessibility (ARIA labels, semantic HTML)
+7. TypeScript with proper types
+8. Storybook stories for variations
 
-5. Close (5 min)
-   - Key takeaways
-   - Next steps
-   - Referral requests
+Output: Complete production-ready component with stories.`,
+    category: ['Development'],
+    aiSystem: ['ChatGPT', 'claude-3.5-sonnet'],
+    techniques: ['Design to code', 'React'],
+    tags: ['react', 'figma', 'ui', 'component'],
+    useCases: ['Web development', 'Design handoff'],
+    examples: 'Landing pages, dashboards, mobile apps',
+  },
+  {
+    title: 'Create Landing Page Copy',
+    description: 'Write high-converting landing page content',
+    promptText: `Write compelling landing page copy for [PRODUCT/SERVICE]:
+
+Target audience: [WHO]
+Main benefit: [WHAT THEY GET]
+Unique value proposition: [WHY YOURS]
+
+Create:
+1. Headline (main hook, 60 chars max, benefit-driven)
+2. Subheading (clarify main message, 80 chars)
+3. Hero section (emotional story, 100 words)
+4. Problem statement (pain points)
+5. 3-4 solution sections (features + benefits)
+6. Social proof section (testimonials, logos, stats)
+7. Objection handlers (FAQ format)
+8. Call-to-action (primary + secondary)
+9. Urgency elements (limited time, scarcity)
+10. Footer CTAs and links
+
+Tone: [Professional/Casual/Playful], conversion-focused`,
+    category: ['Marketing'],
+    aiSystem: ['ChatGPT', 'Claude'],
+    techniques: ['Copywriting', 'Psychology'],
+    tags: ['landing-page', 'copy', 'marketing', 'conversion'],
+    useCases: ['Product launch', 'Lead generation'],
+    examples: 'SaaS, digital products, services, apps',
+  },
+  {
+    title: 'Mobile App User Flow Design',
+    description: 'Design intuitive mobile app user journeys',
+    promptText: `Design a user flow for [MOBILE_APP_FEATURE]:
 
 Include:
-- Follow-up prompts for each question
-- Note-taking guide
-- Recording consent form`,
-    category: 'Research',
+1. Entry point (how users discover feature)
+2. Decision points (yes/no branches)
+3. Error states (what if something goes wrong?)
+4. Success state (happy path completion)
+5. Alternative flows (shortcuts, power user paths)
+6. Screen layouts (wireframe descriptions)
+7. Button labels (action-oriented)
+8. Form fields (only essentials)
+9. Confirmation steps (critical actions)
+10. Onboarding hints (new user guidance)
+
+Create ASCII flow diagram and detailed descriptions.`,
+    category: ['Design'],
     aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['User Research', 'Interviewing'],
-    tags: ['research', 'ux', 'user-testing', 'product'],
-    useCases: ['Product development', 'Market validation'],
-    examples: 'Startups, agencies, product teams',
+    techniques: ['UX design', 'User research'],
+    tags: ['mobile', 'ux-ui', 'user-flow', 'design'],
+    useCases: ['App development', 'UX design'],
+    examples: 'Payment flows, signup, data entry, checkout',
+  },
+  // Content & Writing (5)
+  {
+    title: 'Write Product Description',
+    description: 'Create persuasive product descriptions for e-commerce',
+    promptText: `Write product descriptions for [PRODUCT]:
+
+Product details:
+- Name: [NAME]
+- Price: [PRICE]
+- Features: [LIST FEATURES]
+- Target customer: [WHO BENEFITS]
+- Problem it solves: [MAIN BENEFIT]
+
+Create:
+1. Short description (50 words, punch line)
+2. Long description (300 words, detailed benefits)
+3. Feature bullets (5-8 benefits, not specs)
+4. FAQ section (3-5 common questions)
+5. Use case examples
+6. Call-to-action
+7. SEO-friendly variant (keywords included)
+8. Social media description (Twitter, Instagram)
+
+Tone: Persuasive, benefit-focused, easy-to-scan`,
+    category: ['Business'],
+    aiSystem: ['ChatGPT', 'Claude'],
+    techniques: ['Copywriting', 'SEO'],
+    tags: ['e-commerce', 'product', 'copy', 'sales'],
+    useCases: ['E-commerce', 'Product marketing'],
+    examples: 'Physical products, software, digital goods',
   },
   {
-    title: 'Wireframe to High-Fidelity Conversion',
-    description: 'Turn low-fidelity wireframes into production designs',
-    promptText: `Convert wireframe to high-fidelity design:
-Product: [PRODUCT]
-Page/screen: [NAME]
-Target platform: [WEB/iOS/Android]
+    title: 'Create Email Marketing Campaign',
+    description: 'Build complete email sequences for nurture/sales',
+    promptText: `Create a [CAMPAIGN_TYPE] email campaign:
 
-From wireframe provided:
-1. Visual hierarchy
-   - Color palette application
-   - Typography hierarchy
-   - Spacing & alignment
-   - Weight & contrast
+Campaign goal: [GET SIGN-UPS/MAKE SALES/NURTURE]
+Target audience: [WHO]
+Product/offer: [WHAT]
 
-2. Micro-interactions
-   - Hover states
-   - Focus states
-   - Loading states
-   - Error states
-   - Transitions
+Design sequence:
+1. Email 1: Hook + value promise (subject line)
+2. Email 2: Build credibility + testimonials
+3. Email 3: Overcome objections
+4. Email 4: FOMO + urgency + CTA
+5. Email 5: Last chance (final push)
 
-3. Component refinement
-   - Button styling
-   - Input fields
-   - Cards/containers
-   - Icons & imagery
+For each email:
+- Subject line (high open rate, 50 chars)
+- Preview text (next 50 chars)
+- Body (clear hierarchy, scannable)
+- Images (descriptions for alt text)
+- Primary CTA (button text, link)
+- Secondary CTA (alternative action)
 
-4. Accessibility
-   - Color contrast (WCAG AA)
-   - Touch target sizes
-   - Focus indicators
-   - Alt text for images
-
-5. Design assets
-   - Color specifications
-   - Typography specs
-   - Spacing system
-   - Icon set
-
-Output: Figma file with components, specifications, documentation`,
-    category: 'UI/UX Design',
+Include: Personalization tags, segmentation logic, timing`,
+    category: ['Marketing'],
     aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Visual Design', 'UI Design'],
-    tags: ['design', 'ui', 'product-design', 'web'],
-    useCases: ['Design handoff', 'Development', 'Product'],
-    examples: 'SaaS dashboards, e-commerce, apps',
+    techniques: ['Copywriting', 'Email marketing'],
+    tags: ['email', 'marketing', 'sales', 'automation'],
+    useCases: ['Lead nurture', 'Sales funnels'],
+    examples: 'Webinar series, product launch, nurture sequence',
   },
   {
-    title: 'Design System Documentation',
-    description: 'Create comprehensive design system specification',
-    promptText: `Document design system for [BRAND]:
+    title: 'Write Professional Resume',
+    description: 'Create ATS-optimized resume content',
+    promptText: `Write a professional resume for [YOUR_ROLE]:
 
-1. Brand guidelines
-   - Logo usage
-   - Color palette (primary/secondary)
-   - Typography (font families, scales)
-   - Imagery & illustrations
-   - Voice & tone
+Your info:
+- Years of experience: [X]
+- Main skills: [LIST]
+- Achievement highlights: [LIST]
+- Target position: [ROLE]
 
-2. Design tokens
-   - Colors (with semantic names)
-   - Typography (font sizes, weights, line-heights)
-   - Spacing (4px grid system)
-   - Shadows & elevation
-   - Border radius & strokes
+Create:
+1. Professional summary (3-4 lines, impact-focused)
+2. Work experience section (5-7 bullets per role, achievement-focused, quantified)
+3. Skills section (relevant, keyword-optimized for ATS)
+4. Education section (degree, school, year)
+5. Certifications (if applicable)
+6. Projects/portfolio (if relevant)
 
-3. Component library
-   - Buttons (primary/secondary/tertiary)
-   - Forms (inputs, selects, checkboxes)
-   - Navigation (nav bar, breadcrumbs)
-   - Cards, lists, tables
-   - Modals, alerts, toasts
+Requirements:
+- ATS-compatible (no graphics, tables, or special fonts)
+- Quantified results (increased X by Y%)
+- Action verbs (led, created, improved, etc.)
+- Tailored to [TARGET_JOB_DESCRIPTION]
 
-4. Patterns
-   - Common layouts
-   - Form patterns
-   - Error handling
-   - Loading states
-   - Empty states
-
-5. Accessibility
-   - Color contrast requirements
-   - Typography minimums
-   - Interactive element sizes
-   - ARIA usage
-
-6. Usage guidelines
-   - Do's and don'ts
-   - Common patterns
-   - Anti-patterns
-   - Platform-specific notes
-
-Include: Figma library, Storybook setup, developer handoff guide`,
-    category: 'UI/UX Design',
+Tone: Professional, results-driven`,
+    category: ['Business'],
     aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Design Systems', 'Brand Guidelines'],
-    tags: ['design-system', 'branding', 'ui', 'documentation'],
-    useCases: ['Brand consistency', 'Design at scale'],
-    examples: 'Enterprise design, design agencies, tech companies',
+    techniques: ['Professional writing', 'Career'],
+    tags: ['resume', 'career', 'job', 'professional'],
+    useCases: ['Job search', 'Career change'],
+    examples: 'Tech roles, management, creative positions',
   },
   {
-    title: 'Competitive UX Analysis Framework',
-    description: 'Deep competitive analysis on user experience',
-    promptText: `Conduct competitive UX analysis for [CATEGORY]:
-Your product: [NAME]
-Competitors: [3-5 APPS/SITES]
+    title: 'Brainstorm Book Chapter Outline',
+    description: 'Organize book concepts into compelling chapters',
+    promptText: `Outline a book about [TOPIC]:
 
-For each competitor:
-1. Overall assessment
-   - Strengths
-   - Weaknesses
-   - Unique features
-   - Market positioning
+Book goal: [WHAT READERS WILL LEARN/ACHIEVE]
+Target audience: [WHO]
+Book type: [Self-help/Fiction/Business/Educational]
 
-2. User flows
-   - Onboarding flow
-   - Core user journey
-   - Conversion flow
-   - Common actions
+Create:
+1. Book title + subtitle (compelling, searchable)
+2. Table of contents (12-15 chapters)
+3. Each chapter:
+   - Chapter title (benefit-driven)
+   - Main lesson (1 sentence)
+   - Key points (3-5 bullets)
+   - Stories/examples needed
+   - Reader takeaway
+4. Introduction outline (hook, promise, roadmap)
+5. Conclusion outline (summary, action steps)
+6. Resources/appendix
 
-3. Interface analysis
-   - Navigation structure
-   - Information architecture
-   - Key screens
-   - Unique UI patterns
-
-4. User experience
-   - Friction points
-   - Delighters
-   - Pain points
-   - Accessibility
-
-5. Opportunities
-   - Your competitive advantage
-   - Feature gaps
-   - UX improvements
-   - Positioning differentiators
-
-6. Recommendations
-   - What to copy (best practices)
-   - What to improve
-   - What to avoid
-   - Innovation opportunities
-
-Include: Screenshots, UX flow diagrams, comparison matrix`,
-    category: 'Research',
+Make it: Engaging, logical flow, progressive difficulty`,
+    category: ['Content'],
     aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['UX Research', 'Competitive Analysis'],
-    tags: ['ux', 'research', 'competitive-analysis', 'product'],
-    useCases: ['Product strategy', 'Positioning'],
-    examples: 'Startups, product teams, design consultants',
+    techniques: ['Storytelling', 'Organization'],
+    tags: ['book', 'writing', 'content', 'outline'],
+    useCases: ['Author', 'Thought leadership'],
+    examples: 'Self-help, business, fiction, memoirs',
   },
   {
-    title: 'Accessibility Audit Report',
-    description: 'WCAG 2.1 AA compliance audit and fixes',
-    promptText: `Perform accessibility audit for [WEBSITE/APP]:
-Current WCAG level: [A/AA/AAA target]
+    title: 'Generate Social Media Content Calendar',
+    description: 'Plan 30 days of social content with scheduling',
+    promptText: `Create a 30-day social media content calendar for [PLATFORM]:
 
-Audit checklist:
-1. Perceivable
-   - Color contrast (WCAG AA 4.5:1 text)
-   - Text alternatives (alt text)
-   - Adaptable content
-   - Distinguishable (text sizing)
+Business: [YOUR_BUSINESS]
+Goal: [AWARENESS/SALES/ENGAGEMENT]
+Posting frequency: [X per day/week]
 
-2. Operable
-   - Keyboard navigation
-   - Focus visible
-   - Skip links present
-   - Touch targets (min 44x44px)
-   - No keyboard traps
+Include:
+1. Content mix (70% educational, 20% promotional, 10% personal)
+2. 30 unique post ideas with:
+   - Post topic/angle
+   - Main message (1 sentence)
+   - Call-to-action (engage, click, follow)
+   - Visual description
+   - Best posting time
+   - Hashtags (researched, trending)
+3. Content pillars (main themes)
+4. Engagement prompts (questions to ask)
+5. Hashtag research (mix of popular + niche)
+6. Trending topics to capitalize on
 
-3. Understandable
-   - Language specified
-   - Readable text (16px+)
-   - Predictable behavior
-   - Input assistance
-   - Error prevention
-
-4. Robust
-   - Valid HTML
-   - ARIA usage correct
-   - Browser compatibility
-   - Assistive tech support
-
-Issues found:
-- Issue category
-- WCAG criteria violated
-- Severity (Critical/High/Medium/Low)
-- Fix recommendation
-- Estimated effort
-
-Output:
-- Prioritized fix list
-- Implementation timeline
-- Testing strategy
-- Success metrics`,
-    category: 'Web Development',
+Format: CSV with date, content, CTA, hashtags`,
+    category: ['Marketing'],
     aiSystem: ['ChatGPT', 'Claude'],
-    techniques: ['Accessibility', 'Compliance', 'Testing'],
-    tags: ['accessibility', 'wcag', 'compliance', 'auditing'],
-    useCases: ['Website compliance', 'App accessibility'],
-    examples: 'Enterprise websites, SaaS, public sector',
+    techniques: ['Social media', 'Content strategy'],
+    tags: ['social-media', 'content-calendar', 'marketing', 'planning'],
+    useCases: ['Social media marketing', 'Content planning'],
+    examples: 'Instagram, TikTok, LinkedIn, Twitter',
   },
 ];
 
 async function main() {
   console.log('Starting comprehensive prompt seeding...');
 
+  // First, check if prompts already exist to avoid duplicates
+  const existingCount = await prisma.prompt.count();
+  console.log(`📊 Existing prompts in database: ${existingCount}`);
+
+  let createdCount = 0;
   for (const promptData of COMPREHENSIVE_PROMPTS) {
     try {
-      const prompt = await prisma.prompt.create({
-        data: {
-          title: promptData.title,
-          description: promptData.description,
-          promptText: promptData.promptText,
-          category: promptData.category,
-          aiSystem: promptData.aiSystem,
-          techniques: promptData.techniques,
-          tags: promptData.tags,
-          useCases: promptData.useCases,
-          examples: promptData.examples,
-          isPublic: true,
-          status: 'approved',
-          viewCount: Math.floor(Math.random() * 5000) + 500,
-          likeCount: Math.floor(Math.random() * 1000) + 50,
-          rating: (Math.random() * 1.5 + 3.8).toFixed(2),
-          ratingCount: Math.floor(Math.random() * 500) + 20,
-        },
+      // Check if prompt with same title already exists
+      const existing = await prisma.prompt.findFirst({
+        where: { title: promptData.title }
       });
-      console.log(`✅ Created: ${prompt.title}`);
+
+      if (!existing) {
+        const prompt = await prisma.prompt.create({
+          data: {
+            title: promptData.title,
+            description: promptData.description,
+            promptText: promptData.promptText,
+            category: promptData.category || ['other'],
+            aiSystem: promptData.aiSystem || ['other'],
+            techniques: promptData.techniques || [],
+            tags: promptData.tags || [],
+            useCases: promptData.useCases || [],
+            examples: promptData.examples,
+            isPublic: true,
+            status: 'PUBLISHED',
+            viewCount: Math.floor(Math.random() * 5000) + 500,
+            likeCount: Math.floor(Math.random() * 1000) + 50,
+            rating: parseFloat((Math.random() * 1.5 + 3.8).toFixed(2)),
+            ratingCount: Math.floor(Math.random() * 500) + 20,
+          },
+        });
+        console.log(`✅ Created: ${prompt.title}`);
+        createdCount++;
+      } else {
+        console.log(`⏭️  Skipped (exists): ${promptData.title}`);
+      }
     } catch (error) {
-      console.error(`❌ Error creating "${promptData.title}":`, error);
+      console.error(`❌ Error with "${promptData.title}":`, error.message);
     }
   }
 
-  console.log('✅ Comprehensive seed complete!');
+  console.log(`✅ Seed complete! Created ${createdCount} new prompts.`);
+  console.log(`📊 Total prompts in database: ${existingCount + createdCount}`);
   await prisma.$disconnect();
 }
 

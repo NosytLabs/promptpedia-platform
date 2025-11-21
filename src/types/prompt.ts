@@ -8,10 +8,21 @@ export type AISystem =
   | 'gpt-3.5-turbo'
   | 'gemini-pro'
   | 'gemini-ultra'
+  | 'gemini-2.0-flash'
   | 'veo-3'
   | 'midjourney'
+  | 'midjourney-v7'
+  | 'midjourney-niji-6'
   | 'stable-diffusion'
   | 'dall-e-3'
+  | 'runway-gen-4'
+  | 'kling-ai'
+  | 'meshy-ai'
+  | 'scenario'
+  | 'leonardo-ai'
+  | 'all-models'
+  | 'ChatGPT'
+  | 'Claude'
   | 'other';
 
 export type PromptTechnique = 

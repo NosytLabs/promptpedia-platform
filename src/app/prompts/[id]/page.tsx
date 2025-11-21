@@ -327,6 +327,28 @@ export default function PromptDetailPage() {
               </div>
             </div>
           </div>
+
+          {/* Share & Feedback Section */}
+          <div className="mt-8 pt-8 border-t border-slate-200">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+              <h2 className="text-2xl font-bold text-slate-900">Share & Feedback</h2>
+              <SharePromptButton promptId={prompt.id} title={prompt.title} description={prompt.description} />
+            </div>
+          </div>
+
+          {/* Feedback Component */}
+          <PromptFeedback 
+            promptId={prompt.id}
+            onFeedback={(type) => console.log('Feedback:', type)}
+          />
+
+          {/* Related Prompts */}
+          {relatedPrompts.length > 0 && (
+            <RelatedPrompts 
+              currentPrompt={prompt}
+              relatedPrompts={relatedPrompts}
+            />
+          )}
         </motion.div>
       </div>
     </div>
