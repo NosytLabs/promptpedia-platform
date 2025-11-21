@@ -56,6 +56,11 @@ export async function PUT(
 
     const updates = await parseJson(request, schemas.prompt.update)
 
+    // Handle category field - ensure it's always an array
+    if (updates.category && typeof updates.category === 'string') {
+      updates.category = [updates.category]
+    }
+
     const updatedPrompt = await prisma.prompt.update({
       where: { id: params.id },
       data: updates,

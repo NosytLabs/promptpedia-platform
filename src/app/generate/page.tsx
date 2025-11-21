@@ -164,10 +164,11 @@ export default function GeneratePage() {
 
       {/* Modal - only renders when needed */}
       <Suspense fallback={null}>
-        {showTestModal && (
+        {showTestModal && selectedPrompt && (
           <TestPromptModal
             isOpen={showTestModal}
             onClose={() => setShowTestModal(false)}
+            prompt={selectedPrompt}
           />
         )}
       </Suspense>

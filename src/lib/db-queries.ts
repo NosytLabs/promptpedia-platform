@@ -1,5 +1,5 @@
 import { cache } from 'react';
-import prisma from './prisma';
+import { prisma } from './prisma';
 
 /**
  * OPTIMIZED DATABASE QUERIES

@@ -1,11 +1,11 @@
-import { getFeaturedPrompts } from '@/lib/prompts-db'
+import { getFeaturedPrompts } from '@/lib/db-queries'
 import { apiResponse, handleApiError } from '@/lib/api-response'
 
 export const dynamic = "force-dynamic"
 
 export async function GET() {
   try {
-    const prompts = getFeaturedPrompts(6)
+    const prompts = await getFeaturedPrompts()
     
     return apiResponse.success({ 
       items: prompts,

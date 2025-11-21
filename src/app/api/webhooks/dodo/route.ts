@@ -234,6 +234,7 @@ async function handleInvoicePaid(data: any) {
     })
 
     if (membership) {
+      console.log(
         `Invoice paid for user ${membership.userId}: $${amount / 100}`
       )
       // TODO: Update invoice/payment records if needed
