@@ -5,7 +5,15 @@ Promptpedia is a modern prompt engineering platform built with Next.js 14, React
 
 **Current State:** The platform is fully configured and running on Replit. The development server is operational on port 5000, and the PostgreSQL database schema has been initialized.
 
-## Recent Changes (November 21, 2025 - Latest Update)
+## Recent Changes (November 21, 2025 - Membership & Export Update)
+- **Membership System**: Added Free, Pro, and Enterprise tiers with clear feature differentiation
+- **Pro Features**: Collections (save favorite prompts), export to JSON/CSV, advanced filtering, early access to new prompts, ad-free experience
+- **Pricing Page**: Complete redesign with feature comparison table, clear tier benefits, call-to-action buttons
+- **Pro Feature Gate**: Created component to gate Pro-only features elegantly
+- **Collections Storage**: Client-side collections system using localStorage (no backend needed)
+- **Export Functionality**: One-click export of saved prompts in JSON or CSV format
+
+## Previous Changes (November 21, 2025 - Latest Update)
 - **MAJOR UPDATE**: Seeded database with 42 production-ready prompts from real-world sources
 - Added comprehensive prompt library covering:
   - **Midjourney V7 & Niji 6**: Photorealistic portraits, wildlife photography, character design, botanical illustrations
