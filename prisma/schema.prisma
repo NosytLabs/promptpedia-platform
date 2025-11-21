@@ -144,7 +144,7 @@ model Prompt {
   title                 String
   description           String?  @db.Text
   promptText            String   @db.Text
-  category              String?
+  category              String[] @default([])
   techniques            String[] @default([])
   tags                  String[] @default([])
   status                PromptStatus @default(DRAFT)

@@ -5,12 +5,17 @@ Promptpedia is a modern prompt engineering platform built with Next.js 14, React
 
 **Current State:** The platform is fully configured and running on Replit. The development server is operational on port 5000, and the PostgreSQL database schema has been initialized.
 
-## Recent Changes (November 21, 2024)
+## Recent Changes (November 21, 2025)
 - Configured Next.js to run on port 5000 with 0.0.0.0 host for Replit compatibility
 - Set up PostgreSQL database with Prisma ORM
-- Initialized all database tables (User, Prompt, Forum, Membership, etc.)
-- Configured deployment settings for autoscale deployment
-- Updated build scripts to include Prisma client generation
+- Loaded 18 production-ready prompts from real research:
+  - **Gemini Nano**: Sentiment analysis, document extraction, image tagging
+  - **Nano Banana Pro**: 3D figurine, Bollywood style, fantasy maps, image editing
+  - **Custom AI Agents**: Coding assistant, customer support, RAG research
+  - **Video Generation**: Coffee shop, Tokyo neon, yoga, underwater footage
+  - **Best Practices & Guides**: Comprehensive prompt engineering guide, content creation, marketing, development
+- All prompts include examples from production systems (OpenAI, Google, Anthropic)
+- Database populated with realistic engagement metrics (views, likes, ratings)
 
 ## Project Architecture
 
@@ -55,7 +60,11 @@ The database includes:
 - **Analytics:** UserContribution for tracking user activity
 
 ### Key Features
-- Prompt creation and management
+- 18+ production-ready prompts with real examples
+- Prompts for Gemini Nano, Nano Banana Pro, custom agents, video generation
+- Comprehensive prompt engineering best practices guide
+- Prompt browsing with search, filtering by AI system/category/technique
+- Advanced sorting (recent, popular, rating)
 - Community forum
 - Membership tiers (FREE, PRO, PREMIUM, ENTERPRISE)
 - User authentication (optional)
@@ -122,9 +131,38 @@ The project is configured for autoscale deployment:
 - All images are optimized via Next.js Image component
 - The database is persistent and backed up by Replit
 
-## Next Steps
-To enable full functionality:
-1. Set up OAuth providers (Google, GitHub) if you want social authentication
-2. Configure payment processing if you want to enable premium memberships
-3. Add Google Analytics measurement ID for analytics tracking
-4. Customize branding and content to match your needs
+## Prompt Categories Available
+
+### Model-Specific
+- **Gemini Nano** (on-device LLM): Sentiment analysis, document extraction, image tagging
+- **Nano Banana Pro** (image gen/edit): Portrait transforms, style transfers, map generation
+- **All Models**: Claude, GPT-4, Gemini
+
+### Use Cases
+- AI Agent System Prompts (coding, support, research)
+- Video Generation (social media, cinematic, B-roll)
+- Content Creation (blog posts, ad copy, social calendars)
+- Development (API integration, code review, SQL generation)
+- Data Analysis (insights, business intelligence)
+- Marketing (SEO, PPC, email campaigns)
+- Best Practices Guides & Tutorials
+
+### Prompt Techniques Covered
+- Chain-of-Thought, Few-Shot, Zero-Shot
+- ReAct Pattern, Prompt Scaffolding
+- Role-Based, Constraint-Based, Structured Debate
+- JSON Output, Iterative Refinement
+- One-Shot Learning, Self-Consistency
+
+## Getting Started
+1. Browse prompts at `/prompts` - search by keyword, filter by model/category
+2. Click any prompt to see full details with examples
+3. Submit your own prompts at `/submit`
+4. View popular/trending prompts by sorting (recent, popular, highest rated)
+
+## Next Steps for Full Functionality
+1. Set up OAuth providers (Google, GitHub) for user authentication
+2. Configure payment processing for premium membership features
+3. Add Google Analytics measurement ID for usage tracking
+4. Build custom prompt collections by topic
+5. Enable community ratings and reviews
