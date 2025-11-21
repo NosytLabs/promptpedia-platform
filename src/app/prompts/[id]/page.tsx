@@ -6,6 +6,9 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Prompt } from '@/types/prompt';
 import { formatDate } from '@/lib/utils';
+import { SharePromptButton } from '@/components/share-prompt-button';
+import { PromptFeedback } from '@/components/prompt-feedback';
+import { RelatedPrompts } from '@/components/related-prompts';
 
 export default function PromptDetailPage() {
   const params = useParams();
@@ -17,6 +20,7 @@ export default function PromptDetailPage() {
   const [hoveredRating, setHoveredRating] = useState<number>(0);
   const [ratingSubmitted, setRatingSubmitted] = useState(false);
   const [ratingLoading, setRatingLoading] = useState(false);
+  const [relatedPrompts, setRelatedPrompts] = useState<any[]>([]);
 
   useEffect(() => {
     if (params.id) {
@@ -30,6 +34,15 @@ export default function PromptDetailPage() {
       if (response.ok) {
         const data = await response.json();
         setPrompt(data.data);
+        
+        // Fetch related prompts
+        try {
+          const relatedRes = await fetch(`/api/prompts?category=${data.data.category?.[0]}&limit=3`);
+          const relatedData = await relatedRes.json();
+          setRelatedPrompts(relatedData.data?.items?.filter((p: any) => p.id !== id).slice(0, 3) || []);
+        } catch (err) {
+          // Silently fail on related prompts
+        }
       } else {
         router.push('/prompts');
       }

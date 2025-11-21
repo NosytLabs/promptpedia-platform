@@ -2,12 +2,19 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Prompt } from '@/types/prompt';
 import { Star, Eye } from 'lucide-react';
 
+interface PromptCardProps {
+  id: string;
+  title: string;
+  description?: string;
+  viewCount?: number;
+  rating?: number;
+}
+
 interface RelatedPromptsProps {
-  currentPrompt: Prompt;
-  relatedPrompts: Prompt[];
+  currentPrompt: PromptCardProps;
+  relatedPrompts: PromptCardProps[];
 }
 
 export function RelatedPrompts({ currentPrompt, relatedPrompts }: RelatedPromptsProps) {
@@ -42,11 +49,11 @@ export function RelatedPrompts({ currentPrompt, relatedPrompts }: RelatedPrompts
                 <div className="flex items-center justify-between text-xs text-slate-600">
                   <div className="flex items-center gap-2">
                     <Eye className="w-3 h-3" />
-                    <span>{prompt.viewCount}</span>
+                    <span>{prompt.viewCount || 0}</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                    <span>{parseFloat(String(prompt.rating)).toFixed(1)}</span>
+                    <span>{(prompt.rating || 0).toFixed(1)}</span>
                   </div>
                 </div>
               </div>
