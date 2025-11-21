@@ -49,7 +49,7 @@ export const metadata = {
     description: '50+ production-ready prompts. Learn from top AI engineers. Free library + $9/month Pro with advanced features.',
     creator: '@promptpedia',
     site: '@promptpedia',
-    image: '/og-image.png',
+    images: '/og-image.png',
   },
   alternates: {
     canonical: process.env.NEXT_PUBLIC_DOMAIN || 'https://promptpedia.replit.dev',

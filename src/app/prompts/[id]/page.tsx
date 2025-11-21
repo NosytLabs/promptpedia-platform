@@ -336,9 +336,9 @@ export default function PromptDetailPage() {
                 <p className="text-sm text-slate-500">
                   {ratingSubmitted ? '✓ Thanks for rating!' : 'Click to rate this prompt'}
                 </p>
-                {prompt.rating > 0 && (
+                {prompt.rating && prompt.rating > 0 && (
                   <p className="text-sm font-medium text-slate-700 mt-1">
-                    Community average: {prompt.rating.toFixed(1)} ⭐ ({prompt.ratingCount} ratings)
+                    Community average: {prompt.rating.toFixed(1)} ⭐ ({prompt.ratingCount || 0} ratings)
                   </p>
                 )}
               </div>
