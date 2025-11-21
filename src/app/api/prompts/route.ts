@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
         title: body.title,
         description: body.description,
         promptText: body.promptText,
-        category: body.category || "General",
+        category: body.category ? (typeof body.category === 'string' ? [body.category] : body.category) : ["General"],
         techniques: body.techniques || [],
         aiSystems: body.aiSystems || [],
         tags: body.tags || [],
