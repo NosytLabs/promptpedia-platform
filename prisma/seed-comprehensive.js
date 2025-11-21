@@ -610,12 +610,39 @@ Format: CSV with date, content, CTA, hashtags`,
 async function main() {
   console.log('Starting comprehensive prompt seeding...');
 
-  // First, check if prompts already exist to avoid duplicates
-  const existingCount = await prisma.prompt.count();
-  console.log(`📊 Existing prompts in database: ${existingCount}`);
+  try {
+    // Create or get system admin user for seed prompts
+    let systemUser = await prisma.user.findFirst({
+      where: { email: 'system@promptpedia.ai' }
+    });
 
-  let createdCount = 0;
-  for (const promptData of COMPREHENSIVE_PROMPTS) {
+    if (!systemUser) {
+      systemUser = await prisma.user.create({
+        data: {
+          name: 'Promptpedia System',
+          email: 'system@promptpedia.ai',
+          role: 'admin',
+          membership: {
+            create: {
+              tier: 'PREMIUM',
+              analyticsAccess: true,
+              apiAccess: true,
+            }
+          }
+        },
+        include: { membership: true }
+      });
+      console.log(`✅ Created system admin user: ${systemUser.email}`);
+    } else {
+      console.log(`✅ Using existing system user: ${systemUser.email}`);
+    }
+
+    // First, check if prompts already exist to avoid duplicates
+    const existingCount = await prisma.prompt.count();
+    console.log(`📊 Existing prompts in database: ${existingCount}`);
+
+    let createdCount = 0;
+    for (const promptData of COMPREHENSIVE_PROMPTS) {
     try {
       // Check if prompt with same title already exists
       const existing = await prisma.prompt.findFirst({
@@ -625,6 +652,7 @@ async function main() {
       if (!existing) {
         const prompt = await prisma.prompt.create({
           data: {
+            userId: systemUser.id,
             title: promptData.title,
             description: promptData.description,
             promptText: promptData.promptText,
@@ -652,9 +680,13 @@ async function main() {
     }
   }
 
-  console.log(`✅ Seed complete! Created ${createdCount} new prompts.`);
-  console.log(`📊 Total prompts in database: ${existingCount + createdCount}`);
-  await prisma.$disconnect();
+    console.log(`✅ Seed complete! Created ${createdCount} new prompts.`);
+    console.log(`📊 Total prompts in database: ${existingCount + createdCount}`);
+  } catch (error) {
+    console.error('❌ Seed failed:', error);
+  } finally {
+    await prisma.$disconnect();
+  }
 }
 
 main().catch(console.error);
