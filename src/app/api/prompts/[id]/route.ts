@@ -58,7 +58,7 @@ export async function PUT(
 
     // Handle category field - ensure it's always an array
     if (updates.category && typeof updates.category === 'string') {
-      updates.category = [updates.category]
+      (updates as any).category = [updates.category]
     }
 
     const updatedPrompt = await prisma.prompt.update({
