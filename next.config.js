@@ -6,11 +6,6 @@ const nextConfig = {
   poweredByHeader: false,
   productionBrowserSourceMaps: false,  // Reduce memory, save 30MB builds
   
-  webpackDevMiddleware: (config) => {
-    config.allowedHosts = 'all';
-    return config;
-  },
-  
   images: {
     domains: ['avatars.githubusercontent.com', 'images.unsplash.com'],
     remotePatterns: [{ protocol: 'https', hostname: '**' }],
