@@ -63,7 +63,11 @@ export async function PUT(
 
     const updatedPrompt = await prisma.prompt.update({
       where: { id: params.id },
-      data: updates,
+      data: {
+        ...updates,
+        category: updates.category ? (typeof updates.category === 'string' ? [updates.category] : updates.category) : undefined,
+        aiSystems: updates.aiSystems ? (typeof updates.aiSystems === 'string' ? [updates.aiSystems] : updates.aiSystems) : undefined,
+      },
     })
 
     return apiResponse.success(updatedPrompt)

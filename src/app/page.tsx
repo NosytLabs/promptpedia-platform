@@ -1,7 +1,7 @@
 'use client';
 
-// Cache homepage for 1 hour - huge cost savings
-export const revalidate = 3600;
+// Cache homepage for 3 hours - only regenerates 8x daily max
+export const revalidate = 10800;
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';

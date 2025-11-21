@@ -15,7 +15,6 @@ const nextConfig = {
   },
   
   experimental: {
-    serverActions: true,
     optimizePackageImports: ['lucide-react'],  // Only import used icons
   },
 
@@ -29,30 +28,42 @@ const nextConfig = {
 
   async headers() {
     return [
+      // API routes: 60s cache with SWR for 24h (serve stale while revalidating)
       {
         source: '/api/:path*',
         headers: [
-          { key: 'Cache-Control', value: 'private, max-age=60' },
+          { key: 'Cache-Control', value: 'private, max-age=60, stale-while-revalidate=86400' },
         ],
       },
+      // Prompts page: 3h cache (regenerates 3x daily max)
       {
         source: '/prompts/:path*',
         headers: [
-          { key: 'Cache-Control', value: 'public, max-age=3600, s-maxage=86400' },
+          { key: 'Cache-Control', value: 'public, max-age=10800, stale-while-revalidate=86400' },
         ],
       },
+      // Blog: 48h cache (blog posts don't change often, huge savings)
       {
         source: '/blog/:path*',
         headers: [
-          { key: 'Cache-Control', value: 'public, max-age=86400' },
+          { key: 'Cache-Control', value: 'public, max-age=172800, stale-while-revalidate=604800' },
         ],
       },
+      // Static pages: 24h cache (tools, templates, cheatsheet)
+      {
+        source: '/:path(tools|templates|cheatsheet)?',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, stale-while-revalidate=604800' },
+        ],
+      },
+      // Immutable assets: 1 year
       {
         source: '/_next/static/:path*',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
+      // Security headers
       {
         source: '/:path*',
         headers: [
@@ -75,11 +86,13 @@ const nextConfig = {
   },
 
   onDemandEntries: {
-    maxInactiveAge: 1000 * 60 * 60,  // 1 hour page retention
-    pagesBufferLength: 5,  // Reduce pre-generation
+    maxInactiveAge: 1000 * 60 * 60 * 24,  // Keep pages cached 24h
+    pagesBufferLength: 3,  // Minimal pre-generation
   },
 
   env: {
     NEXT_PUBLIC_DOMAIN: process.env.NEXT_PUBLIC_DOMAIN || 'https://promptpedia.replit.dev',
   },
 }
+
+module.exports = nextConfig

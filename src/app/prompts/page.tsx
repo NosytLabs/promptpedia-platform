@@ -1,7 +1,7 @@
 'use client';
 
-// Cache prompts page for 1 hour - generate static HTML then revalidate
-export const revalidate = 3600;
+// Cache prompts page for 3 hours - ISR with stale-while-revalidate for cost savings
+export const revalidate = 10800;
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
