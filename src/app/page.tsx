@@ -147,7 +147,7 @@ export default function Home() {
                   <p className="text-slate-600 mb-4">{prompt.description}</p>
 
                   <div className="flex flex-wrap gap-2 mb-3">
-                    {prompt.systems.map((system) => (
+                    {Array.isArray(prompt.systems) && prompt.systems.map((system) => (
                       <span
                         key={system}
                         className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-md font-medium"

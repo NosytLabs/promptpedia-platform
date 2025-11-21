@@ -261,7 +261,7 @@ export default function PromptsPage() {
                     <p className="text-slate-600 mb-4 line-clamp-3">{prompt.description}</p>
 
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {prompt.aiSystem.slice(0, 3).map((system) => (
+                      {Array.isArray(prompt.aiSystem) && prompt.aiSystem.slice(0, 3).map((system) => (
                         <span
                           key={system}
                           className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-md"
@@ -269,7 +269,7 @@ export default function PromptsPage() {
                           {system}
                         </span>
                       ))}
-                      {prompt.aiSystem.length > 3 && (
+                      {Array.isArray(prompt.aiSystem) && prompt.aiSystem.length > 3 && (
                         <span className="px-2 py-1 bg-slate-100 text-slate-700 text-xs rounded-md">
                           +{prompt.aiSystem.length - 3} more
                         </span>
@@ -277,7 +277,7 @@ export default function PromptsPage() {
                     </div>
 
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {prompt.category.slice(0, 2).map((cat) => (
+                      {Array.isArray(prompt.category) && prompt.category.slice(0, 2).map((cat) => (
                         <span
                           key={cat}
                           className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-md"
