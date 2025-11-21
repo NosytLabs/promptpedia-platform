@@ -1,0 +1,135 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Anthropic Sans",
+      "role": "body"
+    },
+    {
+      "family": "Segoe UI",
+      "role": "body"
+    },
+    {
+      "family": "Roboto",
+      "role": "body"
+    },
+    {
+      "family": "Helvetica",
+      "role": "body"
+    },
+    {
+      "family": "Arial",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#ABB2BF",
+    "accent": "#F5F4ED",
+    "background": "#FAF9F5",
+    "textPrimary": "#73726C",
+    "link": "#5C6370"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Anthropic Sans",
+      "heading": "Anthropic Sans"
+    },
+    "fontStacks": {
+      "heading": [
+        "anthropicSans",
+        "anthropicSans Fallback",
+        "system-ui",
+        "Segoe UI",
+        "Roboto",
+        "Helvetica",
+        "Arial",
+        "sans-serif"
+      ],
+      "body": [
+        "anthropicSans",
+        "anthropicSans Fallback",
+        "system-ui",
+        "Segoe UI",
+        "Roboto",
+        "Helvetica",
+        "Arial",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "anthropicSans",
+        "anthropicSans Fallback",
+        "system-ui",
+        "Segoe UI",
+        "Roboto",
+        "Helvetica",
+        "Arial",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "30px",
+      "h2": "30px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "6px"
+  },
+  "components": {
+    "input": {
+      "borderColor": "#CCCCCC",
+      "borderRadius": "6px"
+    },
+    "buttonPrimary": {
+      "background": "#F5F4ED",
+      "textColor": "#141413",
+      "borderRadius": "0px",
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "#141413",
+      "textColor": "#FFFFFF",
+      "borderRadius": "6px",
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "File saved at: attached_assets/logo.svg",
+    "favicon": "https://platform.claude.com/favicon.ico",
+    "ogImage": "https://platform.claude.com/docs/og?locale=en&path=resources/prompt-library/library"
+  },
+  "__framework_hints": [],
+  "__llm_logo_reasoning": {
+    "selectedIndex": 0,
+    "reasoning": "Logo #0 visually represents the brand name 'Claude Docs' and is located in the header, linking to the homepage, making it the most suitable choice for the brand logo.",
+    "confidence": 0.95
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 2,
+      "text": "Search...⌘K",
+      "reasoning": "Button #2 has a vibrant background color (#F5F4ED) that stands out compared to the other buttons, making it the most likely primary CTA. The text 'Search...' is action-oriented, indicating a clear call to action."
+    },
+    "secondary": {
+      "index": 4,
+      "text": "Log in",
+      "reasoning": "Button #4 has a distinct background color (#141413) which is different from the primary button's color. It serves as a less prominent action, typically associated with login actions, making it suitable as a secondary button."
+    },
+    "confidence": 0.9
+  },
+  "personality": {
+    "tone": "modern",
+    "energy": "medium",
+    "targetAudience": "tech-savvy users looking for AI tools and resources."
+  },
+  "designSystem": {
+    "framework": "tailwind",
+    "componentLibrary": null
+  },
+  "confidence": {
+    "buttons": 0.9,
+    "colors": 0.95,
+    "overall": 0.925
+  }
+}
