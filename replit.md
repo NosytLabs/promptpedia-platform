@@ -5,17 +5,25 @@ Promptpedia is a modern prompt engineering platform built with Next.js 14, React
 
 **Current State:** The platform is fully configured and running on Replit. The development server is operational on port 5000, and the PostgreSQL database schema has been initialized.
 
-## Recent Changes (November 21, 2025)
-- Configured Next.js to run on port 5000 with 0.0.0.0 host for Replit compatibility
-- Set up PostgreSQL database with Prisma ORM
-- Loaded 18 production-ready prompts from real research:
-  - **Gemini Nano**: Sentiment analysis, document extraction, image tagging
-  - **Nano Banana Pro**: 3D figurine, Bollywood style, fantasy maps, image editing
-  - **Custom AI Agents**: Coding assistant, customer support, RAG research
-  - **Video Generation**: Coffee shop, Tokyo neon, yoga, underwater footage
-  - **Best Practices & Guides**: Comprehensive prompt engineering guide, content creation, marketing, development
-- All prompts include examples from production systems (OpenAI, Google, Anthropic)
-- Database populated with realistic engagement metrics (views, likes, ratings)
+## Recent Changes (November 21, 2025 - Latest Update)
+- **MAJOR UPDATE**: Seeded database with 42 production-ready prompts from real-world sources
+- Added comprehensive prompt library covering:
+  - **Midjourney V7 & Niji 6**: Photorealistic portraits, wildlife photography, character design, botanical illustrations
+  - **DALL-E 3**: Text rendering, book covers, atmospheric scenes, cyberpunk remixes, UI mockups
+  - **Runway Gen-4 & Kling AI**: Cinematic FPV flights, text animations, fantasy scenes, sports action
+  - **Game Assets**: Low-poly 3D models, pixel art sprites, PBR textures, isometric tiles, sci-fi environments
+  - **Universal LLM (GPT-4, Claude, Gemini)**: Terminal simulation, debugging, SQL generation, Excel formulas, translations, interviews
+  - **Prompt Chains**: Market research, contractor proposals, affirmations
+  - **Startup & Product**: Key assumptions, product specs, user story maps, bad ideas blitz
+  - **Best Practices**: Prompt engineering guide 2025, chain-of-thought, few-shot learning, JSON output, ReAct pattern
+- Enhanced UI/UX with model-specific features:
+  - Quick-filter buttons for AI models (Midjourney, DALL-E, Runway, ChatGPT, Claude, Gemini) with icons
+  - Hover-to-copy buttons on all prompt cards for instant clipboard access
+  - Enhanced prompt detail pages with "Examples & Results" section showing actual outputs and parameters
+  - Updated navbar with Generate, Library, and Enhance links
+- Fixed homepage category array handling bug
+- All prompts include real examples, actual parameters (--ar 16:9, --stylize, etc.), and result descriptions
+- Database populated with realistic engagement metrics (500-3500 views, 100-700 likes, 4.3-5.3 ratings)
 
 ## Project Architecture
 
@@ -60,17 +68,21 @@ The database includes:
 - **Analytics:** UserContribution for tracking user activity
 
 ### Key Features
-- 18+ production-ready prompts with real examples
-- Prompts for Gemini Nano, Nano Banana Pro, custom agents, video generation
-- Comprehensive prompt engineering best practices guide
-- Prompt browsing with search, filtering by AI system/category/technique
-- Advanced sorting (recent, popular, rating)
-- Community forum
+- **42 production-ready prompts** with real examples from actual AI systems
+- Covers all major AI platforms: Midjourney V7, DALL-E 3, Runway Gen-4, Kling AI, GPT-4, Claude 3.5, Gemini 2.0, game asset tools
+- **Quick-filter buttons** with model icons for instant filtering (🎨 Midjourney, 🖼️ DALL-E, 🎬 Runway, 🤖 GPT-4, etc.)
+- **Hover-to-copy** on all prompt cards - just hover and click to copy prompts instantly
+- **Examples & Results** section on detail pages showing actual outputs and parameters
+- Comprehensive prompt engineering best practices and techniques
+- Advanced search with filtering by AI system/category/technique
+- Multiple sort options (recent, popular, highest rated)
+- Production-ready parameters included (--ar, --stylize, --sref codes, etc.)
+- Community forum (ready to activate)
 - Membership tiers (FREE, PRO, PREMIUM, ENTERPRISE)
 - User authentication (optional)
 - Payment integration (optional)
-- Responsive design with dark mode
-- SEO optimization
+- Fully responsive design
+- SEO optimized
 
 ## Development
 
@@ -131,34 +143,69 @@ The project is configured for autoscale deployment:
 - All images are optimized via Next.js Image component
 - The database is persistent and backed up by Replit
 
-## Prompt Categories Available
+## Comprehensive Prompt Library (42 Prompts)
 
-### Model-Specific
-- **Gemini Nano** (on-device LLM): Sentiment analysis, document extraction, image tagging
-- **Nano Banana Pro** (image gen/edit): Portrait transforms, style transfers, map generation
-- **All Models**: Claude, GPT-4, Gemini
+### Image Generation (Midjourney V7 & DALL-E 3)
+- **Photography**: Hasselblad portraits, National Geographic wildlife, cozy coffee shops
+- **Character Design**: Dystopian superheroes, consistent characters for books
+- **Art & Illustration**: Colored pencil botanical art, cyberpunk remixes of classics
+- **Design**: Text rendering for book covers, website wireframes, Japanese zen scenes
+- Includes actual parameters: --ar 16:9, --v 7, --style raw, --q 2
 
-### Use Cases
-- AI Agent System Prompts (coding, support, research)
-- Video Generation (social media, cinematic, B-roll)
-- Content Creation (blog posts, ad copy, social calendars)
-- Development (API integration, code review, SQL generation)
-- Data Analysis (insights, business intelligence)
-- Marketing (SEO, PPC, email campaigns)
-- Best Practices Guides & Tutorials
+### Video Generation (Runway Gen-4 & Kling AI)
+- **Cinematic**: FPV drone flights through glacial canyons
+- **Nature**: Macro-to-wide reveals (jellyfish to ocean), fantasy epic scenes
+- **Action**: Premier League goalkeeper saves, slow-motion sports
+- **Branding**: Text animation with liquid physics, logo reveals
+- Duration specs: 5-10 seconds, 720p-1080p
 
-### Prompt Techniques Covered
-- Chain-of-Thought, Few-Shot, Zero-Shot
-- ReAct Pattern, Prompt Scaffolding
-- Role-Based, Constraint-Based, Structured Debate
-- JSON Output, Iterative Refinement
-- One-Shot Learning, Self-Consistency
+### Game Development Assets
+- **3D Models**: Low-poly swords, sci-fi cockpit interiors (FBX/OBJ export)
+- **2D Sprites**: Pixel art treasure chests with animations (32x32)
+- **Textures**: PBR brick walls with all material maps (4K seamless)
+- **Environment**: Isometric medieval building tiles, modular pieces
+- Ready for Unity, Unreal Engine 5, Godot, GameMaker
+
+### Universal LLM Prompts (GPT-4, Claude, Gemini)
+- **Developer Tools**: Linux terminal simulation, Python debugger, SQL generator, Excel formulas
+- **Productivity**: English translator/improver, job interview practice
+- **Advanced Techniques**: Chain-of-thought reasoning, few-shot learning, JSON output, ReAct pattern
+
+### Startup & Business
+- **Product Planning**: Key assumptions finder, simple product specs, user story mapping
+- **Innovation**: Bad ideas blitz for creative breakthroughs
+- **Freelancing**: Contractor proposal writer (Upwork/Fiverr)
+- **Research**: Market research chains, data analysis frameworks
+
+### Marketing & Content
+- **SEO**: Content strategy generator, keyword planning
+- **Email**: High-converting campaign copy
+- **Technical**: API documentation templates
+
+### Best Practices & Guides
+- Prompt engineering best practices 2025
+- Complete technique library with examples
+- Model-specific tips and tricks
 
 ## Getting Started
-1. Browse prompts at `/prompts` - search by keyword, filter by model/category
-2. Click any prompt to see full details with examples
-3. Submit your own prompts at `/submit`
-4. View popular/trending prompts by sorting (recent, popular, highest rated)
+1. **Browse prompts** at `/prompts`:
+   - Use quick-filter buttons to filter by AI model (Midjourney, DALL-E, Runway, ChatGPT, etc.)
+   - Search by keyword across titles and descriptions
+   - Filter by category (photography, video, game-assets, coding, etc.) or technique
+   - Sort by recent, popular, or highest rated
+2. **Hover over any prompt card** to reveal the instant copy button
+3. **Click a prompt** to see full details including:
+   - Complete prompt text with copy button
+   - Examples & Results section showing actual outputs
+   - Parameters and specifications (aspect ratios, quality settings, etc.)
+   - Use cases and compatible AI systems
+4. **Try the prompts** in your favorite AI tools:
+   - Midjourney: Copy and paste into Discord
+   - DALL-E 3: Use in ChatGPT or Bing Image Creator
+   - Runway: Input as video generation prompts
+   - ChatGPT/Claude: Copy directly into chat interfaces
+5. **Generate** custom prompts at `/generate` (coming soon)
+6. **Enhance** existing prompts at `/enhance` (coming soon)
 
 ## Next Steps for Full Functionality
 1. Set up OAuth providers (Google, GitHub) for user authentication
