@@ -270,7 +270,7 @@ export default function Home() {
                       <p className="text-slate-600 mb-4 line-clamp-2">{prompt.description}</p>
 
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {prompt.aiSystem.slice(0, 2).map((system) => (
+                        {Array.isArray(prompt.aiSystem) && prompt.aiSystem.slice(0, 2).map((system) => (
                           <span
                             key={system}
                             className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-md"
@@ -278,7 +278,7 @@ export default function Home() {
                             {system}
                           </span>
                         ))}
-                        {prompt.aiSystem.length > 2 && (
+                        {Array.isArray(prompt.aiSystem) && prompt.aiSystem.length > 2 && (
                           <span className="px-2 py-1 bg-slate-100 text-slate-700 text-xs rounded-md">
                             +{prompt.aiSystem.length - 2} more
                           </span>
