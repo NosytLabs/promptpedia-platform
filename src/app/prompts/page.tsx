@@ -68,6 +68,7 @@ export default function PromptsPage() {
 
   useEffect(() => {
     fetchPrompts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery, selectedAISystem, selectedCategory, selectedTechnique, sortBy]);
 
   const fetchPrompts = async () => {
