@@ -59,7 +59,6 @@ export async function POST(request: NextRequest) {
         break
 
       default:
-        console.log(`Unhandled event type: ${event.type}`)
     }
 
     return NextResponse.json({ received: true })
@@ -81,13 +80,11 @@ async function handleSubscriptionCreated(data: any) {
     const tier = data.metadata?.tier
 
     if (!userId) {
-      console.warn("Subscription created without userId metadata")
       return
     }
 
     const tierConfig = MEMBERSHIP_TIERS[tier as keyof typeof MEMBERSHIP_TIERS]
     if (!tierConfig) {
-      console.warn(`Invalid tier in subscription: ${tier}`)
       return
     }
 
@@ -124,7 +121,6 @@ async function handleSubscriptionCreated(data: any) {
       },
     })
 
-    console.log(`Subscription created for user ${userId} on tier ${tier}`)
   } catch (error) {
     console.error("Error handling subscription.created:", error)
     throw error
@@ -140,7 +136,6 @@ async function handleSubscriptionUpdated(data: any) {
     const tier = data.metadata?.tier
 
     if (!userId) {
-      console.warn("Subscription updated without userId metadata")
       return
     }
 
@@ -163,7 +158,6 @@ async function handleSubscriptionUpdated(data: any) {
       },
     })
 
-    console.log(`Subscription updated for user ${userId}`)
   } catch (error) {
     console.error("Error handling subscription.updated:", error)
   }
@@ -177,7 +171,6 @@ async function handleSubscriptionCanceled(data: any) {
     const userId = data.metadata?.userId
 
     if (!userId) {
-      console.warn("Subscription canceled without userId metadata")
       return
     }
 
@@ -197,7 +190,6 @@ async function handleSubscriptionCanceled(data: any) {
       },
     })
 
-    console.log(`Subscription canceled for user ${userId}`)
   } catch (error) {
     console.error("Error handling subscription.canceled:", error)
   }
@@ -211,7 +203,6 @@ async function handleSubscriptionFailed(data: any) {
     const userId = data.metadata?.userId
 
     if (!userId) {
-      console.warn("Subscription failed without userId metadata")
       return
     }
 
@@ -223,7 +214,6 @@ async function handleSubscriptionFailed(data: any) {
       },
     })
 
-    console.log(`Subscription failed for user ${userId}`)
     // TODO: Send email notification to user about failed payment
   } catch (error) {
     console.error("Error handling subscription.failed:", error)
@@ -244,7 +234,6 @@ async function handleInvoicePaid(data: any) {
     })
 
     if (membership) {
-      console.log(
         `Invoice paid for user ${membership.userId}: $${amount / 100}`
       )
       // TODO: Update invoice/payment records if needed
@@ -267,7 +256,6 @@ async function handleInvoicePaymentFailed(data: any) {
     })
 
     if (membership) {
-      console.log(`Invoice payment failed for user ${membership.userId}`)
       // TODO: Send email notification and retry logic
     }
   } catch (error) {
