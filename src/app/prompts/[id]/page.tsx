@@ -245,13 +245,30 @@ export default function PromptDetailPage() {
             </pre>
           </div>
 
-          {prompt.examples && (
+          {prompt.examples && prompt.examples.length > 0 && (
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4 text-slate-900">Examples & Results</h2>
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200 rounded-xl p-6">
-                <div className="prose prose-slate max-w-none">
-                  <p className="text-slate-700 whitespace-pre-wrap">{prompt.examples}</p>
-                </div>
+              <div className="space-y-4">
+                {prompt.examples.map((example, index) => (
+                  <div key={index} className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200 rounded-xl p-6">
+                    <div className="prose prose-slate max-w-none">
+                      <div className="mb-3">
+                        <p className="font-semibold text-slate-900">Input:</p>
+                        <p className="text-slate-700 whitespace-pre-wrap">{example.input}</p>
+                      </div>
+                      <div className="mb-3">
+                        <p className="font-semibold text-slate-900">Output:</p>
+                        <p className="text-slate-700 whitespace-pre-wrap">{example.output}</p>
+                      </div>
+                      {example.notes && (
+                        <div>
+                          <p className="font-semibold text-slate-900">Notes:</p>
+                          <p className="text-slate-600 text-sm whitespace-pre-wrap">{example.notes}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           )}

@@ -20,6 +20,7 @@ export default function GeneratePage() {
   const [copied, setCopied] = useState(false);
   const [isPro] = useState(false);
   const [showTestModal, setShowTestModal] = useState(false);
+  const [selectedPrompt, setSelectedPrompt] = useState<any>(null);
 
   const strategies = [
     { value: 'standard', label: '✨ Standard', desc: 'Clear & effective' },
