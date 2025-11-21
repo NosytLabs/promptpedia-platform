@@ -18,7 +18,7 @@ export const getPopularPrompts = cache(async (limit = 20) => {
       title: true,
       description: true,
       category: true,
-      aiSystem: true,
+      aiSystems: true,
       rating: true,
       ratingCount: true,
       viewCount: true,
@@ -57,15 +57,14 @@ export const searchPrompts = cache(async (
       AND: [
         {
           OR: [
-            { title: { search: query } },
-            { description: { search: query } },
+            { title: { contains: query, mode: 'insensitive' } },
+            { description: { contains: query, mode: 'insensitive' } },
           ],
         },
         category ? { category: { has: category } } : {},
       ],
     },
     orderBy: [
-      { _relevance: { search: query, sort: 'desc' } },
       { viewCount: 'desc' },
     ],
     take: limit,
@@ -74,14 +73,12 @@ export const searchPrompts = cache(async (
 
 // Cache: Get single prompt with all details
 export const getPromptById = cache(async (id: string | number) => {
+  const numId = typeof id === 'string' ? parseInt(id, 10) : id;
   return prisma.prompt.findUnique({
-    where: { id: typeof id === 'string' ? parseInt(id) : id },
+    where: { id: numId },
     include: {
       user: {
         select: { name: true, image: true, email: true },
-      },
-      _count: {
-        select: { feedback: true },
       },
     },
   });
@@ -97,7 +94,7 @@ export const getRelatedPrompts = cache(async (
     where: {
       isPublic: true,
       status: 'PUBLISHED',
-      id: { not: currentId },
+      id: { not: Number(currentId) },
       category: { hasSome: category },
     },
     orderBy: { viewCount: 'desc' },
