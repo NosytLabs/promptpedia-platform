@@ -161,7 +161,7 @@ export default function ForumPage() {
             </div>
           ) : posts.length === 0 ? (
             <Card className="p-12 text-center">
-              <MessageSquare className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <MessageSquare className="w-8 h-8 text-gray-300 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 No discussions found
               </h3>

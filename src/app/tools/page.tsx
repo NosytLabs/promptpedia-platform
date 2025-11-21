@@ -88,7 +88,7 @@ export default function ToolsPage() {
                 transition={{ delay: idx * 0.1 }}
               >
                 <div className={`bg-gradient-to-br ${tool.color} rounded-2xl p-8 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 cursor-pointer group`}>
-                  <Icon className="w-12 h-12 mb-4 group-hover:scale-110 transition-transform" />
+                  <Icon className="w-8 h-8 mb-4 group-hover:scale-110 transition-transform" />
                   <h3 className="text-2xl font-bold mb-2">{tool.title}</h3>
                   <p className="text-white/90 mb-6">{tool.description}</p>
                   <button className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg font-semibold transition-colors">

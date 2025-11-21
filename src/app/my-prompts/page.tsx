@@ -135,7 +135,7 @@ export default function MyPromptsPage() {
           </div>
         ) : filteredPrompts.length === 0 ? (
           <Card className="p-12 text-center">
-            <BookOpen className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <BookOpen className="w-8 h-8 text-gray-300 mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-gray-900 mb-2">
               No prompts yet
             </h3>
