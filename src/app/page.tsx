@@ -1,7 +1,7 @@
 'use client';
 
-// Cache homepage for 3 hours - only regenerates 8x daily max
-export const revalidate = 10800;
+// Disable caching during development to fix browser cache issues
+export const revalidate = 0;
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -81,12 +81,8 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-        {/* Animated background overlay */}
-        <div className="absolute inset-0 opacity-30 overflow-hidden">
-          <div className="absolute top-20 left-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-          <div className="absolute top-32 right-1/4 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-32 left-1/2 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
-        </div>
+        {/* Animated background overlay - simplified to avoid hydration issues */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10"></div>
 
         <div className="container mx-auto px-4 py-24 text-center relative z-10">
           <motion.div
