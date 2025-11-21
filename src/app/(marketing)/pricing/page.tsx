@@ -28,15 +28,15 @@ const faqs = [
   },
   {
     question: 'What payment methods do you accept?',
-    answer: 'We accept all major credit cards, PayPal, and wire transfers for Enterprise plans. All payments are processed securely.',
+    answer: 'We accept all major credit cards and PayPal. All payments are processed securely.',
   },
   {
     question: 'Do you offer custom plans?',
-    answer: 'Yes, our Enterprise plan can be customized to your specific needs. Contact our sales team to discuss your requirements.',
+    answer: 'Contact our team to discuss your specific needs and requirements.',
   },
   {
     question: 'What kind of support do you offer?',
-    answer: 'All plans include community support. Pro plans include priority email support, while Enterprise plans get dedicated support and training services.',
+    answer: 'All plans include community support. Pro plans include priority email support and early access to new features.',
   },
 ]
 
@@ -47,18 +47,19 @@ const pricingPlans = [
     period: '/forever',
     description: 'Perfect for exploring',
     features: [
-      'Browse 42+ production-ready prompts',
+      'Browse 100+ production-ready prompts',
       'Rate & review prompts',
       'Submit your own prompts',
       'Search & filter by AI model',
       'Copy prompts to clipboard',
       'Community forum access',
+      'Access to all guides & resources',
     ],
     notIncluded: [
       'Advanced collections',
       'Prompt export (JSON/CSV)',
-      'Early access to new prompts',
-      'Analytics & statistics',
+      'Generate custom prompts',
+      'Advanced filtering',
       'Priority support',
     ],
     cta: 'Get Started Free',
@@ -68,39 +69,21 @@ const pricingPlans = [
     name: 'Pro',
     price: '$9',
     period: '/month',
-    description: 'For power users',
+    description: 'For serious prompt engineers',
     features: [
       'Everything in Free, plus:',
       'Save unlimited collections',
       'Export prompts (JSON/CSV)',
-      'Early access to new prompts',
+      'Generate custom prompts with AI',
       'Advanced filtering & search',
-      'View prompt usage analytics',
+      'Early access to new prompts',
+      'View usage analytics',
       'Priority email support',
       'Ad-free experience',
     ],
-    notIncluded: ['Advanced team features', 'Custom API'],
+    notIncluded: [],
     cta: 'Start Free Trial',
     highlighted: true,
-  },
-  {
-    name: 'Enterprise',
-    price: 'Custom',
-    period: '',
-    description: 'For organizations',
-    features: [
-      'Everything in Pro, plus:',
-      'Team collaboration',
-      'Custom prompt library',
-      'Dedicated support',
-      'API access',
-      'SSO & advanced security',
-      'Usage analytics & reporting',
-      'Custom integrations',
-    ],
-    notIncluded: [],
-    cta: 'Contact Sales',
-    highlighted: false,
   },
 ];
 
@@ -144,7 +127,7 @@ export default function PricingPage() {
         </motion.section>
 
         <section className="container mx-auto px-4 py-16">
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {pricingPlans.map((plan, index) => (
               <motion.div
                 key={index}

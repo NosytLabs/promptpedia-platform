@@ -4,8 +4,10 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Copy, Share2, Zap } from 'lucide-react';
+import { ProFeatureGate } from '@/components/pro-feature-gate';
 
 export default function GeneratePage() {
+  const [isPro] = useState(false); // TODO: Connect to actual user membership status
   const [topic, setTopic] = useState('');
   const [useCase, setUseCase] = useState('general');
   const [style, setStyle] = useState('instructive');
@@ -63,7 +65,7 @@ export default function GeneratePage() {
           <div className="text-center mb-12">
             <h1 className="text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Generate Prompts
+                Generate Custom Prompts
               </span>
             </h1>
             <p className="text-xl text-slate-600">
@@ -71,7 +73,8 @@ export default function GeneratePage() {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+          <ProFeatureGate isPro={isPro} featureName="Prompt generation">
+            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
             <div className="space-y-6">
               {/* Topic Input */}
               <div>
@@ -194,7 +197,8 @@ export default function GeneratePage() {
                 </ul>
               </div>
             </motion.div>
-          )}
+          </div>
+          </ProFeatureGate>
 
           {/* Tips Section */}
           <div className="mt-12 bg-slate-100 rounded-2xl p-8">
