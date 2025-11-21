@@ -48,31 +48,37 @@ export default function FAQSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-16 bg-slate-50">
+    <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+        <div className="text-center mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          >
+            Frequently Asked Questions
+          </motion.h2>
           <p className="text-xl text-slate-600">Everything you need to know about Promptpedia</p>
         </div>
 
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="max-w-3xl mx-auto space-y-3">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
-              className="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden"
+              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-200/60 hover:border-blue-200/60 overflow-hidden hover:bg-gradient-to-br hover:from-white hover:to-blue-50/30"
             >
               <button
                 onClick={() => setActiveIndex(activeIndex === index ? null : index)}
-                className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-50 transition"
+                className="w-full px-6 py-5 flex items-center justify-between hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent transition-all duration-200"
               >
-                <h3 className="font-bold text-left text-slate-900">{faq.question}</h3>
+                <h3 className="font-semibold text-left text-slate-900 text-lg">{faq.question}</h3>
                 <ChevronDown
-                  size={20}
-                  className={`text-slate-600 transition-transform flex-shrink-0 ${
-                    activeIndex === index ? 'rotate-180' : ''
+                  size={24}
+                  className={`text-slate-600 transition-all duration-300 flex-shrink-0 ${
+                    activeIndex === index ? 'rotate-180 text-blue-600' : ''
                   }`}
                 />
               </button>
@@ -82,9 +88,10 @@ export default function FAQSection() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="px-6 py-4 border-t border-slate-200 bg-slate-50"
+                  transition={{ duration: 0.2 }}
+                  className="px-6 py-5 border-t border-slate-200/60 bg-gradient-to-br from-blue-50/30 to-transparent"
                 >
-                  <p className="text-slate-600">{faq.answer}</p>
+                  <p className="text-slate-700 leading-relaxed">{faq.answer}</p>
                 </motion.div>
               )}
             </motion.div>
