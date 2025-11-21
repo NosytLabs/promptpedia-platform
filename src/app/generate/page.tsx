@@ -75,7 +75,7 @@ export default function GeneratePage() {
 
           <ProFeatureGate isPro={isPro} featureName="Prompt generation">
             <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-            <div className="space-y-6">
+              <div className="space-y-6">
               {/* Topic Input */}
               <div>
                 <label className="block text-sm font-semibold text-slate-900 mb-2">
@@ -196,8 +196,9 @@ export default function GeneratePage() {
                   <li>✓ Iterate based on results and save your best versions</li>
                 </ul>
               </div>
+              </div>
             </motion.div>
-          </div>
+            </div>
           </ProFeatureGate>
 
           {/* Tips Section */}

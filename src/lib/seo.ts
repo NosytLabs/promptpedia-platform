@@ -12,7 +12,9 @@ export function generateSEOMetadata(
   return {
     title: `${title} | Promptpedia`,
     description,
-    canonical: fullUrl,
+    alternates: {
+      canonical: fullUrl,
+    },
     openGraph: {
       title: `${title} | Promptpedia`,
       description,
