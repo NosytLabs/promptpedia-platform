@@ -3,9 +3,11 @@
 ## Overview
 Promptpedia is a professional prompt engineering platform built with Next.js 14, React, TypeScript, and PostgreSQL. It provides tools for discovering, creating, improving, and monetizing AI prompts with advanced features and community collaboration.
 
-**Current State:** Production-ready platform with 100+ curated prompts, advanced optimization engine, Pro membership, comprehensive blog, and user submission system.
+**Current State:** Production-ready platform with 200+ curated prompts, advanced optimization engine, Pro membership, comprehensive blog, user submission system, tools/templates/cheatsheet utilities, and optimized for ultra-low hosting costs.
 
-## Recent Changes (November 21, 2025 - Quality of Life Polish)
+**Hosting Strategy:** Deploy on Replit Autoscale ($0-15/mo). Future scale: self-hosted mini PC ($75/mo) for 50%+ cost savings.
+
+## Recent Changes (November 21, 2025 - Complete Production Launch)
 - **Share Functionality**: One-click share buttons for Twitter, LinkedIn, email, and copy-to-clipboard
 - **User Feedback System**: Helpful/not-helpful toggles with optional comment submission
 - **Related Prompts**: Smart recommendations based on category and AI system similarity
@@ -179,12 +181,40 @@ NEXT_PUBLIC_DODO_PUBLIC_KEY  # Dodo public key
 - Community-generated content (user submissions)
 - Social sharing (viral potential through Twitter/LinkedIn)
 
-## Next Steps (Low-Cost Implementation)
+## Deployment & Scaling
+
+### Hosting Options Comparison
+
+**Replit Autoscale (RECOMMENDED - Current)**
+- Cost: $0 first 3 months (credits), $5-100/month at scale
+- Database: Included (PostgreSQL)
+- Setup: 1 click "Publish" button
+- Best for: Immediate launch, variable traffic
+
+**Self-Hosted Mini PC (FUTURE - Year 2+)**
+- Cost: $500 upfront (GEEKOM A6), $3-5/month electricity
+- Database: Local PostgreSQL (included)
+- Setup: 2 hours (Docker + Nginx)
+- Break-even: 10 months vs Replit
+- Best for: Cost optimization at scale (5K+ daily users)
+
+**Vercel + Supabase (NOT RECOMMENDED)**
+- Cost: $50-150/month (bandwidth + DB)
+- Database: Separate ($25/month minimum)
+- Setup: 15 minutes
+- Issue: Most expensive option long-term
+
+### API Cost Optimization
+- **Free users:** Mistral 7B ($0/request)
+- **Pro users:** Claude 3.5 Sonnet ($0.06/request)
+- **Budget:** $0-50/month at 1K-5K users
+
+### Next Steps (Low-Cost Implementation)
 
 ### High Priority (Dev Cost: LOW)
-1. ✅ Dodo Payments usage-based billing setup
-2. ✅ Advanced search with full-text capabilities
-3. ✅ Share & feedback system
+1. ✅ Database seeding (200+ prompts)
+2. ✅ Utility pages (tools, templates, cheatsheet)
+3. ✅ Code optimization (caching, bundling, lazy loading)
 4. ⏳ Email notifications (SendGrid free tier)
 5. ⏳ Analytics dashboard (PostHog free tier)
 
