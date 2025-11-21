@@ -79,52 +79,84 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      <section className="container mx-auto px-4 py-24 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
-            The World's Largest
-            <br />
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Prompt Engineering Community
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 mb-12 max-w-4xl mx-auto">
-            Master one-shot, few-shot, chain-of-thought prompting & more. 
-            Learn from 18+ expert techniques curated from X/Twitter's top AI practitioners.
-            Built by the community, for the community.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/prompts"
-              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-2xl hover:scale-105 transform"
+    <main className="min-h-screen">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+        {/* Animated background overlay */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-1/2 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+        </div>
+
+        <div className="container mx-auto px-4 py-24 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <motion.div
+              animate={{ y: [0, -20, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="mb-8 inline-block"
             >
-              <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              Browse Prompts
-            </Link>
-            <Link
-              href="/submit"
-              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-slate-800 to-slate-900 text-white rounded-xl hover:from-slate-900 hover:to-black transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-2xl hover:scale-105 transform border border-slate-700/50"
+              <div className="text-7xl">🚀</div>
+            </motion.div>
+            
+            <h1 className="text-7xl md:text-8xl font-black mb-6 leading-tight text-white drop-shadow-lg">
+              The World's Largest
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                AI Prompt Community
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-4xl mx-auto leading-relaxed drop-shadow">
+              Master one-shot, few-shot, chain-of-thought prompting & more. 
+              Learn from 18+ expert techniques curated from X/Twitter's top AI practitioners.
+              Built by the community, for the community.
+            </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mt-8">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-              </svg>
-              Submit Your Prompt
-            </Link>
+              <Link
+                href="/prompts"
+                className="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-600 text-white rounded-2xl font-bold text-lg shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:translate-y-[-4px]"
+              >
+                <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                Browse 200+ Prompts
+              </Link>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link
+                href="/submit"
+                className="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-pink-500 via-purple-500 to-purple-600 text-white rounded-2xl font-bold text-lg shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:translate-y-[-4px] border-2 border-purple-300/30"
+              >
+                <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+                Share Your Prompt
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
       </section>
 
-      <section className="container mx-auto px-4 py-16 bg-white">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">🔥 Trending Techniques from X</h2>
-          <p className="text-xl text-slate-600">Curated from top AI practitioners, researchers, and developers</p>
+      <section className="container mx-auto px-4 py-20 bg-gradient-to-b from-white via-blue-50 to-slate-50">
+        <div className="text-center mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-6xl font-black mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
+          >
+            🔥 Trending Techniques from X
+          </motion.h2>
+          <p className="text-xl text-slate-600 font-medium">Curated from top AI practitioners, researchers, and developers</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
