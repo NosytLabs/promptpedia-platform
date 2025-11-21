@@ -1,0 +1,30 @@
+# Promptpedia SEO Configuration
+User-agent: *
+Allow: /
+Allow: /prompts
+Allow: /blog
+Allow: /generate
+Allow: /pricing
+Allow: /submit
+
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /settings/
+Disallow: /auth/
+
+# Specific search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Crawl delay (be respectful)
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://promptpedia-platform.replit.dev/sitemap.xml

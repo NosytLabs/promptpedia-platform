@@ -9,10 +9,10 @@ import '@/styles/globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  metadataBase: new URL('https://promptpedia.com'),
-  title: 'Promptpedia - Expert Prompt Engineering Library & Community',
-  description: 'Master one-shot, few-shot, chain-of-thought & more. 18+ expert prompt techniques with real examples from X/Twitter\'s top AI practitioners.',
-  keywords: 'prompt engineering, one-shot learning, few-shot learning, chain-of-thought, AI prompts, ChatGPT, Claude, prompt library, community',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN || 'https://promptpedia.replit.dev'),
+  title: 'Promptpedia - Prompt Engineering Library with 50+ Expert Prompts',
+  description: 'Discover 50+ production-ready AI prompts for ChatGPT, Claude, GPT-4 & Midjourney. Learn chain-of-thought, few-shot, and one-shot techniques. Make money with prompt engineering.',
+  keywords: 'prompt engineering, ChatGPT prompts, Claude prompts, GPT-4, Midjourney prompts, AI prompts, prompt library, make money AI, freelancing, business automation',
   authors: [{ name: 'NosytLabs' }],
   creator: 'NosytLabs',
   publisher: 'NosytLabs',
@@ -30,17 +30,29 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://promptpedia.com',
-    title: 'Promptpedia - Expert Prompt Engineering Library & Community',
-    description: 'Browse battle-tested prompts for Claude, GPT-4, Gemini, Veo 3 & more. Learn techniques like one-shot, few-shot, chain-of-thought, and prompt chaining.',
+    url: process.env.NEXT_PUBLIC_DOMAIN || 'https://promptpedia.replit.dev',
+    title: 'Promptpedia - 50+ Expert Prompts for Making Money with AI',
+    description: 'Browse 50+ production-ready prompts covering business, coding, design, content creation & more. Learn from expert engineers. Start your AI journey free.',
     siteName: 'Promptpedia',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Promptpedia - Prompt Engineering Library',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Promptpedia - Expert Prompt Engineering Library & Community',
-    description: '18+ expert prompt techniques with real examples from top AI practitioners on X. Master production-ready prompting now.',
+    title: 'Promptpedia - Make Money with AI Prompts',
+    description: '50+ production-ready prompts. Learn from top AI engineers. Free library + $9/month Pro with advanced features.',
     creator: '@promptpedia',
     site: '@promptpedia',
+    image: '/og-image.png',
+  },
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_DOMAIN || 'https://promptpedia.replit.dev',
   },
 }
 
