@@ -6,6 +6,11 @@ const nextConfig = {
   poweredByHeader: false,
   productionBrowserSourceMaps: false,  // Reduce memory, save 30MB builds
   
+  webpackDevMiddleware: (config) => {
+    config.allowedHosts = 'all';
+    return config;
+  },
+  
   images: {
     domains: ['avatars.githubusercontent.com', 'images.unsplash.com'],
     remotePatterns: [{ protocol: 'https', hostname: '**' }],
@@ -63,12 +68,12 @@ const nextConfig = {
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
-      // Security headers
+      // Security headers (allow iframe for Replit proxy)
       {
         source: '/:path*',
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'X-Frame-Options', value: 'ALLOWALL' },
           { key: 'X-XSS-Protection', value: '1; mode=block' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
         ],
