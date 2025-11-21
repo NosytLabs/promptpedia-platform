@@ -13,8 +13,10 @@ export default function Home() {
   const [featuredPrompts, setFeaturedPrompts] = useState<Prompt[]>([]);
   const [recentPrompts, setRecentPrompts] = useState<Prompt[]>([]);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     fetchPrompts();
   }, []);
 
@@ -82,21 +84,13 @@ export default function Home() {
     <main className="min-h-screen">
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
         {/* Animated background overlay - simplified to avoid hydration issues */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10" suppressHydrationWarning></div>
 
         <div className="container mx-auto px-4 py-24 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <motion.div
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="mb-8 inline-block"
-            >
+          <div>
+            <div className="mb-8 inline-block">
               <div className="text-7xl">🚀</div>
-            </motion.div>
+            </div>
             
             <h1 className="text-7xl md:text-8xl font-black mb-6 leading-tight text-white drop-shadow-lg">
               The World's Largest
@@ -111,36 +105,26 @@ export default function Home() {
               Built by the community, for the community.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center mt-8">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <Link
+                href="/prompts"
+                className="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-600 text-white rounded-2xl font-bold text-lg shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:translate-y-[-4px] hover:scale-105"
               >
-                <Link
-                  href="/prompts"
-                  className="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-600 text-white rounded-2xl font-bold text-lg shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:translate-y-[-4px]"
-                >
-                  <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                  Browse 200+ Prompts
-                </Link>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                Browse 200+ Prompts
+              </Link>
+              <Link
+                href="/submit"
+                className="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-pink-500 via-purple-500 to-purple-600 text-white rounded-2xl font-bold text-lg shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:translate-y-[-4px] hover:scale-105 border-2 border-purple-300/30"
               >
-                <Link
-                  href="/submit"
-                  className="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-pink-500 via-purple-500 to-purple-600 text-white rounded-2xl font-bold text-lg shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:translate-y-[-4px] border-2 border-purple-300/30"
-                >
-                  <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                  </svg>
-                  Share Your Prompt
-                </Link>
-              </motion.div>
+                <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+                Share Your Prompt
+              </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
