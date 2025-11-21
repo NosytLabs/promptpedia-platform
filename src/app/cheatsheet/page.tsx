@@ -1,5 +1,8 @@
 'use client';
 
+// Cache cheatsheet for 24 hours - static content
+export const revalidate = 86400;
+
 import { motion } from 'framer-motion';
 
 export default function CheatsheetPage() {

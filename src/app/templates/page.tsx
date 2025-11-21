@@ -1,5 +1,8 @@
 'use client';
 
+// Cache templates for 24 hours - static content
+export const revalidate = 86400;
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Copy, Check, Download } from 'lucide-react';
