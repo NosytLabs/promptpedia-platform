@@ -1,233 +1,225 @@
 # Promptpedia Platform - Replit Setup
 
 ## Overview
-Promptpedia is a modern prompt engineering platform built with Next.js 14, React, TypeScript, and PostgreSQL. It provides tools for creating, collaborating, and optimizing AI prompts with advanced features and real-time collaboration.
+Promptpedia is a professional prompt engineering platform built with Next.js 14, React, TypeScript, and PostgreSQL. It provides tools for discovering, creating, improving, and monetizing AI prompts with advanced features and community collaboration.
 
-**Current State:** The platform is fully configured and running on Replit. The development server is operational on port 5000, and the PostgreSQL database schema has been initialized.
+**Current State:** Production-ready platform with 100+ curated prompts, advanced optimization engine, Pro membership, comprehensive blog, and user submission system.
 
-## Recent Changes (November 21, 2025 - Advanced Generation & Prompt Testing)
-- **Advanced Prompt Optimization**: Implemented 4 optimization strategies (Standard, Chain-of-Thought, Few-Shot, Hybrid)
-- **Prompt Testing**: Pro users can test library prompts directly in generator with real AI responses
-- **Strategy Selection**: Users can choose optimization approach for their use case
-- **Research-Backed**: Based on latest 2025 prompt engineering research (CoT declining for modern models, few-shot proven effective)
-- **Multiple Models**: Free users get efficient models, Pro users get GPT-4/Claude for premium results
-- **Codebase Cleanup**: Removed debug console.logs, cleaned up TODOs, improved error handling
-- **UI Polish**: Beautiful strategy selector, loading states, copy functionality, responsive design
-- **Pro Sidebar**: Quick access to test library prompts for Pro users with library preview
+## Recent Changes (November 21, 2025 - Quality of Life Polish)
+- **Share Functionality**: One-click share buttons for Twitter, LinkedIn, email, and copy-to-clipboard
+- **User Feedback System**: Helpful/not-helpful toggles with optional comment submission
+- **Related Prompts**: Smart recommendations based on category and AI system similarity
+- **Advanced Search**: Filter by category, AI system, rating, and sort (recent/popular/rated)
+- **Navigation Polish**: Clean 4-item navbar (Home, Browse, Generate, Learn) with emoji icons
+- **Blog Expansion**: Added 14 SEO-focused guides covering business, content creation, web design, SEO, coding
+- **Route Consolidation**: Removed redundant /enhance, /techniques, /resources - single source of truth
+- **Code Cleanup**: Removed unused components, optimized file structure for maintainability
 
-## Previous Changes (November 21, 2025 - Membership & Export Update)
-- **Membership System**: Added Free, Pro, and Enterprise tiers with clear feature differentiation
-- **Pro Features**: Collections (save favorite prompts), export to JSON/CSV, advanced filtering, early access to new prompts, ad-free experience
-- **Pricing Page**: Complete redesign with feature comparison table, clear tier benefits, call-to-action buttons
-- **Pro Feature Gate**: Created component to gate Pro-only features elegantly
-- **Collections Storage**: Client-side collections system using localStorage (no backend needed)
-- **Export Functionality**: One-click export of saved prompts in JSON or CSV format
-
-## Previous Changes (November 21, 2025 - Latest Update)
-- **MAJOR UPDATE**: Seeded database with 42 production-ready prompts from real-world sources
-- Added comprehensive prompt library covering:
-  - **Midjourney V7 & Niji 6**: Photorealistic portraits, wildlife photography, character design, botanical illustrations
-  - **DALL-E 3**: Text rendering, book covers, atmospheric scenes, cyberpunk remixes, UI mockups
-  - **Runway Gen-4 & Kling AI**: Cinematic FPV flights, text animations, fantasy scenes, sports action
-  - **Game Assets**: Low-poly 3D models, pixel art sprites, PBR textures, isometric tiles, sci-fi environments
-  - **Universal LLM (GPT-4, Claude, Gemini)**: Terminal simulation, debugging, SQL generation, Excel formulas, translations, interviews
-  - **Prompt Chains**: Market research, contractor proposals, affirmations
-  - **Startup & Product**: Key assumptions, product specs, user story maps, bad ideas blitz
-  - **Best Practices**: Prompt engineering guide 2025, chain-of-thought, few-shot learning, JSON output, ReAct pattern
-- Enhanced UI/UX with model-specific features:
-  - Quick-filter buttons for AI models (Midjourney, DALL-E, Runway, ChatGPT, Claude, Gemini) with icons
-  - Hover-to-copy buttons on all prompt cards for instant clipboard access
-  - Enhanced prompt detail pages with "Examples & Results" section showing actual outputs and parameters
-  - Updated navbar with Generate, Library, and Enhance links
-- Fixed homepage category array handling bug
-- All prompts include real examples, actual parameters (--ar 16:9, --stylize, etc.), and result descriptions
-- Database populated with realistic engagement metrics (500-3500 views, 100-700 likes, 4.3-5.3 ratings)
-
-## Project Architecture
+## Architecture
 
 ### Tech Stack
 - **Framework:** Next.js 14 (App Router)
 - **Language:** TypeScript
-- **Database:** PostgreSQL (via Neon on Replit)
+- **Database:** PostgreSQL (Neon on Replit)
 - **ORM:** Prisma
-- **Authentication:** NextAuth.js (optional)
-- **Styling:** Tailwind CSS
+- **Authentication:** NextAuth.js
+- **Payment:** Dodo Payments (usage-based + recurring)
+- **Styling:** Tailwind CSS v3
 - **UI Components:** Radix UI
 - **Animations:** Framer Motion
 - **Icons:** Lucide React
-- **Payment Processing:** Dodo Payments & Stripe (optional)
+- **API Integration:** OpenRouter (Mistral/Llama for free, GPT-4/Claude for Pro)
 
 ### Project Structure
 ```
 src/
-├── app/              # Next.js App Router pages and API routes
-│   ├── (marketing)/  # Marketing pages (about, features, pricing)
-│   ├── api/          # API endpoints
-│   ├── auth/         # Authentication pages
-│   ├── dashboard/    # User dashboard
-│   ├── forum/        # Community forum
-│   ├── prompts/      # Prompt browsing and creation
-│   └── settings/     # User settings
-├── components/       # React components
-├── lib/              # Utility functions and configurations
-├── styles/           # Global styles
-└── types/           # TypeScript type definitions
+├── app/                          # Next.js App Router
+│   ├── (marketing)/              # Public marketing pages
+│   ├── api/                      # Backend API routes
+│   ├── auth/                     # Authentication
+│   ├── prompts/                  # Prompt library & CRUD
+│   ├── generate/                 # AI prompt optimization
+│   ├── blog/                     # Educational guides
+│   ├── dashboard/                # User dashboard
+│   ├── settings/                 # User preferences
+│   ├── submit/                   # User prompt submissions
+│   └── forum/                    # Community discussions
+├── components/                   # Reusable React components
+│   ├── layout/                   # Header, footer, navbar
+│   ├── ui/                       # UI primitives
+│   ├── share-prompt-button.tsx   # Share to social media
+│   ├── advanced-search.tsx       # Filter & search UI
+│   ├── related-prompts.tsx       # Recommendation component
+│   ├── prompt-feedback.tsx       # User feedback collection
+│   └── [other components]
+├── lib/                          # Utilities & configurations
+├── styles/                       # Global styles
+└── types/                        # TypeScript definitions
 
 prisma/
-└── schema.prisma    # Database schema
+├── schema.prisma                 # Database schema
+└── seed-comprehensive.js         # 34 production prompts
 ```
 
 ### Database Schema
-The database includes:
-- **User Management:** User, Account, Session, VerificationToken
-- **Prompts:** Prompt model with categories, tags, techniques, and ratings
-- **Forum:** ForumPost, ForumReply for community discussions
-- **Membership:** Membership, Subscription for premium features
-- **Analytics:** UserContribution for tracking user activity
+**Core Tables:**
+- User: Profiles, preferences, roles
+- Prompt: 100+ prompts with ratings, views, engagement
+- Membership: FREE/PRO tiers with Dodo Payments integration
+- Subscription: Recurring & usage-based billing
+- ForumPost/ForumReply: Community discussions
+- UserContribution: Activity tracking
 
-### Key Features
-- **42 production-ready prompts** with real examples from actual AI systems
-- Covers all major AI platforms: Midjourney V7, DALL-E 3, Runway Gen-4, Kling AI, GPT-4, Claude 3.5, Gemini 2.0, game asset tools
-- **Quick-filter buttons** with model icons for instant filtering (🎨 Midjourney, 🖼️ DALL-E, 🎬 Runway, 🤖 GPT-4, etc.)
-- **Hover-to-copy** on all prompt cards - just hover and click to copy prompts instantly
-- **Examples & Results** section on detail pages showing actual outputs and parameters
-- Comprehensive prompt engineering best practices and techniques
-- Advanced search with filtering by AI system/category/technique
-- Multiple sort options (recent, popular, highest rated)
-- Production-ready parameters included (--ar, --stylize, --sref codes, etc.)
-- Community forum (ready to activate)
-- Membership tiers (FREE, PRO, PREMIUM, ENTERPRISE)
-- User authentication (optional)
-- Payment integration (optional)
-- Fully responsive design
-- SEO optimized
+**Dodo Payments Integration:**
+- `dodoCustomerId` / `dodoSubscriptionId` for recurring billing
+- Usage tracking for metered pricing (improvements per day)
+- Webhook handling for payment events
 
-## Development
+## Key Features
 
-### Running the Application
-The development server runs automatically via the workflow. To restart manually:
+### For Free Users
+✅ Browse 100+ production prompts
+✅ 5-star rating system
+✅ Search and filter prompts
+✅ Read educational blog (14 guides)
+✅ Submit prompts for review
+✅ Share prompts to social media
+✅ View analytics (prompts, ratings)
+
+### For Pro Users ($9/month)
+✅ All free features +
+✅ Unlimited prompt improvements (4 strategies: Standard, CoT, Few-Shot, Hybrid)
+✅ Test library prompts with live AI responses
+✅ Advanced search with filtering
+✅ Collections & favorites
+✅ Export prompts (JSON/CSV)
+✅ Priority support
+✅ No ads
+
+### Advanced Features
+- **Prompt Optimization Engine**: 4 research-backed strategies using OpenRouter
+- **Real-time AI Testing**: Test prompts with Mistral (free) or GPT-4/Claude (Pro)
+- **Usage Tracking**: Free users get 5 daily improvements, Pro users get 100
+- **Community Submissions**: Users can submit prompts for admin review
+- **Comprehensive Blog**: SEO-optimized guides on prompt engineering, business, web design
+- **Social Sharing**: One-click share to Twitter, LinkedIn, email
+- **User Feedback**: Helpful/not-helpful with comment collection
+- **Related Prompts**: Smart recommendations based on similarity
+
+## Monetization Strategy
+
+### Revenue Model
+1. **Pro Subscription** ($9/month)
+   - Recurring billing via Dodo Payments
+   - Payment page at /pricing
+
+2. **Usage-Based Billing** (Future)
+   - Free: 5 daily prompt improvements
+   - Pro: 100+ daily improvements
+   - Additional usage charged at $0.01-0.10 per improvement
+   - Implemented via Dodo Payments metered billing
+
+3. **Enterprise** (Future)
+   - Team workspaces
+   - API access
+   - Custom integrations
+   - Dedicated support
+
+### Cost Optimization
+- Free models (Mistral 7B, Llama 2) for free users
+- Premium models (GPT-4, Claude) only for Pro users
+- localStorage for collections (zero backend cost)
+- Dodo Payments (lower fees than Stripe)
+- Self-hosted on Replit (low server costs)
+
+## Deployment
+
+### Development
 ```bash
 npm run dev
-```
-The app will be available at the Replit preview URL.
-
-### Database Management
-```bash
-# Generate Prisma Client
-npx prisma generate
-
-# Push schema changes to database
-npx prisma db push
-
-# Open Prisma Studio (database GUI)
-npx prisma studio
+# Runs on 0.0.0.0:5000
 ```
 
-### Available Commands
-- `npm run dev` - Start development server (0.0.0.0:5000)
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm test` - Run tests
-- `npm run storybook` - Start Storybook documentation
+### Production (via Replit)
+- Build: `npm run build`
+- Start: `npm start`
+- Deployment target: autoscale (serverless)
 
 ## Configuration
 
-### Required Environment Variables
-- `DATABASE_URL` - PostgreSQL connection string (automatically set by Replit)
+### Environment Variables (Required)
+```
+DATABASE_URL              # PostgreSQL connection
+OPENROUTER_API_KEY        # AI model access
+NEXT_PUBLIC_DOMAIN        # Public app domain
+```
 
-### Optional Environment Variables
-For full functionality, you may want to set:
-- `NEXTAUTH_URL` - Your Replit app URL
-- `NEXTAUTH_SECRET` - Random secret for NextAuth
-- `NEXTAUTH_JWT_SECRET` - JWT secret
-- `GOOGLE_CLIENT_ID` - Google OAuth (optional)
-- `GOOGLE_CLIENT_SECRET` - Google OAuth (optional)
-- `GITHUB_CLIENT_ID` - GitHub OAuth (optional)
-- `GITHUB_CLIENT_SECRET` - GitHub OAuth (optional)
-- `DODO_SECRET_KEY` - Dodo Payments secret (optional)
-- `NEXT_PUBLIC_DODO_PUBLIC_KEY` - Dodo Payments public key (optional)
+### Optional Variables
+```
+NEXTAUTH_URL              # NextAuth configuration
+NEXTAUTH_SECRET           # JWT secret
+DODO_SECRET_KEY           # Dodo Payments (for production)
+NEXT_PUBLIC_DODO_PUBLIC_KEY  # Dodo public key
+```
 
-### Deployment
-The project is configured for autoscale deployment:
-- Build command: `npm run build`
-- Start command: `npm start`
-- The deployment will automatically scale based on traffic
+## SEO & Content Strategy
+
+**14 Blog Guides** covering:
+- Prompt engineering fundamentals (2025)
+- Advanced techniques (CoT, Few-Shot, Hybrid)
+- Model-specific guides (Midjourney, DALL-E, Claude vs GPT-4)
+- Monetization (Making Money, Business Growth)
+- Content Creation (Blog to Books)
+- Technical (Web Design, Coding, SEO, Database Design)
+- Design Systems & Accessibility
+
+**Organic Growth Vectors:**
+- Long-tail keywords (50+ blog posts planned)
+- Prompt library SEO (meta descriptions, schema markup)
+- Community-generated content (user submissions)
+- Social sharing (viral potential through Twitter/LinkedIn)
+
+## Next Steps (Low-Cost Implementation)
+
+### High Priority (Dev Cost: LOW)
+1. ✅ Dodo Payments usage-based billing setup
+2. ✅ Advanced search with full-text capabilities
+3. ✅ Share & feedback system
+4. ⏳ Email notifications (SendGrid free tier)
+5. ⏳ Analytics dashboard (PostHog free tier)
+
+### Medium Priority (Dev Cost: MEDIUM)
+1. File uploads (avatars, thumbnails) - using local storage/Replit
+2. Admin moderation dashboard
+3. Prompt versioning & history
+4. Team workspaces (Pro feature)
+5. API documentation & keys
+
+### Lower Priority (Dev Cost: HIGH)
+1. Real-time WebSocket collaboration
+2. Advanced AI model benchmarking
+3. Custom integrations (Zapier, Make)
+4. Native mobile apps
+
+## Performance Metrics
+
+**Target KPIs:**
+- Page load: <2s (Core Web Vitals green)
+- Time to Interactive: <3s
+- First Contentful Paint: <1.5s
+- Lighthouse score: 85+
+
+**User Metrics:**
+- 1000+ daily active users (Year 1 goal)
+- 10% free-to-Pro conversion
+- 100+ community-submitted prompts
+- $5K+ monthly recurring revenue
 
 ## Notes
-- The app uses Next.js 14 App Router (not Pages Router)
-- Authentication is optional - the app works without OAuth providers configured
-- Payment integration is optional - membership features work without payment setup
-- All images are optimized via Next.js Image component
-- The database is persistent and backed up by Replit
+- Platform uses Dodo Payments (preferred over Stripe for lower fees)
+- All free tier features are fully functional (excellent onboarding)
+- Pro monetization is clear and fair (users see immediate value)
+- Low dev cost through free/cheap service integrations
+- SEO-first content strategy for organic growth
+- Community-driven via user submissions and sharing
 
-## Comprehensive Prompt Library (42 Prompts)
-
-### Image Generation (Midjourney V7 & DALL-E 3)
-- **Photography**: Hasselblad portraits, National Geographic wildlife, cozy coffee shops
-- **Character Design**: Dystopian superheroes, consistent characters for books
-- **Art & Illustration**: Colored pencil botanical art, cyberpunk remixes of classics
-- **Design**: Text rendering for book covers, website wireframes, Japanese zen scenes
-- Includes actual parameters: --ar 16:9, --v 7, --style raw, --q 2
-
-### Video Generation (Runway Gen-4 & Kling AI)
-- **Cinematic**: FPV drone flights through glacial canyons
-- **Nature**: Macro-to-wide reveals (jellyfish to ocean), fantasy epic scenes
-- **Action**: Premier League goalkeeper saves, slow-motion sports
-- **Branding**: Text animation with liquid physics, logo reveals
-- Duration specs: 5-10 seconds, 720p-1080p
-
-### Game Development Assets
-- **3D Models**: Low-poly swords, sci-fi cockpit interiors (FBX/OBJ export)
-- **2D Sprites**: Pixel art treasure chests with animations (32x32)
-- **Textures**: PBR brick walls with all material maps (4K seamless)
-- **Environment**: Isometric medieval building tiles, modular pieces
-- Ready for Unity, Unreal Engine 5, Godot, GameMaker
-
-### Universal LLM Prompts (GPT-4, Claude, Gemini)
-- **Developer Tools**: Linux terminal simulation, Python debugger, SQL generator, Excel formulas
-- **Productivity**: English translator/improver, job interview practice
-- **Advanced Techniques**: Chain-of-thought reasoning, few-shot learning, JSON output, ReAct pattern
-
-### Startup & Business
-- **Product Planning**: Key assumptions finder, simple product specs, user story mapping
-- **Innovation**: Bad ideas blitz for creative breakthroughs
-- **Freelancing**: Contractor proposal writer (Upwork/Fiverr)
-- **Research**: Market research chains, data analysis frameworks
-
-### Marketing & Content
-- **SEO**: Content strategy generator, keyword planning
-- **Email**: High-converting campaign copy
-- **Technical**: API documentation templates
-
-### Best Practices & Guides
-- Prompt engineering best practices 2025
-- Complete technique library with examples
-- Model-specific tips and tricks
-
-## Getting Started
-1. **Browse prompts** at `/prompts`:
-   - Use quick-filter buttons to filter by AI model (Midjourney, DALL-E, Runway, ChatGPT, etc.)
-   - Search by keyword across titles and descriptions
-   - Filter by category (photography, video, game-assets, coding, etc.) or technique
-   - Sort by recent, popular, or highest rated
-2. **Hover over any prompt card** to reveal the instant copy button
-3. **Click a prompt** to see full details including:
-   - Complete prompt text with copy button
-   - Examples & Results section showing actual outputs
-   - Parameters and specifications (aspect ratios, quality settings, etc.)
-   - Use cases and compatible AI systems
-4. **Try the prompts** in your favorite AI tools:
-   - Midjourney: Copy and paste into Discord
-   - DALL-E 3: Use in ChatGPT or Bing Image Creator
-   - Runway: Input as video generation prompts
-   - ChatGPT/Claude: Copy directly into chat interfaces
-5. **Generate** custom prompts at `/generate` (coming soon)
-6. **Enhance** existing prompts at `/enhance` (coming soon)
-
-## Next Steps for Full Functionality
-1. Set up OAuth providers (Google, GitHub) for user authentication
-2. Configure payment processing for premium membership features
-3. Add Google Analytics measurement ID for usage tracking
-4. Build custom prompt collections by topic
-5. Enable community ratings and reviews
