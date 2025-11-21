@@ -343,7 +343,7 @@ export default function Home() {
                     <p className="text-slate-600 mb-4 line-clamp-2">{prompt.description}</p>
 
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {prompt.category.slice(0, 2).map((cat) => (
+                      {Array.isArray(prompt.category) && prompt.category.slice(0, 2).map((cat) => (
                         <span
                           key={cat}
                           className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-md"

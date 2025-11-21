@@ -15,9 +15,9 @@ export function Navbar() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Browse Prompts', href: '/prompts' },
-    { name: 'Forum', href: '/forum' },
-    { name: 'Techniques', href: '/techniques' },
-    { name: 'Pricing', href: '/pricing' },
+    { name: 'Library', href: '/library' },
+    { name: 'Generate', href: '/generate' },
+    { name: 'Enhance', href: '/enhance' },
   ];
 
   const isActive = (href: string) => {
