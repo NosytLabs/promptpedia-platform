@@ -1,5 +1,8 @@
 'use client';
 
+// Cache blog page for 24 hours - massive savings on DB queries
+export const revalidate = 86400;
+
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
