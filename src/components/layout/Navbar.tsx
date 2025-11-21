@@ -14,10 +14,9 @@ export function Navbar() {
 
   const navigation = [
     { name: 'Home', href: '/' },
-    { name: 'Browse Prompts', href: '/prompts' },
-    { name: 'Library', href: '/library' },
-    { name: 'Generate', href: '/generate' },
-    { name: 'Enhance', href: '/enhance' },
+    { name: '🎯 Browse', href: '/prompts' },
+    { name: '⚡ Generate', href: '/generate' },
+    { name: '📚 Learn', href: '/blog' },
   ];
 
   const isActive = (href: string) => {

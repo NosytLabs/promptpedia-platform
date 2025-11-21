@@ -60,6 +60,48 @@ const guides = [
     category: 'Tips & Tricks',
     readTime: '5 min',
   },
+  {
+    slug: 'prompt-engineering-for-business',
+    title: 'Prompt Engineering for Business Growth',
+    excerpt: 'Leverage AI prompts to scale sales, marketing, and customer success operations',
+    category: 'Business',
+    readTime: '9 min',
+  },
+  {
+    slug: 'making-money-with-ai-prompts',
+    title: 'Make Money Selling AI Prompts & Services',
+    excerpt: 'Build profitable businesses around AI prompt expertise and automation',
+    category: 'Business',
+    readTime: '10 min',
+  },
+  {
+    slug: 'content-creation-with-ai',
+    title: 'AI-Powered Content Creation: Blog to Books',
+    excerpt: 'Generate high-quality blog posts, ebooks, and books using advanced prompts',
+    category: 'Content',
+    readTime: '11 min',
+  },
+  {
+    slug: 'seo-prompting-strategy',
+    title: 'SEO Optimization Through Intelligent Prompting',
+    excerpt: 'Create SEO-optimized content, keywords, and strategies using AI prompts',
+    category: 'SEO',
+    readTime: '8 min',
+  },
+  {
+    slug: 'web-design-with-ai',
+    title: 'Web Design & UI/UX Prompting Guide',
+    excerpt: 'Generate wireframes, design systems, and interactive prototypes with AI',
+    category: 'Design',
+    readTime: '9 min',
+  },
+  {
+    slug: 'coding-prompts-guide',
+    title: 'Advanced Coding Prompts & Code Generation',
+    excerpt: 'Use AI to generate production-ready code, debug faster, and architect systems',
+    category: 'Development',
+    readTime: '10 min',
+  },
 ];
 
 export default function BlogPage() {
