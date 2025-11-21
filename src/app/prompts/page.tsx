@@ -64,6 +64,7 @@ export default function PromptsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [selectedTechnique, setSelectedTechnique] = useState<string>('');
   const [sortBy, setSortBy] = useState<'recent' | 'popular' | 'rating'>('recent');
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   useEffect(() => {
     fetchPrompts();
@@ -86,6 +87,18 @@ export default function PromptsPage() {
       setPrompts([]);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const copyPrompt = async (e: React.MouseEvent, promptText: string, promptId: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(promptText);
+      setCopiedId(promptId);
+      setTimeout(() => setCopiedId(null), 2000);
+    } catch (error) {
+      // Silently fail
     }
   };
 
@@ -113,6 +126,26 @@ export default function PromptsPage() {
             Submit Your Prompt
           </Link>
         </motion.div>
+
+        {/* Quick Model Filters */}
+        <div className="mb-8">
+          <h3 className="text-sm font-semibold text-slate-700 mb-3">Quick Filter by AI Model:</h3>
+          <div className="flex flex-wrap gap-3">
+            {AI_SYSTEMS.slice(0, 8).map((system) => (
+              <button
+                key={system.value}
+                onClick={() => setSelectedAISystem(selectedAISystem === system.value ? '' : system.value)}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                  selectedAISystem === system.value
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg scale-105'
+                    : 'bg-white text-slate-700 border-2 border-slate-200 hover:border-blue-400 hover:shadow-md'
+                }`}
+              >
+                {system.icon} {system.label}
+              </button>
+            ))}
+          </div>
+        </div>
 
         <div className="mb-8 bg-white rounded-xl shadow-sm p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -193,14 +226,37 @@ export default function PromptsPage() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Link href={`/prompts/${prompt.id}`}>
-                  <div className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow p-6 h-full border border-slate-200 hover:border-blue-300 cursor-pointer">
+                  <div className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all p-6 h-full border border-slate-200 hover:border-blue-300 cursor-pointer relative group">
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button
+                        onClick={(e) => copyPrompt(e, prompt.promptText, prompt.id)}
+                        className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded-lg flex items-center gap-1 shadow-lg"
+                      >
+                        {copiedId === prompt.id ? (
+                          <>
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            Copied!
+                          </>
+                        ) : (
+                          <>
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            Copy
+                          </>
+                        )}
+                      </button>
+                    </div>
+                    
                     {prompt.featured && (
                       <div className="inline-block px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded-full mb-3">
                         ⭐ Featured
                       </div>
                     )}
                     
-                    <h3 className="text-xl font-bold mb-2 text-slate-900">{prompt.title}</h3>
+                    <h3 className="text-xl font-bold mb-2 text-slate-900 pr-20">{prompt.title}</h3>
                     <p className="text-slate-600 mb-4 line-clamp-3">{prompt.description}</p>
 
                     <div className="flex flex-wrap gap-2 mb-4">
