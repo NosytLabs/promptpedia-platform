@@ -205,37 +205,13 @@ export default function PromptDetailPage() {
             </pre>
           </div>
 
-          {prompt.examples && prompt.examples.length > 0 && (
+          {prompt.examples && (
             <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-4 text-slate-900">Examples</h2>
-              <div className="space-y-6">
-                {prompt.examples.map((example, index) => (
-                  <div key={index} className="border border-slate-200 rounded-lg p-6">
-                    <h3 className="font-bold text-lg mb-3 text-slate-900">Example {index + 1}</h3>
-                    
-                    <div className="mb-4">
-                      <h4 className="font-semibold text-slate-700 mb-2">Input:</h4>
-                      <div className="bg-slate-50 p-4 rounded border border-slate-200">
-                        <pre className="whitespace-pre-wrap text-sm">{example.input}</pre>
-                      </div>
-                    </div>
-
-                    <div className="mb-4">
-                      <h4 className="font-semibold text-slate-700 mb-2">Output:</h4>
-                      <div className="bg-slate-50 p-4 rounded border border-slate-200">
-                        <pre className="whitespace-pre-wrap text-sm">{example.output}</pre>
-                      </div>
-                    </div>
-
-                    {example.notes && (
-                      <div className="bg-blue-50 border border-blue-200 p-4 rounded">
-                        <p className="text-sm text-blue-900">
-                          <strong>Note:</strong> {example.notes}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                ))}
+              <h2 className="text-2xl font-bold mb-4 text-slate-900">Examples & Results</h2>
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200 rounded-xl p-6">
+                <div className="prose prose-slate max-w-none">
+                  <p className="text-slate-700 whitespace-pre-wrap">{prompt.examples}</p>
+                </div>
               </div>
             </div>
           )}

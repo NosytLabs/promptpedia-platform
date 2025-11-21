@@ -6,61 +6,63 @@ import { motion } from 'framer-motion';
 import { Prompt, AISystem, PromptCategory, PromptTechnique } from '@/types/prompt';
 import { timeAgo } from '@/lib/utils';
 
-const AI_SYSTEMS: { value: AISystem; label: string }[] = [
-  { value: 'claude-3.5-sonnet', label: 'Claude 3.5 Sonnet' },
-  { value: 'claude-3-opus', label: 'Claude 3 Opus' },
-  { value: 'gpt-4-turbo', label: 'GPT-4 Turbo' },
-  { value: 'gpt-4', label: 'GPT-4' },
-  { value: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo' },
-  { value: 'gemini-pro', label: 'Gemini Pro' },
-  { value: 'veo-3', label: 'Veo 3' },
-  { value: 'midjourney', label: 'Midjourney' },
-  { value: 'dall-e-3', label: 'DALL-E 3' },
+const AI_SYSTEMS: { value: AISystem; label: string; icon?: string }[] = [
+  { value: 'midjourney-v7', label: 'Midjourney V7', icon: '🎨' },
+  { value: 'midjourney-niji-6', label: 'Midjourney Niji 6', icon: '🎌' },
+  { value: 'dall-e-3', label: 'DALL-E 3', icon: '🖼️' },
+  { value: 'runway-gen-4', label: 'Runway Gen-4', icon: '🎬' },
+  { value: 'kling-ai', label: 'Kling AI', icon: '📹' },
+  { value: 'gpt-4-turbo', label: 'GPT-4 Turbo', icon: '🤖' },
+  { value: 'claude-3.5-sonnet', label: 'Claude 3.5 Sonnet', icon: '💡' },
+  { value: 'gemini-2.0-flash', label: 'Gemini 2.0 Flash', icon: '⚡' },
+  { value: 'meshy-ai', label: 'Meshy AI (3D)', icon: '🎲' },
+  { value: 'scenario', label: 'Scenario (Game)', icon: '🎮' },
+  { value: 'leonardo-ai', label: 'Leonardo AI', icon: '🖌️' },
+  { value: 'all-models', label: 'All Models', icon: '✨' },
 ];
 
-const CATEGORIES: { value: PromptCategory; label: string }[] = [
-  { value: 'text-generation', label: 'Text Generation' },
-  { value: 'code-generation', label: 'Code Generation' },
-  { value: 'data-analysis', label: 'Data Analysis' },
-  { value: 'creative-writing', label: 'Creative Writing' },
-  { value: 'image-generation', label: 'Image Generation' },
-  { value: 'video-generation', label: 'Video Generation' },
-  { value: 'chatbot', label: 'Chatbot' },
-  { value: 'summarization', label: 'Summarization' },
-  { value: 'translation', label: 'Translation' },
-  { value: 'business', label: 'Business' },
-  { value: 'education', label: 'Education' },
-  { value: 'research', label: 'Research' },
-  { value: 'marketing', label: 'Marketing' },
-  { value: 'productivity', label: 'Productivity' },
-  { value: 'entertainment', label: 'Entertainment' },
-  { value: 'other', label: 'Other' },
+const CATEGORIES = [
+  'photography', 'portrait', 'wildlife', 'lifestyle', 'commercial',
+  'character-design', 'fantasy', 'illustration', 'botanical',
+  'design', 'text-rendering', 'ux-ui', 'video', 'cinematic',
+  'typography', 'sports', 'game-assets', '3d-models', '2d-sprites',
+  'textures', 'environment', '3d-environments', 'developer-tools',
+  'debugging', 'code-review', 'database', 'spreadsheets', 'writing',
+  'translation', 'career', 'interview-prep', 'research', 'business',
+  'freelancing', 'wellness', 'motivation', 'product', 'validation',
+  'product-definition', 'planning', 'product-planning', 'ideation',
+  'brainstorming', 'guides', 'education', 'techniques', 'reasoning',
+  'learning', 'integration', 'agents', 'seo', 'marketing',
+  'copywriting', 'analysis', 'data-science', 'documentation',
+  'technical-writing'
 ];
 
-const TECHNIQUES: { value: PromptTechnique; label: string }[] = [
-  { value: 'one-shot', label: 'One-Shot' },
-  { value: 'few-shot', label: 'Few-Shot' },
-  { value: 'zero-shot', label: 'Zero-Shot' },
-  { value: 'chain-of-thought', label: 'Chain-of-Thought' },
-  { value: 'self-consistency', label: 'Self-Consistency' },
-  { value: 'prompt-chaining', label: 'Prompt Chaining' },
-  { value: 'role-based', label: 'Role-Based' },
-  { value: 'structured-debate', label: 'Structured Debate' },
-  { value: 'iterative-refinement', label: 'Iterative Refinement' },
-  { value: 'constraint-based', label: 'Constraint-Based' },
-  { value: 'socratic-method', label: 'Socratic Method' },
-  { value: 'json-output', label: 'JSON Output' },
-  { value: 'multi-step', label: 'Multi-Step' },
-  { value: 'standard', label: 'Standard' },
+const TECHNIQUES = [
+  'camera-specific', 'photorealistic', 'descriptive', 'nat-geo-style',
+  'atmosphere', 'lighting', 'character-consistency', 'world-building',
+  'medium-specific', 'artistic', 'text-integration', 'composition',
+  'detailed-description', 'cultural-aesthetics', 'style-fusion',
+  'creative', 'structured-design', 'camera-movement', 'continuous-motion',
+  'camera-zoom', 'reveal', 'text-animation', 'liquid-physics', 'action',
+  'slow-motion', 'game-ready', 'technical-specs', 'pixel-art', 'animation',
+  'isometric', 'modular', 'pbr-materials', 'seamless', 'environment-design',
+  'sci-fi', 'role-based', 'command-simulation', 'analysis', 'technical',
+  'translation', 'structured-output', 'formula-generation', 'iterative',
+  'enhancement', 'conversational', 'prompt-chaining', 'persuasive',
+  'structured', 'personalization', 'chaining', 'journey-mapping',
+  'divergent-thinking', 'reference', 'comprehensive', 'chain-of-thought',
+  'step-by-step', 'few-shot', 'in-context-learning', 'json', 'react-pattern',
+  'multi-step', 'strategy', 'keyword-planning', 'conversion-focused',
+  'analytical'
 ];
 
 export default function PromptsPage() {
   const [prompts, setPrompts] = useState<Prompt[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedAISystem, setSelectedAISystem] = useState<AISystem | ''>('');
-  const [selectedCategory, setSelectedCategory] = useState<PromptCategory | ''>('');
-  const [selectedTechnique, setSelectedTechnique] = useState<PromptTechnique | ''>('');
+  const [selectedAISystem, setSelectedAISystem] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [selectedTechnique, setSelectedTechnique] = useState<string>('');
   const [sortBy, setSortBy] = useState<'recent' | 'popular' | 'rating'>('recent');
 
   useEffect(() => {
@@ -124,39 +126,39 @@ export default function PromptsPage() {
 
             <select
               value={selectedAISystem}
-              onChange={(e) => setSelectedAISystem(e.target.value as AISystem | '')}
+              onChange={(e) => setSelectedAISystem(e.target.value)}
               className="px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All AI Systems</option>
               {AI_SYSTEMS.map((system) => (
                 <option key={system.value} value={system.value}>
-                  {system.label}
+                  {system.icon} {system.label}
                 </option>
               ))}
             </select>
 
             <select
               value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value as PromptCategory | '')}
+              onChange={(e) => setSelectedCategory(e.target.value)}
               className="px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All Categories</option>
               {CATEGORIES.map((category) => (
-                <option key={category.value} value={category.value}>
-                  {category.label}
+                <option key={category} value={category}>
+                  {category.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
                 </option>
               ))}
             </select>
 
             <select
               value={selectedTechnique}
-              onChange={(e) => setSelectedTechnique(e.target.value as PromptTechnique | '')}
+              onChange={(e) => setSelectedTechnique(e.target.value)}
               className="px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All Techniques</option>
               {TECHNIQUES.map((technique) => (
-                <option key={technique.value} value={technique.value}>
-                  {technique.label}
+                <option key={technique} value={technique}>
+                  {technique.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
                 </option>
               ))}
             </select>
