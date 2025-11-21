@@ -73,9 +73,9 @@ export const searchPrompts = cache(async (
 
 // Cache: Get single prompt with all details
 export const getPromptById = cache(async (id: string | number) => {
-  const numId = typeof id === 'string' ? parseInt(id, 10) : id;
+  const stringId = typeof id === 'string' ? id : String(id);
   return prisma.prompt.findUnique({
-    where: { id: numId },
+    where: { id: stringId },
     include: {
       user: {
         select: { name: true, image: true, email: true },
@@ -87,14 +87,14 @@ export const getPromptById = cache(async (id: string | number) => {
 // Cache: Get related prompts based on category/tags
 export const getRelatedPrompts = cache(async (
   category: string[],
-  currentId: number,
+  currentId: string,
   limit = 5
 ) => {
   return prisma.prompt.findMany({
     where: {
       isPublic: true,
       status: 'PUBLISHED',
-      id: { not: Number(currentId) },
+      id: { not: currentId },
       category: { hasSome: category },
     },
     orderBy: { viewCount: 'desc' },
